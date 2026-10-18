@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getClients } from "@/lib/clients";
 import { STATUS_LABELS } from "@/lib/types";
 
@@ -34,7 +35,12 @@ export default async function ClientsPage() {
                 className="border-b border-black/5 last:border-0 dark:border-white/10"
               >
                 <td className="px-4 py-3">
-                  <div className="font-medium">{client.name}</div>
+                  <Link
+                    href={`/clients/${client.id}`}
+                    className="font-medium underline-offset-4 hover:underline"
+                  >
+                    {client.name}
+                  </Link>
                   <div className="text-xs text-zinc-600 dark:text-zinc-400">
                     {client.email}
                   </div>
