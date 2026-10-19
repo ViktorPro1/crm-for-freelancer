@@ -3,21 +3,29 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { StatusBadge } from "@/components/status-badge";
 import { getClients } from "@/lib/clients";
+import { interpolate } from "@/lib/i18n/config";
+import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 
-export const metadata: Metadata = {
-  title: "Клієнти",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = await getDictionary();
+
+  return { title: dict.clients.metaTitle };
+}
 
 // Заголовок показується одразу, а таблиця з'являється, коли база відповість.
 // Suspense показує запасний текст (fallback), поки дані завантажуються.
-export default function ClientsPage() {
+export default async function ClientsPage() {
+  const dict = await getDictionary();
+
   return (
     <main className="mx-auto max-w-5xl p-4 sm:p-8">
       <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-        Клієнти
+        {dict.clients.title}
       </h1>
 
-      <Suspense fallback={<p className="mt-6 text-sm text-muted">Завантаження...</p>}>
+      <Suspense
+        fallback={<p className="mt-6 text-sm text-muted">{dict.clients.loading}</p>}
+      >
         <ClientsTable />
       </Suspense>
     </main>
@@ -26,22 +34,26 @@ export default function ClientsPage() {
 
 // Серверний компонент, який сам іде в базу за даними.
 async function ClientsTable() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
   const clients = await getClients();
 
   return (
     <>
-      <p className="mt-1 text-sm text-muted">Усього: {clients.length}</p>
+      <p className="mt-1 text-sm text-muted">
+        {interpolate(dict.clients.total, { count: clients.length })}
+      </p>
 
       <div className="mt-6 overflow-hidden rounded-xl border bg-surface">
         <table className="w-full text-left text-sm">
           <thead className="bg-surface-muted text-muted">
             <tr>
-              <th className="px-4 py-3 font-medium">Клієнт</th>
+              <th className="px-4 py-3 font-medium">{dict.clients.colClient}</th>
               {/* Колонка "Компанія" ховається на вузьких екранах: там компанія стоїть під іменем. */}
               <th className="hidden px-4 py-3 font-medium sm:table-cell">
-                Компанія
+                {dict.clients.colCompany}
               </th>
-              <th className="px-4 py-3 font-medium">Статус</th>
+              <th className="px-4 py-3 font-medium">{dict.clients.colStatus}</th>
             </tr>
           </thead>
           <tbody>
@@ -52,7 +64,7 @@ async function ClientsTable() {
               >
                 <td className="px-4 py-3">
                   <Link
-                    href={`/clients/${client.id}`}
+                    href={`/${locale}/clients/${client.id}`}
                     className="font-medium underline-offset-4 hover:text-primary hover:underline"
                   >
                     {client.name}
@@ -66,7 +78,10 @@ async function ClientsTable() {
                   {client.company}
                 </td>
                 <td className="px-4 py-3">
-                  <StatusBadge status={client.status} />
+                  <StatusBadge
+                    status={client.status}
+                    label={dict.status[client.status]}
+                  />
                 </td>
               </tr>
             ))}

@@ -6,7 +6,7 @@
 
 import { MoonIcon, SunIcon } from "@/components/icons";
 
-export function ThemeToggle() {
+export function ThemeToggle({ label }: { label: string }) {
   function toggleTheme() {
     const root = document.documentElement;
     const nextIsDark = !root.classList.contains("dark");
@@ -24,9 +24,9 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label="Перемкнути тему"
-      title="Перемкнути тему"
-      className="grid size-10 place-items-center rounded-lg text-sidebar-foreground transition-colors hover:bg-sidebar-active focus-visible:outline-sidebar-ring"
+      aria-label={label}
+      title={label}
+      className="grid size-10 shrink-0 place-items-center rounded-lg text-sidebar-foreground transition-colors hover:bg-sidebar-active focus-visible:outline-sidebar-ring"
     >
       <SunIcon className="hidden size-5 dark:block" />
       <MoonIcon className="size-5 dark:hidden" />

@@ -1,0 +1,47 @@
+{
+  "app": {
+    "name": "CRM",
+    "tagline": "pro freelancery",
+    "title": "CRM pro freelancery",
+    "description": "Evidence klientů, projektů a faktur"
+  },
+  "nav": {
+    "dashboard": "Přehled",
+    "clients": "Klienti"
+  },
+  "controls": {
+    "toggleTheme": "Přepnout motiv",
+    "language": "Jazyk"
+  },
+  "home": {
+    "title": "Přehled",
+    "subtitle": "Přehled klientů a práce.",
+    "startTitle": "Začněte klienty",
+    "startText": "Zde se objeví připomínky, projekty a faktury. Zatím je k dispozici seznam klientů.",
+    "openClients": "Otevřít klienty"
+  },
+  "clients": {
+    "metaTitle": "Klienti",
+    "detailMetaTitle": "Klient",
+    "title": "Klienti",
+    "total": "Celkem: {count}",
+    "loading": "Načítání...",
+    "colClient": "Klient",
+    "colCompany": "Firma",
+    "colStatus": "Stav",
+    "back": "Všichni klienti",
+    "fieldEmail": "E-mail",
+    "fieldAdded": "Přidáno",
+    "fieldNotes": "Poznámky"
+  },
+  "status": {
+    "lead": "Potenciální",
+    "active": "Aktivní",
+    "archived": "Archivováno"
+  },
+  "notFound": {
+    "title": "Stránka nenalezena",
+    "text": "Tato stránka nebo záznam neexistuje. Zkontrolujte adresu nebo se vraťte na úvodní stránku.",
+    "backHome": "Na úvodní stránku"
+  }
+}

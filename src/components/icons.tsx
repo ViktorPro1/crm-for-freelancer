@@ -74,7 +74,7 @@ export function BrandMark({ className }: IconProps) {
   return (
     <span
       aria-hidden="true"
-      className={`grid shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[#14b8a6] to-[#2563b8] text-white ${className ?? "size-9"}`}
+      className={`grid shrink-0 place-items-center rounded-lg bg-linear-to-br from-[#14b8a6] to-[#2563b8] text-white ${className ?? "size-9"}`}
     >
       <svg
         viewBox="0 0 24 24"

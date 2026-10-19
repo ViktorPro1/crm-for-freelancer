@@ -1,4 +1,4 @@
-import { STATUS_LABELS, type ClientStatus } from "@/lib/types";
+import type { ClientStatus } from "@/lib/types";
 
 const styles: Record<ClientStatus, string> = {
   lead: "bg-info-bg text-info-fg",
@@ -6,12 +6,19 @@ const styles: Record<ClientStatus, string> = {
   archived: "bg-neutral-bg text-neutral-fg",
 };
 
-export function StatusBadge({ status }: { status: ClientStatus }) {
+// Підпис статусу (label) приходить уже перекладеним зі сторінки.
+export function StatusBadge({
+  status,
+  label,
+}: {
+  status: ClientStatus;
+  label: string;
+}) {
   return (
     <span
       className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[status]}`}
     >
-      {STATUS_LABELS[status]}
+      {label}
     </span>
   );
 }

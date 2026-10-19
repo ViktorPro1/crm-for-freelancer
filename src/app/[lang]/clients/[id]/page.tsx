@@ -6,25 +6,35 @@ import { ChevronLeftIcon } from "@/components/icons";
 import { StatusBadge } from "@/components/status-badge";
 import { getClient } from "@/lib/clients";
 import { formatDate } from "@/lib/format";
+import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 
-export const metadata: Metadata = {
-  title: "Клієнт",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const dict = await getDictionary();
 
-// Папка [id] означає, що частина адреси змінна: /clients/1, /clients/2 і так далі.
+  return { title: dict.clients.detailMetaTitle };
+}
+
+// Папка [id] означає, що частина адреси змінна: /uk/clients/1, /uk/clients/2 і так далі.
 // Посилання "Усі клієнти" показується одразу, а дані клієнта дозавантажуються.
-export default function ClientPage({ params }: PageProps<"/clients/[id]">) {
+export default async function ClientPage({
+  params,
+}: PageProps<"/[lang]/clients/[id]">) {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+
   return (
     <main className="mx-auto max-w-3xl p-4 sm:p-8">
       <Link
-        href="/clients"
+        href={`/${locale}/clients`}
         className="-ml-1 inline-flex items-center gap-1 rounded-md text-sm text-muted transition-colors hover:text-primary"
       >
         <ChevronLeftIcon className="size-4" />
-        Усі клієнти
+        {dict.clients.back}
       </Link>
 
-      <Suspense fallback={<p className="mt-6 text-sm text-muted">Завантаження...</p>}>
+      <Suspense
+        fallback={<p className="mt-6 text-sm text-muted">{dict.clients.loading}</p>}
+      >
         <ClientDetails params={params} />
       </Suspense>
     </main>
@@ -33,20 +43,22 @@ export default function ClientPage({ params }: PageProps<"/clients/[id]">) {
 
 async function ClientDetails({
   params,
-}: Pick<PageProps<"/clients/[id]">, "params">) {
+}: Pick<PageProps<"/[lang]/clients/[id]">, "params">) {
   // params містить змінну частину адреси. У Next.js 16 його треба чекати через await.
   const { id } = await params;
+  const locale = await getLocale();
+  const dict = await getDictionary();
   const client = await getClient(id);
 
-  // Якщо клієнта з таким id немає, показуємо стандартну сторінку 404.
+  // Якщо клієнта з таким id немає, показуємо сторінку "не знайдено" (not-found.tsx).
   if (!client) {
     notFound();
   }
 
   const rows = [
-    { label: "Пошта", value: client.email },
-    { label: "Додано", value: formatDate(client.createdAt) },
-    { label: "Нотатки", value: client.notes },
+    { label: dict.clients.fieldEmail, value: client.email },
+    { label: dict.clients.fieldAdded, value: formatDate(client.createdAt, locale) },
+    { label: dict.clients.fieldNotes, value: client.notes },
   ];
 
   return (
@@ -55,7 +67,10 @@ async function ClientDetails({
         <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
           {client.name}
         </h1>
-        <StatusBadge status={client.status} />
+        <StatusBadge
+          status={client.status}
+          label={dict.status[client.status]}
+        />
       </div>
       <p className="mt-1 text-muted">{client.company}</p>
 

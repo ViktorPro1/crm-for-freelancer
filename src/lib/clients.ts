@@ -1,71 +1,68 @@
-import type { Client } from "./types";
+import { neon } from "@neondatabase/serverless";
+import type { Client, ClientStatus } from "./types";
 
-// Тимчасові дані. Пізніше замінимо їх на таблицю в базі Neon.
-// Функції нижче навмисно асинхронні (async): коли дані переїдуть у базу,
-// решта коду не зміниться, бо там уже стоїть `await`.
-// Усі імена, пошти та компанії вигадані.
+// Дані клієнтів тепер беруться з бази Neon.
+// Адреса бази лежить у файлі .env.local у змінній DATABASE_URL.
+// Вона потрібна тільки на сервері: браузер її ніколи не бачить.
 
-const clients: Client[] = [
-  {
-    id: "1",
-    name: "Олена Коваль",
-    company: "Кав'ярня «Лате»",
-    email: "olena@example.com",
-    status: "active",
-    createdAt: "2026-03-12",
-    notes: "Замовила лендінг із меню та формою бронювання. Оплата частинами.",
-  },
-  {
-    id: "2",
-    name: "Андрій Мельник",
-    company: "Автосервіс «Мотор»",
-    email: "andriy@example.com",
-    status: "active",
-    createdAt: "2026-05-04",
-    notes: "Потрібен сайт з прайсом і онлайн-записом на ремонт.",
-  },
-  {
-    id: "3",
-    name: "Ірина Шевчук",
-    company: "Ветклініка «Лапа»",
-    email: "iryna@example.com",
-    status: "lead",
-    createdAt: "2026-09-21",
-    notes: "Попросила орієнтовну вартість сайту. Чекаємо відповіді.",
-  },
-  {
-    id: "4",
-    name: "Тарас Бондаренко",
-    company: "Фермерське господарство «Зерно»",
-    email: "taras@example.com",
-    status: "lead",
-    createdAt: "2026-10-02",
-    notes: "Цікавить каталог продукції без інтернет-магазину.",
-  },
-  {
-    id: "5",
-    name: "Марія Литвин",
-    company: "Студія «Ритм»",
-    email: "maria@example.com",
-    status: "archived",
-    createdAt: "2025-11-18",
-    notes: "Проєкт завершено, сайт здано. Можливі правки за домовленістю.",
-  },
-  {
-    id: "6",
-    name: "Богдан Ткачук",
-    company: "Барбершоп «Борода»",
-    email: "bohdan@example.com",
-    status: "archived",
-    createdAt: "2026-01-09",
-    notes: "Відмовився від розробки після першого етапу.",
-  },
-];
+function getSql() {
+  const url = process.env.DATABASE_URL;
+
+  if (!url) {
+    throw new Error(
+      "Не задано DATABASE_URL. Перевір, що файл .env.local лежить у корені проєкту.",
+    );
+  }
+
+  return neon(url);
+}
+
+// Так рядок виглядає в базі. Поле id там число, а в нашому коді рядок.
+type ClientRow = {
+  id: number;
+  name: string;
+  company: string;
+  email: string;
+  status: ClientStatus;
+  createdAt: string;
+  notes: string;
+};
+
+function toClient(row: ClientRow): Client {
+  return { ...row, id: String(row.id) };
+}
 
 export async function getClients(): Promise<Client[]> {
-  return clients;
+  const sql = getSql();
+
+  // to_char перетворює дату на текст "2026-09-21", щоб не було плутанини з часовими поясами.
+  const rows = (await sql`
+    SELECT id, name, company, email, status,
+           to_char(created_at, 'YYYY-MM-DD') AS "createdAt", notes
+    FROM clients
+    ORDER BY id
+  `) as ClientRow[];
+
+  return rows.map(toClient);
 }
 
 export async function getClient(id: string): Promise<Client | undefined> {
-  return clients.find((client) => client.id === id);
+  // id береться з адреси в браузері, тому спершу перевіряємо, що це звичайне число.
+  // Для адреси на кшталт /clients/abc одразу повертаємо "не знайдено", не звертаючись до бази.
+  if (!/^\d{1,9}$/.test(id)) {
+    return undefined;
+  }
+
+  const sql = getSql();
+
+  // ${Number(id)} драйвер передає в базу окремо від тексту запиту.
+  // Так у запит не можна підставити чужий код (це захист від SQL-ін'єкцій).
+  const rows = (await sql`
+    SELECT id, name, company, email, status,
+           to_char(created_at, 'YYYY-MM-DD') AS "createdAt", notes
+    FROM clients
+    WHERE id = ${Number(id)}
+  `) as ClientRow[];
+
+  return rows[0] ? toClient(rows[0]) : undefined;
 }

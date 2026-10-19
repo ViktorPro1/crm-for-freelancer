@@ -1,0 +1,47 @@
+{
+  "app": {
+    "name": "CRM",
+    "tagline": "for freelancers",
+    "title": "CRM for freelancers",
+    "description": "Track clients, projects and invoices"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "clients": "Clients"
+  },
+  "controls": {
+    "toggleTheme": "Switch theme",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Dashboard",
+    "subtitle": "An overview of your clients and work.",
+    "startTitle": "Start with your clients",
+    "startText": "Reminders, projects and invoices will appear here. For now, the client list is available.",
+    "openClients": "Open clients"
+  },
+  "clients": {
+    "metaTitle": "Clients",
+    "detailMetaTitle": "Client",
+    "title": "Clients",
+    "total": "Total: {count}",
+    "loading": "Loading...",
+    "colClient": "Client",
+    "colCompany": "Company",
+    "colStatus": "Status",
+    "back": "All clients",
+    "fieldEmail": "Email",
+    "fieldAdded": "Added",
+    "fieldNotes": "Notes"
+  },
+  "status": {
+    "lead": "Lead",
+    "active": "Active",
+    "archived": "Archived"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "text": "This page or record does not exist. Check the address or go back to the start page.",
+    "backHome": "Go to start page"
+  }
+}

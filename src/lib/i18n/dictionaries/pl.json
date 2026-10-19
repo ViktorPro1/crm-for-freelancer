@@ -1,0 +1,47 @@
+{
+  "app": {
+    "name": "CRM",
+    "tagline": "dla freelancerów",
+    "title": "CRM dla freelancerów",
+    "description": "Ewidencja klientów, projektów i faktur"
+  },
+  "nav": {
+    "dashboard": "Pulpit",
+    "clients": "Klienci"
+  },
+  "controls": {
+    "toggleTheme": "Przełącz motyw",
+    "language": "Język"
+  },
+  "home": {
+    "title": "Pulpit",
+    "subtitle": "Przegląd klientów i spraw.",
+    "startTitle": "Zacznij od klientów",
+    "startText": "Tutaj pojawią się przypomnienia, projekty i faktury. Na razie dostępna jest lista klientów.",
+    "openClients": "Otwórz klientów"
+  },
+  "clients": {
+    "metaTitle": "Klienci",
+    "detailMetaTitle": "Klient",
+    "title": "Klienci",
+    "total": "Łącznie: {count}",
+    "loading": "Ładowanie...",
+    "colClient": "Klient",
+    "colCompany": "Firma",
+    "colStatus": "Status",
+    "back": "Wszyscy klienci",
+    "fieldEmail": "E-mail",
+    "fieldAdded": "Dodano",
+    "fieldNotes": "Notatki"
+  },
+  "status": {
+    "lead": "Potencjalny",
+    "active": "Aktywny",
+    "archived": "Zarchiwizowany"
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "text": "Taka strona lub rekord nie istnieje. Sprawdź adres albo wróć na stronę główną.",
+    "backHome": "Na stronę główną"
+  }
+}

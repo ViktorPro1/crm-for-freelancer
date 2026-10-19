@@ -6,25 +6,33 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DashboardIcon, UsersIcon } from "@/components/icons";
+import type { Locale } from "@/lib/i18n/config";
 
-const links = [
-  { href: "/", label: "Дашборд", Icon: DashboardIcon },
-  { href: "/clients", label: "Клієнти", Icon: UsersIcon },
-];
+type Props = {
+  locale: Locale;
+  labels: { dashboard: string; clients: string };
+};
 
-function NavLinks({ pathname }: { pathname: string | null }) {
+function NavLinks({ locale, labels, pathname }: Props & { pathname: string | null }) {
+  // Адреса в браузері виглядає як /uk/clients/3. Відрізаємо мову, щоб порівнювати "/clients/3".
+  const path = pathname === null ? null : pathname.slice(locale.length + 1) || "/";
+
+  const links = [
+    { href: "/", label: labels.dashboard, Icon: DashboardIcon },
+    { href: "/clients", label: labels.clients, Icon: UsersIcon },
+  ];
+
   return (
     // На телефоні пункти йдуть у рядок, на великому екрані стовпчиком.
     <nav className="flex gap-1 overflow-x-auto md:flex-col">
       {links.map(({ href, label, Icon }) => {
         const isActive =
-          pathname !== null &&
-          (href === "/" ? pathname === "/" : pathname.startsWith(href));
+          path !== null && (href === "/" ? path === "/" : path.startsWith(href));
 
         return (
           <Link
             key={href}
-            href={href}
+            href={href === "/" ? `/${locale}` : `/${locale}${href}`}
             aria-current={isActive ? "page" : undefined}
             className={`flex items-center gap-3 whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors focus-visible:outline-sidebar-ring ${
               isActive
@@ -42,14 +50,14 @@ function NavLinks({ pathname }: { pathname: string | null }) {
 }
 
 // Меню з підсвіткою активного пункту.
-export function SidebarNav() {
+export function SidebarNav(props: Props) {
   const pathname = usePathname();
 
-  return <NavLinks pathname={pathname} />;
+  return <NavLinks {...props} pathname={pathname} />;
 }
 
 // Запасний варіант, який показується на мить, поки Next.js визначає адресу
-// сторінки (наприклад, /clients/7). Це те саме меню, тільки без підсвітки.
-export function SidebarNavFallback() {
-  return <NavLinks pathname={null} />;
+// сторінки (наприклад, /uk/clients/7). Це те саме меню, тільки без підсвітки.
+export function SidebarNavFallback(props: Props) {
+  return <NavLinks {...props} pathname={null} />;
 }

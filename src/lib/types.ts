@@ -13,10 +13,3 @@ export type Client = {
   createdAt: string; // дата у форматі РРРР-ММ-ДД
   notes: string;
 };
-
-// Підписи статусів для показу на сторінці.
-export const STATUS_LABELS: Record<ClientStatus, string> = {
-  lead: "Потенційний",
-  active: "Активний",
-  archived: "В архіві",
-};
