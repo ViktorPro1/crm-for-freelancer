@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
+/* Тема перемикається класом "dark" на елементі <html>.
+   Цей рядок вчить Tailwind: префікс dark: працює, коли є цей клас. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Кольори світлої теми. Усі пари кольорів перевірені на контраст (текст 4.5+). */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+
+  --background: #f1f7f6;
+  --surface: #ffffff;
+  --surface-muted: #e8f1f0;
+  --border: #d2e2e0;
+  --foreground: #0c2229;
+  --muted: #4d6a70;
+
+  --primary: #0b7a80;
+  --primary-hover: #09666b;
+  --primary-foreground: #ffffff;
+  --primary-soft: #d9efee;
+  --primary-soft-foreground: #08585c;
+
+  /* Бічне меню лишається темним "глибоководним" в обох темах. */
+  --sidebar: #0a3640;
+  --sidebar-foreground: #d3e9eb;
+  --sidebar-muted: #9cc0c5;
+  --sidebar-active: #124a56;
+  --sidebar-ring: #7fe0d9;
+
+  --info-bg: #dcebfb;
+  --info-fg: #1b4f8f;
+  --success-bg: #d3efe6;
+  --success-fg: #0d6b4f;
+  --neutral-bg: #e6eceb;
+  --neutral-fg: #46605f;
 }
 
+/* Кольори темної теми. */
+.dark {
+  color-scheme: dark;
+
+  --background: #07171c;
+  --surface: #0d252c;
+  --surface-muted: #12313a;
+  --border: #1e4049;
+  --foreground: #e3f0f1;
+  --muted: #93b4ba;
+
+  --primary: #38c5bf;
+  --primary-hover: #5ed6d0;
+  --primary-foreground: #052a2c;
+  --primary-soft: #12383f;
+  --primary-soft-foreground: #7fe0d9;
+
+  --sidebar: #041217;
+  --sidebar-active: #0f2c34;
+
+  --info-bg: #14304f;
+  --info-fg: #9cc7f5;
+  --success-bg: #0f3a31;
+  --success-fg: #6fdcbc;
+  --neutral-bg: #1b3238;
+  --neutral-fg: #a7c2c6;
+}
+
+/* Тут кольори змінних стають класами Tailwind: bg-surface, text-muted, border-border тощо. */
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-foreground: var(--primary-soft-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-info-bg: var(--info-bg);
+  --color-info-fg: var(--info-fg);
+  --color-success-bg: var(--success-bg);
+  --color-success-fg: var(--success-fg);
+  --color-neutral-bg: var(--neutral-bg);
+  --color-neutral-fg: var(--neutral-fg);
+
+  /* Системні шрифти: не потребують завантаження, працюють офлайн
+     і мають усі літери для української, польської та чеської. */
+  --font-sans:
+    "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  /* Один колір рамок для всього сайту. */
+  *,
+  ::after,
+  ::before {
+    border-color: var(--border);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Помітна рамка при навігації клавіатурою. */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* Для людей, які вимкнули анімації в системі. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::after,
+    ::before {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
 }

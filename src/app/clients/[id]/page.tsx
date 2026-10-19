@@ -1,31 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getClient, getClients } from "@/lib/clients";
+import { Suspense } from "react";
+import { ChevronLeftIcon } from "@/components/icons";
+import { StatusBadge } from "@/components/status-badge";
+import { getClient } from "@/lib/clients";
 import { formatDate } from "@/lib/format";
-import { STATUS_LABELS } from "@/lib/types";
+
+export const metadata: Metadata = {
+  title: "Клієнт",
+};
 
 // Папка [id] означає, що частина адреси змінна: /clients/1, /clients/2 і так далі.
-// Ця функція повідомляє Next.js, які саме значення id існують,
-// щоб підготувати ці сторінки заздалегідь.
-export async function generateStaticParams() {
-  const clients = await getClients();
-  return clients.map((client) => ({ id: client.id }));
+// Посилання "Усі клієнти" показується одразу, а дані клієнта дозавантажуються.
+export default function ClientPage({ params }: PageProps<"/clients/[id]">) {
+  return (
+    <main className="mx-auto max-w-3xl p-4 sm:p-8">
+      <Link
+        href="/clients"
+        className="-ml-1 inline-flex items-center gap-1 rounded-md text-sm text-muted transition-colors hover:text-primary"
+      >
+        <ChevronLeftIcon className="size-4" />
+        Усі клієнти
+      </Link>
+
+      <Suspense fallback={<p className="mt-6 text-sm text-muted">Завантаження...</p>}>
+        <ClientDetails params={params} />
+      </Suspense>
+    </main>
+  );
 }
 
-// Заголовок вкладки браузера залежить від клієнта.
-export async function generateMetadata({
+async function ClientDetails({
   params,
-}: PageProps<"/clients/[id]">): Promise<Metadata> {
-  const { id } = await params;
-  const client = await getClient(id);
-
-  return { title: client ? client.name : "Клієнта не знайдено" };
-}
-
-export default async function ClientPage({
-  params,
-}: PageProps<"/clients/[id]">) {
+}: Pick<PageProps<"/clients/[id]">, "params">) {
   // params містить змінну частину адреси. У Next.js 16 його треба чекати через await.
   const { id } = await params;
   const client = await getClient(id);
@@ -35,44 +43,33 @@ export default async function ClientPage({
     notFound();
   }
 
+  const rows = [
+    { label: "Пошта", value: client.email },
+    { label: "Додано", value: formatDate(client.createdAt) },
+    { label: "Нотатки", value: client.notes },
+  ];
+
   return (
-    <main className="mx-auto max-w-3xl p-8">
-      <Link
-        href="/clients"
-        className="text-sm text-zinc-600 underline-offset-4 hover:underline dark:text-zinc-400"
-      >
-        ← Усі клієнти
-      </Link>
+    <>
+      <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+          {client.name}
+        </h1>
+        <StatusBadge status={client.status} />
+      </div>
+      <p className="mt-1 text-muted">{client.company}</p>
 
-      <h1 className="mt-4 text-3xl font-semibold">{client.name}</h1>
-      <p className="mt-1 text-zinc-600 dark:text-zinc-400">{client.company}</p>
-
-      <dl className="mt-8 divide-y divide-black/10 rounded-lg border border-black/10 text-sm dark:divide-white/15 dark:border-white/15">
-        <div className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-4">
-          <dt className="w-32 shrink-0 text-zinc-600 dark:text-zinc-400">
-            Пошта
-          </dt>
-          <dd>{client.email}</dd>
-        </div>
-        <div className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-4">
-          <dt className="w-32 shrink-0 text-zinc-600 dark:text-zinc-400">
-            Статус
-          </dt>
-          <dd>{STATUS_LABELS[client.status]}</dd>
-        </div>
-        <div className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-4">
-          <dt className="w-32 shrink-0 text-zinc-600 dark:text-zinc-400">
-            Додано
-          </dt>
-          <dd>{formatDate(client.createdAt)}</dd>
-        </div>
-        <div className="flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-4">
-          <dt className="w-32 shrink-0 text-zinc-600 dark:text-zinc-400">
-            Нотатки
-          </dt>
-          <dd>{client.notes}</dd>
-        </div>
+      <dl className="mt-6 divide-y rounded-xl border bg-surface text-sm">
+        {rows.map(({ label, value }) => (
+          <div
+            key={label}
+            className="grid gap-1 px-4 py-3 sm:grid-cols-[8rem_1fr] sm:gap-4"
+          >
+            <dt className="text-muted">{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
       </dl>
-    </main>
+    </>
   );
 }

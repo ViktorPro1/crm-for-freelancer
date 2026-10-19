@@ -5,36 +5,51 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { DashboardIcon, UsersIcon } from "@/components/icons";
 
 const links = [
-  { href: "/", label: "Дашборд" },
-  { href: "/clients", label: "Клієнти" },
+  { href: "/", label: "Дашборд", Icon: DashboardIcon },
+  { href: "/clients", label: "Клієнти", Icon: UsersIcon },
 ];
 
-export function SidebarNav() {
-  const pathname = usePathname();
-
+function NavLinks({ pathname }: { pathname: string | null }) {
   return (
-    <nav className="flex gap-1 md:flex-col">
-      {links.map(({ href, label }) => {
+    // На телефоні пункти йдуть у рядок, на великому екрані стовпчиком.
+    <nav className="flex gap-1 overflow-x-auto md:flex-col">
+      {links.map(({ href, label, Icon }) => {
         const isActive =
-          href === "/" ? pathname === "/" : pathname.startsWith(href);
+          pathname !== null &&
+          (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
         return (
           <Link
             key={href}
             href={href}
             aria-current={isActive ? "page" : undefined}
-            className={`rounded-md px-3 py-2 text-sm transition-colors ${
+            className={`flex items-center gap-3 whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors focus-visible:outline-sidebar-ring ${
               isActive
-                ? "bg-black/10 font-medium dark:bg-white/15"
-                : "hover:bg-black/5 dark:hover:bg-white/10"
+                ? "bg-sidebar-active font-medium text-white"
+                : "text-sidebar-muted hover:bg-sidebar-active/60 hover:text-white"
             }`}
           >
+            <Icon className="size-5 shrink-0" />
             {label}
           </Link>
         );
       })}
     </nav>
   );
+}
+
+// Меню з підсвіткою активного пункту.
+export function SidebarNav() {
+  const pathname = usePathname();
+
+  return <NavLinks pathname={pathname} />;
+}
+
+// Запасний варіант, який показується на мить, поки Next.js визначає адресу
+// сторінки (наприклад, /clients/7). Це те саме меню, тільки без підсвітки.
+export function SidebarNavFallback() {
+  return <NavLinks pathname={null} />;
 }

@@ -1,30 +1,46 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import { StatusBadge } from "@/components/status-badge";
 import { getClients } from "@/lib/clients";
-import { STATUS_LABELS } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Клієнти",
 };
 
-// async означає, що ця сторінка вміє чекати на дані (зараз з файлу, потім з бази).
-// Вона виконується на сервері, тому в браузер приходить уже готова таблиця.
-export default async function ClientsPage() {
+// Заголовок показується одразу, а таблиця з'являється, коли база відповість.
+// Suspense показує запасний текст (fallback), поки дані завантажуються.
+export default function ClientsPage() {
+  return (
+    <main className="mx-auto max-w-5xl p-4 sm:p-8">
+      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+        Клієнти
+      </h1>
+
+      <Suspense fallback={<p className="mt-6 text-sm text-muted">Завантаження...</p>}>
+        <ClientsTable />
+      </Suspense>
+    </main>
+  );
+}
+
+// Серверний компонент, який сам іде в базу за даними.
+async function ClientsTable() {
   const clients = await getClients();
 
   return (
-    <main className="mx-auto max-w-5xl p-8">
-      <h1 className="text-3xl font-semibold">Клієнти</h1>
-      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-        Всього: {clients.length}
-      </p>
+    <>
+      <p className="mt-1 text-sm text-muted">Усього: {clients.length}</p>
 
-      <div className="mt-6 overflow-x-auto rounded-lg border border-black/10 dark:border-white/15">
+      <div className="mt-6 overflow-hidden rounded-xl border bg-surface">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-black/10 bg-black/3 text-xs uppercase tracking-wide text-zinc-600 dark:border-white/15 dark:bg-white/4 dark:text-zinc-400">
+          <thead className="bg-surface-muted text-muted">
             <tr>
               <th className="px-4 py-3 font-medium">Клієнт</th>
-              <th className="px-4 py-3 font-medium">Компанія</th>
+              {/* Колонка "Компанія" ховається на вузьких екранах: там компанія стоїть під іменем. */}
+              <th className="hidden px-4 py-3 font-medium sm:table-cell">
+                Компанія
+              </th>
               <th className="px-4 py-3 font-medium">Статус</th>
             </tr>
           </thead>
@@ -32,26 +48,31 @@ export default async function ClientsPage() {
             {clients.map((client) => (
               <tr
                 key={client.id}
-                className="border-b border-black/5 last:border-0 dark:border-white/10"
+                className="border-t transition-colors hover:bg-surface-muted/60"
               >
                 <td className="px-4 py-3">
                   <Link
                     href={`/clients/${client.id}`}
-                    className="font-medium underline-offset-4 hover:underline"
+                    className="font-medium underline-offset-4 hover:text-primary hover:underline"
                   >
                     {client.name}
                   </Link>
-                  <div className="text-xs text-zinc-600 dark:text-zinc-400">
-                    {client.email}
+                  <div className="text-xs text-muted">{client.email}</div>
+                  <div className="mt-0.5 text-xs text-muted sm:hidden">
+                    {client.company}
                   </div>
                 </td>
-                <td className="px-4 py-3">{client.company}</td>
-                <td className="px-4 py-3">{STATUS_LABELS[client.status]}</td>
+                <td className="hidden px-4 py-3 sm:table-cell">
+                  {client.company}
+                </td>
+                <td className="px-4 py-3">
+                  <StatusBadge status={client.status} />
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </main>
+    </>
   );
 }
