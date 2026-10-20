@@ -1,16 +1,23 @@
 import { SidebarNav } from "@/components/sidebar-nav";
-import { getUser } from "@/lib/auth/session";
+import { canUseCrm, getAccess } from "@/lib/auth/session";
 import type { Locale } from "@/lib/i18n/config";
 
-// Показує меню з пунктом "Клієнти" лише тим, хто увійшов.
+// Показує меню з пунктом "Клієнти" лише тим, чию заявку схвалено.
 export async function SidebarNavGate({
   locale,
   labels,
 }: {
   locale: Locale;
-  labels: { dashboard: string; clients: string };
+  labels: { dashboard: string; clients: string; admin: string };
 }) {
-  const user = await getUser();
+  const access = await getAccess();
 
-  return <SidebarNav locale={locale} labels={labels} showClients={user !== null} />;
+  return (
+    <SidebarNav
+      locale={locale}
+      labels={labels}
+      showClients={canUseCrm(access)}
+      showAdmin={access.kind === "member" && access.isAdmin}
+    />
+  );
 }

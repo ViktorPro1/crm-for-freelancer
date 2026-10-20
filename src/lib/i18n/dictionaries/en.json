@@ -7,7 +7,8 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "clients": "Clients"
+    "clients": "Clients",
+    "admin": "Admin"
   },
   "controls": {
     "toggleTheme": "Switch theme",
@@ -65,5 +66,30 @@
     },
     "passwordNew": "Password (at least 8 characters)",
     "signOut": "Sign out"
+  },
+  "pending": {
+    "title": "Your application is being processed",
+    "text": "Thank you for signing up. The administrator is reviewing your application. As soon as it is approved, you will get access to clients. Please check back later.",
+    "rejectedTitle": "Application declined",
+    "rejectedText": "Unfortunately, the administrator declined your application. If this is a mistake, please contact them.",
+    "home": "Back to home",
+    "signOut": "Sign out"
+  },
+  "admin": {
+    "title": "Admin",
+    "summary": "Total users: {total}. Waiting for a decision: {pending}.",
+    "empty": "No applications yet.",
+    "colUser": "User",
+    "colDate": "Applied on",
+    "colStatus": "Status",
+    "colActions": "Actions",
+    "approve": "Approve",
+    "reject": "Reject",
+    "you": "This is you",
+    "status": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "rejected": "Rejected"
+    }
   }
 }

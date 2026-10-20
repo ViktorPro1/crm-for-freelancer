@@ -47,7 +47,8 @@ export async function signUpAction(
     };
   }
 
-  redirect(`/${locale}`);
+  // Новий користувач чекає на схвалення: сторінка /pending покаже статус заявки.
+  redirect(`/${locale}/pending`);
 }
 
 export async function signInAction(
@@ -70,7 +71,8 @@ export async function signInAction(
     };
   }
 
-  redirect(`/${locale}`);
+  // Сторінка /pending сама відправить схваленого користувача на головну.
+  redirect(`/${locale}/pending`);
 }
 
 export async function signOutAction(formData: FormData) {

@@ -7,7 +7,8 @@
   },
   "nav": {
     "dashboard": "Pulpit",
-    "clients": "Klienci"
+    "clients": "Klienci",
+    "admin": "Admin"
   },
   "controls": {
     "toggleTheme": "Przełącz motyw",
@@ -65,5 +66,30 @@
     },
     "passwordNew": "Hasło (co najmniej 8 znaków)",
     "signOut": "Wyloguj się"
+  },
+  "pending": {
+    "title": "Twoje zgłoszenie jest rozpatrywane",
+    "text": "Dziękujemy za rejestrację. Administrator sprawdza zgłoszenie. Gdy zostanie zatwierdzone, otrzymasz dostęp do klientów. Zajrzyj później.",
+    "rejectedTitle": "Zgłoszenie odrzucone",
+    "rejectedText": "Niestety administrator odrzucił Twoje zgłoszenie. Jeśli to pomyłka, skontaktuj się z nim.",
+    "home": "Na stronę główną",
+    "signOut": "Wyloguj się"
+  },
+  "admin": {
+    "title": "Panel admina",
+    "summary": "Wszystkich użytkowników: {total}. Czeka na decyzję: {pending}.",
+    "empty": "Na razie brak zgłoszeń.",
+    "colUser": "Użytkownik",
+    "colDate": "Data zgłoszenia",
+    "colStatus": "Status",
+    "colActions": "Akcje",
+    "approve": "Zatwierdź",
+    "reject": "Odrzuć",
+    "you": "To Ty",
+    "status": {
+      "pending": "Oczekuje",
+      "approved": "Zatwierdzono",
+      "rejected": "Odrzucono"
+    }
   }
 }

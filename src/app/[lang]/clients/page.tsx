@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { StatusBadge } from "@/components/status-badge";
-import { requireUser } from "@/lib/auth/session";
+import { requireApproved } from "@/lib/auth/session";
 import { getClients } from "@/lib/clients";
 import { interpolate } from "@/lib/i18n/config";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
@@ -47,7 +47,7 @@ async function Title() {
 // Серверний компонент: перевіряє вхід і сам іде в базу за даними.
 async function ClientsContent() {
   const locale = await getLocale();
-  await requireUser(locale);
+  await requireApproved(locale);
   const dict = await getDictionary();
   const clients = await getClients();
 

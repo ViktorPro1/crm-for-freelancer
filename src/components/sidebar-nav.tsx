@@ -5,20 +5,23 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { DashboardIcon, UsersIcon } from "@/components/icons";
+import { DashboardIcon, ShieldIcon, UsersIcon } from "@/components/icons";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = {
   locale: Locale;
-  labels: { dashboard: string; clients: string };
+  labels: { dashboard: string; clients: string; admin: string };
   // Пункт "Клієнти" бачить лише той, кому дозволено працювати з CRM.
   showClients: boolean;
+  // Пункт "Адмінка" бачить лише адміністратор.
+  showAdmin?: boolean;
 };
 
 function NavLinks({
   locale,
   labels,
   showClients,
+  showAdmin = false,
   pathname,
 }: Props & { pathname: string | null }) {
   // Адреса в браузері виглядає як /uk/clients/3. Відрізаємо мову, щоб порівнювати "/clients/3".
@@ -28,6 +31,9 @@ function NavLinks({
     { href: "/", label: labels.dashboard, Icon: DashboardIcon },
     ...(showClients
       ? [{ href: "/clients", label: labels.clients, Icon: UsersIcon }]
+      : []),
+    ...(showAdmin
+      ? [{ href: "/admin", label: labels.admin, Icon: ShieldIcon }]
       : []),
   ];
 

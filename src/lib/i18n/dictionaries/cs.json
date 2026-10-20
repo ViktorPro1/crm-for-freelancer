@@ -7,7 +7,8 @@
   },
   "nav": {
     "dashboard": "Přehled",
-    "clients": "Klienti"
+    "clients": "Klienti",
+    "admin": "Admin"
   },
   "controls": {
     "toggleTheme": "Přepnout motiv",
@@ -65,5 +66,30 @@
     },
     "passwordNew": "Heslo (alespoň 8 znaků)",
     "signOut": "Odhlásit se"
+  },
+  "pending": {
+    "title": "Vaše žádost se zpracovává",
+    "text": "Děkujeme za registraci. Administrátor žádost kontroluje. Jakmile ji schválí, získáte přístup ke klientům. Zkuste to později.",
+    "rejectedTitle": "Žádost byla zamítnuta",
+    "rejectedText": "Administrátor bohužel vaši žádost zamítl. Pokud jde o omyl, kontaktujte ho.",
+    "home": "Na úvodní stránku",
+    "signOut": "Odhlásit se"
+  },
+  "admin": {
+    "title": "Administrace",
+    "summary": "Celkem uživatelů: {total}. Čeká na rozhodnutí: {pending}.",
+    "empty": "Zatím žádné žádosti.",
+    "colUser": "Uživatel",
+    "colDate": "Datum žádosti",
+    "colStatus": "Stav",
+    "colActions": "Akce",
+    "approve": "Schválit",
+    "reject": "Zamítnout",
+    "you": "To jste vy",
+    "status": {
+      "pending": "Čeká",
+      "approved": "Schváleno",
+      "rejected": "Zamítnuto"
+    }
   }
 }

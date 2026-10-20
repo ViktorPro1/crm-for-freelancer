@@ -1,21 +1,7 @@
-import { neon } from "@neondatabase/serverless";
+import { getSql } from "./db";
 import type { Client, ClientStatus } from "./types";
 
-// Дані клієнтів тепер беруться з бази Neon.
-// Адреса бази лежить у файлі .env.local у змінній DATABASE_URL.
-// Вона потрібна тільки на сервері: браузер її ніколи не бачить.
-
-function getSql() {
-  const url = process.env.DATABASE_URL;
-
-  if (!url) {
-    throw new Error(
-      "Не задано DATABASE_URL. Перевір, що файл .env.local лежить у корені проєкту.",
-    );
-  }
-
-  return neon(url);
-}
+// Дані клієнтів беруться з бази Neon (підключення описане в db.ts).
 
 // Так рядок виглядає в базі. Поле id там число, а в нашому коді рядок.
 type ClientRow = {
