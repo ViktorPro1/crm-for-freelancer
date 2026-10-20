@@ -8,7 +8,8 @@
   "nav": {
     "dashboard": "Дашборд",
     "clients": "Клієнти",
-    "admin": "Адмінка"
+    "admin": "Адмінка",
+    "account": "Кабінет"
   },
   "controls": {
     "toggleTheme": "Перемкнути тему",
@@ -132,5 +133,26 @@
       "approved": "Схвалено",
       "rejected": "Відхилено"
     }
+  },
+  "account": {
+    "title": "Особистий кабінет",
+    "subtitle": "Ваш профіль і налаштування акаунта.",
+    "email": "Електронна пошта",
+    "memberSince": "Зареєстровано",
+    "status": "Статус",
+    "statusApproved": "Заявку схвалено",
+    "roleAdmin": "Адміністратор",
+    "nameTitle": "Ім'я",
+    "nameLabel": "Як до вас звертатися",
+    "nameSave": "Зберегти ім'я",
+    "nameSaved": "Ім'я збережено.",
+    "passwordTitle": "Зміна пароля",
+    "currentPassword": "Поточний пароль",
+    "newPassword": "Новий пароль (щонайменше 8 символів)",
+    "passwordSave": "Змінити пароль",
+    "passwordSaved": "Пароль змінено.",
+    "passwordWrong": "Поточний пароль невірний.",
+    "error": "Щось пішло не так. Спробуйте ще раз.",
+    "saving": "Зберігаємо..."
   }
 }

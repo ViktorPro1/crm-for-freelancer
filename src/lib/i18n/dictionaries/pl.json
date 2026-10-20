@@ -8,7 +8,8 @@
   "nav": {
     "dashboard": "Pulpit",
     "clients": "Klienci",
-    "admin": "Admin"
+    "admin": "Admin",
+    "account": "Konto"
   },
   "controls": {
     "toggleTheme": "Przełącz motyw",
@@ -132,5 +133,26 @@
       "approved": "Zatwierdzono",
       "rejected": "Odrzucono"
     }
+  },
+  "account": {
+    "title": "Konto osobiste",
+    "subtitle": "Twój profil i ustawienia konta.",
+    "email": "Adres e-mail",
+    "memberSince": "Data rejestracji",
+    "status": "Status",
+    "statusApproved": "Zgłoszenie zatwierdzone",
+    "roleAdmin": "Administrator",
+    "nameTitle": "Imię",
+    "nameLabel": "Jak mamy się do Ciebie zwracać",
+    "nameSave": "Zapisz imię",
+    "nameSaved": "Imię zapisane.",
+    "passwordTitle": "Zmiana hasła",
+    "currentPassword": "Obecne hasło",
+    "newPassword": "Nowe hasło (co najmniej 8 znaków)",
+    "passwordSave": "Zmień hasło",
+    "passwordSaved": "Hasło zmienione.",
+    "passwordWrong": "Obecne hasło jest nieprawidłowe.",
+    "error": "Coś poszło nie tak. Spróbuj ponownie.",
+    "saving": "Zapisywanie..."
   }
 }

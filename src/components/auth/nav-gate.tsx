@@ -8,7 +8,12 @@ export async function SidebarNavGate({
   labels,
 }: {
   locale: Locale;
-  labels: { dashboard: string; clients: string; admin: string };
+  labels: {
+    dashboard: string;
+    clients: string;
+    account: string;
+    admin: string;
+  };
 }) {
   const access = await getAccess();
 

@@ -8,7 +8,8 @@
   "nav": {
     "dashboard": "Přehled",
     "clients": "Klienti",
-    "admin": "Admin"
+    "admin": "Admin",
+    "account": "Účet"
   },
   "controls": {
     "toggleTheme": "Přepnout motiv",
@@ -132,5 +133,26 @@
       "approved": "Schváleno",
       "rejected": "Zamítnuto"
     }
+  },
+  "account": {
+    "title": "Osobní účet",
+    "subtitle": "Váš profil a nastavení účtu.",
+    "email": "E-mail",
+    "memberSince": "Registrace",
+    "status": "Stav",
+    "statusApproved": "Žádost schválena",
+    "roleAdmin": "Administrátor",
+    "nameTitle": "Jméno",
+    "nameLabel": "Jak vás máme oslovovat",
+    "nameSave": "Uložit jméno",
+    "nameSaved": "Jméno uloženo.",
+    "passwordTitle": "Změna hesla",
+    "currentPassword": "Současné heslo",
+    "newPassword": "Nové heslo (alespoň 8 znaků)",
+    "passwordSave": "Změnit heslo",
+    "passwordSaved": "Heslo změněno.",
+    "passwordWrong": "Současné heslo je nesprávné.",
+    "error": "Něco se pokazilo. Zkuste to znovu.",
+    "saving": "Ukládání..."
   }
 }

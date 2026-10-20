@@ -5,12 +5,22 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { DashboardIcon, ShieldIcon, UsersIcon } from "@/components/icons";
+import {
+  DashboardIcon,
+  ShieldIcon,
+  UserIcon,
+  UsersIcon,
+} from "@/components/icons";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = {
   locale: Locale;
-  labels: { dashboard: string; clients: string; admin: string };
+  labels: {
+    dashboard: string;
+    clients: string;
+    account: string;
+    admin: string;
+  };
   // Пункт "Клієнти" бачить лише той, кому дозволено працювати з CRM.
   showClients: boolean;
   // Пункт "Адмінка" бачить лише адміністратор.
@@ -31,6 +41,9 @@ function NavLinks({
     { href: "/", label: labels.dashboard, Icon: DashboardIcon },
     ...(showClients
       ? [{ href: "/clients", label: labels.clients, Icon: UsersIcon }]
+      : []),
+    ...(showClients
+      ? [{ href: "/account", label: labels.account, Icon: UserIcon }]
       : []),
     ...(showAdmin
       ? [{ href: "/admin", label: labels.admin, Icon: ShieldIcon }]
