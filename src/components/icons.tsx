@@ -61,6 +61,26 @@ export function MoonIcon({ className }: IconProps) {
   );
 }
 
+export function LoginIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+      <path d="m10 17 5-5-5-5" />
+      <path d="M15 12H3" />
+    </Svg>
+  );
+}
+
+export function LogoutIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <path d="m16 17 5-5-5-5" />
+      <path d="M21 12H9" />
+    </Svg>
+  );
+}
+
 export function ChevronLeftIcon({ className }: IconProps) {
   return (
     <Svg className={className}>
@@ -74,7 +94,7 @@ export function BrandMark({ className }: IconProps) {
   return (
     <span
       aria-hidden="true"
-      className={`grid shrink-0 place-items-center rounded-lg bg-linear-to-br from-[#14b8a6] to-[#2563b8] text-white ${className ?? "size-9"}`}
+      className={`grid shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[#14b8a6] to-[#2563b8] text-white ${className ?? "size-9"}`}
     >
       <svg
         viewBox="0 0 24 24"

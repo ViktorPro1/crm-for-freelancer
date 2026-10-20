@@ -7,7 +7,9 @@ import {
   LanguageSwitcher,
   LanguageSwitcherFallback,
 } from "@/components/language-switcher";
-import { SidebarNav, SidebarNavFallback } from "@/components/sidebar-nav";
+import { AuthButton, AuthButtonFallback } from "@/components/auth/auth-button";
+import { SidebarNavGate } from "@/components/auth/nav-gate";
+import { SidebarNavFallback } from "@/components/sidebar-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { locales } from "@/lib/i18n/config";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
@@ -65,10 +67,14 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
             <div className="col-span-2 row-start-2 mt-3 md:order-2 md:mt-0">
               <Suspense
                 fallback={
-                  <SidebarNavFallback locale={locale} labels={dict.nav} />
+                  <SidebarNavFallback
+                    locale={locale}
+                    labels={dict.nav}
+                    showClients={false}
+                  />
                 }
               >
-                <SidebarNav locale={locale} labels={dict.nav} />
+                <SidebarNavGate locale={locale} labels={dict.nav} />
               </Suspense>
             </div>
 
@@ -87,6 +93,13 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
                 />
               </Suspense>
               <ThemeToggle label={dict.controls.toggleTheme} />
+              <Suspense fallback={<AuthButtonFallback />}>
+                <AuthButton
+                  locale={locale}
+                  signInLabel={dict.auth.signInTitle}
+                  signOutLabel={dict.auth.signOut}
+                />
+              </Suspense>
             </div>
           </aside>
 

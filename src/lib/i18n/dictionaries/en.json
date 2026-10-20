@@ -43,5 +43,27 @@
     "title": "Page not found",
     "text": "This page or record does not exist. Check the address or go back to the start page.",
     "backHome": "Go to start page"
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Sign up",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "signInButton": "Sign in",
+    "signUpButton": "Create account",
+    "signInPending": "Signing in...",
+    "signUpPending": "Creating account...",
+    "haveAccount": "Already have an account?",
+    "noAccount": "No account yet?",
+    "signInLink": "Sign in",
+    "signUpLink": "Sign up",
+    "errors": {
+      "generic": "Something went wrong. Please try again.",
+      "invalid": "Incorrect email or password.",
+      "emailTaken": "An account with this email already exists."
+    },
+    "passwordNew": "Password (at least 8 characters)",
+    "signOut": "Sign out"
   }
 }

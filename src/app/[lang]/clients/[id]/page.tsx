@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ChevronLeftIcon } from "@/components/icons";
 import { StatusBadge } from "@/components/status-badge";
+import { requireUser } from "@/lib/auth/session";
 import { getClient } from "@/lib/clients";
 import { formatDate } from "@/lib/format";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
@@ -47,6 +48,7 @@ async function ClientDetails({
   // params містить змінну частину адреси. У Next.js 16 його треба чекати через await.
   const { id } = await params;
   const locale = await getLocale();
+  await requireUser(locale);
   const dict = await getDictionary();
   const client = await getClient(id);
 

@@ -43,5 +43,27 @@
     "title": "Nie znaleziono strony",
     "text": "Taka strona lub rekord nie istnieje. Sprawdź adres albo wróć na stronę główną.",
     "backHome": "Na stronę główną"
+  },
+  "auth": {
+    "signInTitle": "Logowanie",
+    "signUpTitle": "Rejestracja",
+    "name": "Imię",
+    "email": "Adres e-mail",
+    "password": "Hasło",
+    "signInButton": "Zaloguj się",
+    "signUpButton": "Zarejestruj się",
+    "signInPending": "Logowanie...",
+    "signUpPending": "Tworzenie konta...",
+    "haveAccount": "Masz już konto?",
+    "noAccount": "Nie masz jeszcze konta?",
+    "signInLink": "Zaloguj się",
+    "signUpLink": "Zarejestruj się",
+    "errors": {
+      "generic": "Coś poszło nie tak. Spróbuj ponownie.",
+      "invalid": "Nieprawidłowy e-mail lub hasło.",
+      "emailTaken": "Konto z tym adresem e-mail już istnieje."
+    },
+    "passwordNew": "Hasło (co najmniej 8 znaków)",
+    "signOut": "Wyloguj się"
   }
 }

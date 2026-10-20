@@ -11,15 +11,24 @@ import type { Locale } from "@/lib/i18n/config";
 type Props = {
   locale: Locale;
   labels: { dashboard: string; clients: string };
+  // Пункт "Клієнти" бачить лише той, кому дозволено працювати з CRM.
+  showClients: boolean;
 };
 
-function NavLinks({ locale, labels, pathname }: Props & { pathname: string | null }) {
+function NavLinks({
+  locale,
+  labels,
+  showClients,
+  pathname,
+}: Props & { pathname: string | null }) {
   // Адреса в браузері виглядає як /uk/clients/3. Відрізаємо мову, щоб порівнювати "/clients/3".
   const path = pathname === null ? null : pathname.slice(locale.length + 1) || "/";
 
   const links = [
     { href: "/", label: labels.dashboard, Icon: DashboardIcon },
-    { href: "/clients", label: labels.clients, Icon: UsersIcon },
+    ...(showClients
+      ? [{ href: "/clients", label: labels.clients, Icon: UsersIcon }]
+      : []),
   ];
 
   return (

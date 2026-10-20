@@ -43,5 +43,27 @@
     "title": "Stránka nenalezena",
     "text": "Tato stránka nebo záznam neexistuje. Zkontrolujte adresu nebo se vraťte na úvodní stránku.",
     "backHome": "Na úvodní stránku"
+  },
+  "auth": {
+    "signInTitle": "Přihlášení",
+    "signUpTitle": "Registrace",
+    "name": "Jméno",
+    "email": "E-mail",
+    "password": "Heslo",
+    "signInButton": "Přihlásit se",
+    "signUpButton": "Zaregistrovat se",
+    "signInPending": "Přihlašování...",
+    "signUpPending": "Vytváření účtu...",
+    "haveAccount": "Už máte účet?",
+    "noAccount": "Ještě nemáte účet?",
+    "signInLink": "Přihlásit se",
+    "signUpLink": "Zaregistrovat se",
+    "errors": {
+      "generic": "Něco se pokazilo. Zkuste to znovu.",
+      "invalid": "Nesprávný e-mail nebo heslo.",
+      "emailTaken": "Účet s tímto e-mailem již existuje."
+    },
+    "passwordNew": "Heslo (alespoň 8 znaků)",
+    "signOut": "Odhlásit se"
   }
 }

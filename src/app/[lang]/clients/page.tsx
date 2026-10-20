@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { StatusBadge } from "@/components/status-badge";
+import { requireUser } from "@/lib/auth/session";
 import { getClients } from "@/lib/clients";
 import { interpolate } from "@/lib/i18n/config";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
@@ -12,34 +13,47 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: dict.clients.metaTitle };
 }
 
-// Заголовок показується одразу, а таблиця з'являється, коли база відповість.
-// Suspense показує запасний текст (fallback), поки дані завантажуються.
+// Сторінка доступна лише після входу. Перевірка й дані лежать усередині Suspense,
+// поки вони завантажуються, показується заголовок і запасний текст.
 export default async function ClientsPage() {
   const dict = await getDictionary();
 
   return (
     <main className="mx-auto max-w-5xl p-4 sm:p-8">
-      <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-        {dict.clients.title}
-      </h1>
-
       <Suspense
-        fallback={<p className="mt-6 text-sm text-muted">{dict.clients.loading}</p>}
+        fallback={
+          <>
+            <Title />
+            <p className="mt-6 text-sm text-muted">{dict.clients.loading}</p>
+          </>
+        }
       >
-        <ClientsTable />
+        <ClientsContent />
       </Suspense>
     </main>
   );
 }
 
-// Серверний компонент, який сам іде в базу за даними.
-async function ClientsTable() {
+async function Title() {
+  const dict = await getDictionary();
+
+  return (
+    <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+      {dict.clients.title}
+    </h1>
+  );
+}
+
+// Серверний компонент: перевіряє вхід і сам іде в базу за даними.
+async function ClientsContent() {
   const locale = await getLocale();
+  await requireUser(locale);
   const dict = await getDictionary();
   const clients = await getClients();
 
   return (
     <>
+      <Title />
       <p className="mt-1 text-sm text-muted">
         {interpolate(dict.clients.total, { count: clients.length })}
       </p>
