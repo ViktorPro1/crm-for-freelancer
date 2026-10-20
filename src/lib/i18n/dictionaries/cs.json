@@ -15,11 +15,52 @@
     "language": "Jazyk"
   },
   "home": {
-    "title": "Přehled",
-    "subtitle": "Přehled klientů a práce.",
-    "startTitle": "Začněte klienty",
-    "startText": "Zde se objeví připomínky, projekty a faktury. Zatím je k dispozici seznam klientů.",
-    "openClients": "Otevřít klienty"
+    "eyebrow": "CRM pro freelancery",
+    "title": "Všichni vaši klienti na jednom útulném místě",
+    "lead": "Jednoduchá a přehledná platforma pro freelancery: uchovávejte kontakty, pište poznámky a sledujte, v jaké fázi je každá spolupráce. Bez zbytečného ruchu, aby zbývalo více času na skutečnou práci.",
+    "ctaRegister": "Vytvořit účet",
+    "ctaSignIn": "Přihlásit se",
+    "ctaClients": "Otevřít klienty",
+    "ctaStatus": "Stav žádosti",
+    "heroAlt": "Usmívající se freelancerka pracuje na notebooku u okna s podzimním výhledem",
+    "eveningAlt": "Muž pracuje na notebooku ve večerní pracovně s panoramatickým oknem",
+    "aboutTitle": "Co je to za platformu",
+    "aboutText": "Freelancing často začíná roztroušenými poznámkami, e-maily a záložkami. Tato platforma shromažďuje vše potřebné pro práci s klienty na jednom místě: kdo to je, čím se jeho firma zabývá, na čem jste se dohodli a v jaké fázi je spolupráce. Je to klidné pracovní místo bez složitého nastavování, stejně pohodlné na počítači i na telefonu.",
+    "features": [
+      {
+        "title": "Klienti po ruce",
+        "text": "Jméno, firma, e-mail a poznámky každého klienta jsou v jednom seznamu a kartu klienta otevřete jedním kliknutím."
+      },
+      {
+        "title": "Přehledné fáze",
+        "text": "Každý klient má stav: potenciální, aktivní nebo archivovaný. Okamžitě vidíte, s kým právě pracujete."
+      },
+      {
+        "title": "Uzavřený přístup",
+        "text": "Účet se otevře po schválení žádosti administrátorem, takže platforma zůstává uspořádaná a bezpečná."
+      },
+      {
+        "title": "Váš jazyk a motiv",
+        "text": "Ukrajinština, angličtina, polština a čeština, světlý i tmavý motiv a pohodlné zobrazení na telefonu."
+      }
+    ],
+    "stepsTitle": "Jak to funguje",
+    "steps": [
+      {
+        "title": "Zaregistrujte se",
+        "text": "Vytvořte si účet: stačí jméno, e-mail a heslo."
+      },
+      {
+        "title": "Počkejte na schválení",
+        "text": "Administrátor žádost zkontroluje a otevře vám přístup k účtu."
+      },
+      {
+        "title": "Pracujte s klienty",
+        "text": "Po schválení uvidíte seznam klientů a karty se všemi podrobnostmi."
+      }
+    ],
+    "closingTitle": "Chcete to zkusit?",
+    "closingText": "Odešlete žádost, zabere to minutu. Jakmile bude schválena, váš účet je připraven k práci."
   },
   "clients": {
     "metaTitle": "Klienti",

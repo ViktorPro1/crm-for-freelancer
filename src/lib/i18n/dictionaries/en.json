@@ -15,11 +15,52 @@
     "language": "Language"
   },
   "home": {
-    "title": "Dashboard",
-    "subtitle": "An overview of your clients and work.",
-    "startTitle": "Start with your clients",
-    "startText": "Reminders, projects and invoices will appear here. For now, the client list is available.",
-    "openClients": "Open clients"
+    "eyebrow": "CRM for freelancers",
+    "title": "All your clients in one cozy place",
+    "lead": "A simple, friendly platform for freelancers: keep contacts, take notes and see where every collaboration stands. No clutter, so more time is left for the work that matters.",
+    "ctaRegister": "Create account",
+    "ctaSignIn": "Sign in",
+    "ctaClients": "Open clients",
+    "ctaStatus": "Application status",
+    "heroAlt": "A smiling freelancer working on a laptop by a window with an autumn view",
+    "eveningAlt": "A man working on a laptop in an evening office with a panoramic window",
+    "aboutTitle": "What is this platform",
+    "aboutText": "Freelancing often starts with scattered notes, emails and bookmarks. This platform gathers everything you need to work with clients in one place: who they are, what their company does, what you agreed on and where the collaboration stands. It is a calm workspace with no complicated settings, equally comfortable on a computer and on a phone.",
+    "features": [
+      {
+        "title": "Clients at hand",
+        "text": "Each client's name, company, email and notes live in a single list, and a client card opens with one click."
+      },
+      {
+        "title": "Clear stages",
+        "text": "Every client has a status: lead, active or archived. You can see at a glance who you are working with right now."
+      },
+      {
+        "title": "Private access",
+        "text": "The workspace opens once an administrator approves your application, which keeps the platform tidy and secure."
+      },
+      {
+        "title": "Your language and theme",
+        "text": "Ukrainian, English, Polish and Czech, a light and a dark theme, and a layout that works well on a phone."
+      }
+    ],
+    "stepsTitle": "How it works",
+    "steps": [
+      {
+        "title": "Sign up",
+        "text": "Create an account: all you need is a name, an email and a password."
+      },
+      {
+        "title": "Wait for approval",
+        "text": "An administrator reviews your application and opens access to the workspace."
+      },
+      {
+        "title": "Work with clients",
+        "text": "Once approved, you get the client list and cards with all the details."
+      }
+    ],
+    "closingTitle": "Ready to try?",
+    "closingText": "Submit your application, it takes a minute. As soon as it is approved, your workspace is ready."
   },
   "clients": {
     "metaTitle": "Clients",

@@ -15,11 +15,52 @@
     "language": "Język"
   },
   "home": {
-    "title": "Pulpit",
-    "subtitle": "Przegląd klientów i spraw.",
-    "startTitle": "Zacznij od klientów",
-    "startText": "Tutaj pojawią się przypomnienia, projekty i faktury. Na razie dostępna jest lista klientów.",
-    "openClients": "Otwórz klientów"
+    "eyebrow": "CRM dla freelancerów",
+    "title": "Wszyscy Twoi klienci w jednym przytulnym miejscu",
+    "lead": "Prosta i wygodna platforma dla freelancerów: przechowuj kontakty, rób notatki i sprawdzaj, na jakim etapie jest każda współpraca. Bez zbędnego zgiełku, żeby zostawało więcej czasu na prawdziwą pracę.",
+    "ctaRegister": "Utwórz konto",
+    "ctaSignIn": "Zaloguj się",
+    "ctaClients": "Otwórz klientów",
+    "ctaStatus": "Status zgłoszenia",
+    "heroAlt": "Uśmiechnięta freelancerka pracuje na laptopie przy oknie z jesiennym widokiem",
+    "eveningAlt": "Mężczyzna pracuje na laptopie w wieczornym gabinecie z panoramicznym oknem",
+    "aboutTitle": "Czym jest ta platforma",
+    "aboutText": "Freelancing często zaczyna się od rozproszonych notatek, korespondencji i zakładek. Ta platforma zbiera wszystko, co potrzebne do pracy z klientami, w jednym miejscu: kim jest klient, czym zajmuje się jego firma, co ustaliliście i na jakim etapie jest współpraca. To spokojne miejsce pracy bez skomplikowanych ustawień, równie wygodne na komputerze i na telefonie.",
+    "features": [
+      {
+        "title": "Klienci pod ręką",
+        "text": "Imię, firma, e-mail i notatki każdego klienta są w jednej liście, a kartę klienta otworzysz jednym kliknięciem."
+      },
+      {
+        "title": "Czytelne etapy",
+        "text": "Każdy klient ma status: potencjalny, aktywny lub zarchiwizowany. Od razu widać, z kim pracujesz teraz."
+      },
+      {
+        "title": "Zamknięty dostęp",
+        "text": "Konto otwiera się po zatwierdzeniu zgłoszenia przez administratora, dzięki czemu platforma pozostaje uporządkowana i bezpieczna."
+      },
+      {
+        "title": "Twój język i motyw",
+        "text": "Ukraiński, angielski, polski i czeski, jasny i ciemny motyw oraz wygodny widok na telefonie."
+      }
+    ],
+    "stepsTitle": "Jak to działa",
+    "steps": [
+      {
+        "title": "Zarejestruj się",
+        "text": "Utwórz konto: wystarczy imię, adres e-mail i hasło."
+      },
+      {
+        "title": "Poczekaj na zatwierdzenie",
+        "text": "Administrator sprawdzi zgłoszenie i otworzy dostęp do konta."
+      },
+      {
+        "title": "Pracuj z klientami",
+        "text": "Po zatwierdzeniu zobaczysz listę klientów i karty ze wszystkimi szczegółami."
+      }
+    ],
+    "closingTitle": "Gotowy, by spróbować?",
+    "closingText": "Wyślij zgłoszenie, to zajmuje minutę. Gdy tylko zostanie zatwierdzone, Twoje konto będzie gotowe do pracy."
   },
   "clients": {
     "metaTitle": "Klienci",
