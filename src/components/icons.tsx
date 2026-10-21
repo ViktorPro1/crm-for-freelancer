@@ -1,5 +1,7 @@
 // Прості іконки без зовнішніх бібліотек. Колір береться від тексту (currentColor).
 
+import Image from "next/image";
+
 type IconProps = { className?: string };
 
 function Svg({
@@ -126,24 +128,16 @@ export function ChevronLeftIcon({ className }: IconProps) {
   );
 }
 
-// Знак проєкту: дві хвилі на градієнті від зеленого до синього.
+// Знак проєкту: літера F з галочкою (файл public/images/logo-mark.png).
 export function BrandMark({ className }: IconProps) {
   return (
-    <span
+    <Image
+      src="/images/logo-mark.png"
+      alt=""
       aria-hidden="true"
-      className={`grid shrink-0 place-items-center rounded-lg bg-gradient-to-br from-[#14b8a6] to-[#2563b8] text-white ${className ?? "size-9"}`}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        className="size-5"
-      >
-        <path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3" />
-        <path d="M3 17c3 0 3-3 6-3s3 3 6 3 3-3 6-3" />
-      </svg>
-    </span>
+      width={72}
+      height={72}
+      className={`shrink-0 rounded-lg ${className ?? "size-9"}`}
+    />
   );
 }

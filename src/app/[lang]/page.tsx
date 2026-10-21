@@ -118,10 +118,10 @@ export default async function Home() {
           <div className="mt-8 flex flex-wrap gap-3">{cta}</div>
         </div>
         <Image
-          src="/images/welcome-evening.webp"
+          src="/images/welcome-crm.webp"
           alt={home.eveningAlt}
-          width={1408}
-          height={768}
+          width={1600}
+          height={1067}
           sizes="(min-width: 1024px) 520px, 100vw"
           className="h-auto w-full rounded-2xl shadow-lg"
         />
