@@ -75,7 +75,28 @@
     "back": "Wszyscy klienci",
     "fieldEmail": "E-mail",
     "fieldAdded": "Dodano",
-    "fieldNotes": "Notatki"
+    "fieldNotes": "Notatki",
+    "add": "Dodaj klienta",
+    "empty": "Na razie brak klientów",
+    "emptyHint": "Dodaj pierwszego klienta, a pojawi się tutaj.",
+    "colOwner": "Właściciel",
+    "new": {
+      "title": "Nowy klient",
+      "subtitle": "Uzupełnij dane klienta. Wymagane jest tylko imię.",
+      "name": "Imię",
+      "company": "Firma",
+      "email": "Adres e-mail",
+      "status": "Status",
+      "notes": "Notatki",
+      "submit": "Dodaj klienta",
+      "saving": "Zapisywanie...",
+      "cancel": "Anuluj",
+      "errors": {
+        "name": "Podaj imię klienta (do 100 znaków).",
+        "email": "Sprawdź adres e-mail: wygląda jak name@example.com.",
+        "generic": "Nie udało się zapisać. Sprawdź dane i spróbuj ponownie."
+      }
+    }
   },
   "status": {
     "lead": "Potencjalny",

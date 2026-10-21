@@ -75,7 +75,28 @@
     "back": "Všichni klienti",
     "fieldEmail": "E-mail",
     "fieldAdded": "Přidáno",
-    "fieldNotes": "Poznámky"
+    "fieldNotes": "Poznámky",
+    "add": "Přidat klienta",
+    "empty": "Zatím žádní klienti",
+    "emptyHint": "Přidejte prvního klienta a objeví se zde.",
+    "colOwner": "Vlastník",
+    "new": {
+      "title": "Nový klient",
+      "subtitle": "Vyplňte údaje o klientovi. Povinné je pouze jméno.",
+      "name": "Jméno",
+      "company": "Firma",
+      "email": "E-mail",
+      "status": "Stav",
+      "notes": "Poznámky",
+      "submit": "Přidat klienta",
+      "saving": "Ukládání...",
+      "cancel": "Zrušit",
+      "errors": {
+        "name": "Zadejte jméno klienta (nejvýše 100 znaků).",
+        "email": "Zkontrolujte e-mail: vypadá jako name@example.com.",
+        "generic": "Uložení se nezdařilo. Zkontrolujte údaje a zkuste to znovu."
+      }
+    }
   },
   "status": {
     "lead": "Potenciální",

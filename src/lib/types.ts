@@ -12,4 +12,6 @@ export type Client = {
   status: ClientStatus;
   createdAt: string; // дата у форматі РРРР-ММ-ДД
   notes: string;
+  // Чий це клієнт. Заповнюється лише для адміністратора, щоб він бачив власника.
+  ownerLabel: string | null;
 };

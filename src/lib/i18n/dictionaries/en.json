@@ -75,7 +75,28 @@
     "back": "All clients",
     "fieldEmail": "Email",
     "fieldAdded": "Added",
-    "fieldNotes": "Notes"
+    "fieldNotes": "Notes",
+    "add": "Add client",
+    "empty": "No clients yet",
+    "emptyHint": "Add your first client and it will appear here.",
+    "colOwner": "Owner",
+    "new": {
+      "title": "New client",
+      "subtitle": "Fill in the client's details. Only the name is required.",
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "status": "Status",
+      "notes": "Notes",
+      "submit": "Add client",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "errors": {
+        "name": "Enter the client's name (up to 100 characters).",
+        "email": "Check the email address: it looks like name@example.com.",
+        "generic": "Could not save. Check the details and try again."
+      }
+    }
   },
   "status": {
     "lead": "Lead",

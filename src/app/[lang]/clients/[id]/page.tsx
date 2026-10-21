@@ -48,9 +48,12 @@ async function ClientDetails({
   // params містить змінну частину адреси. У Next.js 16 його треба чекати через await.
   const { id } = await params;
   const locale = await getLocale();
-  await requireApproved(locale);
+  const access = await requireApproved(locale);
   const dict = await getDictionary();
-  const client = await getClient(id);
+  const client = await getClient(id, {
+    userId: access.user.id,
+    isAdmin: access.isAdmin,
+  });
 
   // Якщо клієнта з таким id немає, показуємо сторінку "не знайдено" (not-found.tsx).
   if (!client) {
@@ -61,6 +64,10 @@ async function ClientDetails({
     { label: dict.clients.fieldEmail, value: client.email },
     { label: dict.clients.fieldAdded, value: formatDate(client.createdAt, locale) },
     { label: dict.clients.fieldNotes, value: client.notes },
+    // Власника бачить лише адміністратор.
+    ...(client.ownerLabel
+      ? [{ label: dict.clients.colOwner, value: client.ownerLabel }]
+      : []),
   ];
 
   return (
