@@ -2,14 +2,21 @@
 
 import Link from "next/link";
 import { useActionState } from "react";
-import {
-  createClientAction,
-  type ClientFormState,
-} from "@/app/[lang]/clients/actions";
+import type { ClientFormState, ClientFormValues } from "@/lib/client-input";
 
 type Props = {
+  // Дія на сервері: створення або оновлення клієнта.
+  action: (
+    previous: ClientFormState,
+    formData: FormData,
+  ) => Promise<ClientFormState>;
   locale: string;
   cancelHref: string;
+  // Початкові значення (для редагування) і id клієнта.
+  initial?: ClientFormValues;
+  clientId?: string;
+  // Для клієнта з архіву статус тут не змінюється.
+  showStatus?: boolean;
   labels: {
     name: string;
     company: string;
@@ -28,16 +35,26 @@ type Props = {
 const inputClass =
   "mt-1 w-full rounded-lg border bg-surface px-3 text-sm outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary";
 
-export function ClientForm({ locale, cancelHref, labels }: Props) {
-  const [state, action, pending] = useActionState<ClientFormState, FormData>(
-    createClientAction,
+export function ClientForm({
+  action,
+  locale,
+  cancelHref,
+  initial,
+  clientId,
+  showStatus = true,
+  labels,
+}: Props) {
+  const [state, formAction, pending] = useActionState<ClientFormState, FormData>(
+    action,
     null,
   );
-  const values = state?.values;
+  // Після помилки показуємо те, що людина вже ввела, інакше початкові значення.
+  const values = state?.values ?? initial;
 
   return (
-    <form action={action} className="mt-6 space-y-4">
+    <form action={formAction} className="mt-6 space-y-4">
       <input type="hidden" name="locale" value={locale} />
+      {clientId ? <input type="hidden" name="id" value={clientId} /> : null}
 
       <label className="block text-sm font-medium">
         {labels.name}
@@ -73,17 +90,21 @@ export function ClientForm({ locale, cancelHref, labels }: Props) {
         />
       </label>
 
-      <label className="block text-sm font-medium">
-        {labels.status}
-        <select
-          name="status"
-          defaultValue={values?.status ?? "lead"}
-          className={`${inputClass} h-11`}
-        >
-          <option value="lead">{labels.statusLead}</option>
-          <option value="active">{labels.statusActive}</option>
-        </select>
-      </label>
+      {showStatus ? (
+        <label className="block text-sm font-medium">
+          {labels.status}
+          <select
+            name="status"
+            defaultValue={values?.status ?? "lead"}
+            className={`${inputClass} h-11`}
+          >
+            <option value="lead">{labels.statusLead}</option>
+            <option value="active">{labels.statusActive}</option>
+          </select>
+        </label>
+      ) : (
+        <input type="hidden" name="status" value="lead" />
+      )}
 
       <label className="block text-sm font-medium">
         {labels.notes}

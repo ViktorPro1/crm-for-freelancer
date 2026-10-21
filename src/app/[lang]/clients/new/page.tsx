@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { ChevronLeftIcon } from "@/components/icons";
 import { ClientForm } from "@/components/clients/client-form";
 import { requireApproved } from "@/lib/auth/session";
+import { createClientAction } from "../actions";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -46,6 +47,7 @@ async function NewClientForm() {
 
   return (
     <ClientForm
+      action={createClientAction}
       locale={locale}
       cancelHref={`/${locale}/clients`}
       labels={{

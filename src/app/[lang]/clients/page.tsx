@@ -15,7 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 // Сторінка доступна лише схваленим користувачам. Перевірка й дані лежать усередині Suspense,
 // поки вони завантажуються, показується заголовок і запасний текст.
-export default async function ClientsPage() {
+export default async function ClientsPage({
+  searchParams,
+}: PageProps<"/[lang]/clients">) {
   const dict = await getDictionary();
 
   return (
@@ -24,7 +26,7 @@ export default async function ClientsPage() {
       <Suspense
         fallback={<p className="mt-6 text-sm text-muted">{dict.clients.loading}</p>}
       >
-        <ClientsContent />
+        <ClientsContent searchParams={searchParams} />
       </Suspense>
     </main>
   );
@@ -51,32 +53,81 @@ async function Header() {
 }
 
 // Серверний компонент: перевіряє вхід і сам іде в базу за даними.
-async function ClientsContent() {
+async function ClientsContent({
+  searchParams,
+}: Pick<PageProps<"/[lang]/clients">, "searchParams">) {
+  const { view } = await searchParams;
+  const showArchive = view === "archive";
   const locale = await getLocale();
   const access = await requireApproved(locale);
   const dict = await getDictionary();
-  const clients = await getClients({
+  const all = await getClients({
     userId: access.user.id,
     isAdmin: access.isAdmin,
   });
+  const archivedCount = all.filter((c) => c.status === "archived").length;
+  const clients = all.filter((c) =>
+    showArchive ? c.status === "archived" : c.status !== "archived",
+  );
+
+  const tabs = (
+    <nav className="mt-5 flex gap-2">
+      {[
+        { href: `/${locale}/clients`, label: dict.clients.tabCurrent, active: !showArchive },
+        {
+          href: `/${locale}/clients?view=archive`,
+          label: `${dict.clients.tabArchive} (${archivedCount})`,
+          active: showArchive,
+        },
+      ].map((tab) => (
+        <Link
+          key={tab.href}
+          href={tab.href}
+          aria-current={tab.active ? "page" : undefined}
+          className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            tab.active
+              ? "bg-primary text-primary-foreground"
+              : "border bg-surface text-muted hover:text-foreground"
+          }`}
+        >
+          {tab.label}
+        </Link>
+      ))}
+    </nav>
+  );
+
+  if (clients.length === 0 && showArchive) {
+    return (
+      <>
+        {tabs}
+        <div className="mt-6 rounded-2xl border bg-surface p-8 text-center">
+          <p className="text-lg font-semibold">{dict.clients.emptyArchive}</p>
+        </div>
+      </>
+    );
+  }
 
   if (clients.length === 0) {
     return (
-      <div className="mt-6 rounded-2xl border bg-surface p-8 text-center">
-        <p className="text-lg font-semibold">{dict.clients.empty}</p>
-        <p className="mt-2 text-sm text-muted">{dict.clients.emptyHint}</p>
-        <Link
-          href={`/${locale}/clients/new`}
-          className="mt-5 inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
-        >
-          {dict.clients.add}
-        </Link>
-      </div>
+      <>
+        {tabs}
+        <div className="mt-6 rounded-2xl border bg-surface p-8 text-center">
+          <p className="text-lg font-semibold">{dict.clients.empty}</p>
+          <p className="mt-2 text-sm text-muted">{dict.clients.emptyHint}</p>
+          <Link
+            href={`/${locale}/clients/new`}
+            className="mt-5 inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+          >
+            {dict.clients.add}
+          </Link>
+        </div>
+      </>
     );
   }
 
   return (
     <>
+      {tabs}
       <p className="mt-1 text-sm text-muted">
         {interpolate(dict.clients.total, { count: clients.length })}
       </p>

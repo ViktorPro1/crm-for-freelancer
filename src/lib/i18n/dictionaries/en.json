@@ -96,7 +96,22 @@
         "email": "Check the email address: it looks like name@example.com.",
         "generic": "Could not save. Check the details and try again."
       }
-    }
+    },
+    "edit": {
+      "title": "Edit client",
+      "subtitle": "Change the details and save.",
+      "button": "Edit",
+      "submit": "Save changes",
+      "backToClient": "Back to client"
+    },
+    "archive": "Archive",
+    "restore": "Restore",
+    "deleteForever": "Delete permanently",
+    "confirmDelete": "Delete this client permanently? This cannot be undone.",
+    "archivedNote": "This client is archived. You can restore them or delete them permanently.",
+    "tabCurrent": "Current",
+    "tabArchive": "Archive",
+    "emptyArchive": "The archive is empty"
   },
   "status": {
     "lead": "Lead",

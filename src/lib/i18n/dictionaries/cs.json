@@ -96,7 +96,22 @@
         "email": "Zkontrolujte e-mail: vypadá jako name@example.com.",
         "generic": "Uložení se nezdařilo. Zkontrolujte údaje a zkuste to znovu."
       }
-    }
+    },
+    "edit": {
+      "title": "Úprava klienta",
+      "subtitle": "Změňte údaje a uložte.",
+      "button": "Upravit",
+      "submit": "Uložit změny",
+      "backToClient": "Zpět na kartu klienta"
+    },
+    "archive": "Do archivu",
+    "restore": "Obnovit",
+    "deleteForever": "Smazat navždy",
+    "confirmDelete": "Smazat klienta navždy? Tuto akci nelze vrátit zpět.",
+    "archivedNote": "Klient je v archivu. Můžete ho obnovit nebo smazat navždy.",
+    "tabCurrent": "Aktuální",
+    "tabArchive": "Archiv",
+    "emptyArchive": "Archiv je prázdný"
   },
   "status": {
     "lead": "Potenciální",

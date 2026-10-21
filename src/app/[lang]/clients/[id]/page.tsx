@@ -3,17 +3,30 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ChevronLeftIcon } from "@/components/icons";
+import { ConfirmButton } from "@/components/clients/confirm-button";
 import { StatusBadge } from "@/components/status-badge";
 import { requireApproved } from "@/lib/auth/session";
 import { getClient } from "@/lib/clients";
 import { formatDate } from "@/lib/format";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
+import {
+  archiveClientAction,
+  deleteClientAction,
+  restoreClientAction,
+} from "../actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
 
   return { title: dict.clients.detailMetaTitle };
 }
+
+const primaryButton =
+  "inline-flex h-11 items-center justify-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover";
+const secondaryButton =
+  "inline-flex h-11 items-center justify-center rounded-lg border px-5 text-sm font-medium transition-colors hover:bg-surface-muted";
+const dangerButton =
+  "inline-flex h-11 items-center justify-center rounded-lg border border-red-300 px-5 text-sm font-medium text-red-700 transition-colors hover:bg-red-50 dark:border-red-500/40 dark:text-red-400 dark:hover:bg-red-500/10";
 
 // Папка [id] означає, що частина адреси змінна: /uk/clients/1, /uk/clients/2 і так далі.
 // Посилання "Усі клієнти" показується одразу, а дані клієнта дозавантажуються.
@@ -82,6 +95,48 @@ async function ClientDetails({
         />
       </div>
       <p className="mt-1 text-muted">{client.company}</p>
+
+      {client.status === "archived" ? (
+        <p className="mt-4 rounded-lg bg-neutral-bg px-4 py-3 text-sm text-neutral-fg">
+          {dict.clients.archivedNote}
+        </p>
+      ) : null}
+
+      <div className="mt-5 flex flex-wrap gap-3">
+        <Link href={`/${locale}/clients/${client.id}/edit`} className={primaryButton}>
+          {dict.clients.edit.button}
+        </Link>
+
+        {client.status === "archived" ? (
+          <>
+            <form action={restoreClientAction}>
+              <input type="hidden" name="locale" value={locale} />
+              <input type="hidden" name="id" value={client.id} />
+              <button type="submit" className={secondaryButton}>
+                {dict.clients.restore}
+              </button>
+            </form>
+            <form action={deleteClientAction}>
+              <input type="hidden" name="locale" value={locale} />
+              <input type="hidden" name="id" value={client.id} />
+              <ConfirmButton
+                message={dict.clients.confirmDelete}
+                className={dangerButton}
+              >
+                {dict.clients.deleteForever}
+              </ConfirmButton>
+            </form>
+          </>
+        ) : (
+          <form action={archiveClientAction}>
+            <input type="hidden" name="locale" value={locale} />
+            <input type="hidden" name="id" value={client.id} />
+            <button type="submit" className={secondaryButton}>
+              {dict.clients.archive}
+            </button>
+          </form>
+        )}
+      </div>
 
       <dl className="mt-6 divide-y rounded-xl border bg-surface text-sm">
         {rows.map(({ label, value }) => (

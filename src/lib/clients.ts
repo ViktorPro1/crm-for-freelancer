@@ -92,7 +92,7 @@ export type NewClient = {
   name: string;
   company: string;
   email: string;
-  status: Exclude<ClientStatus, "archived">;
+  status: "lead" | "active";
   notes: string;
 };
 
@@ -111,4 +111,80 @@ export async function createClient(
   `;
 
   return String(rows[0].id);
+}
+
+// Нижче правило доступу таке саме: змінювати може власник клієнта або адміністратор.
+// Умова (owner_id = ... OR ...) стоїть прямо в запиті, тому чужого клієнта не змінити навіть підробкою форми.
+
+// Змінює дані клієнта. Статус архівованого клієнта не чіпаємо (його змінюють кнопки "Відновити").
+export async function updateClient(
+  id: string,
+  viewer: Viewer,
+  client: NewClient,
+): Promise<boolean> {
+  if (!/^\d{1,9}$/.test(id)) {
+    return false;
+  }
+
+  const sql = getSql();
+
+  const rows = await sql`
+    UPDATE clients
+    SET name = ${client.name},
+        company = ${client.company},
+        email = ${client.email},
+        notes = ${client.notes},
+        status = CASE WHEN status = 'archived' THEN status ELSE ${client.status} END
+    WHERE id = ${Number(id)}
+      AND (owner_id = ${viewer.userId} OR ${viewer.isAdmin}::boolean)
+    RETURNING id
+  `;
+
+  return rows.length > 0;
+}
+
+// Переносить клієнта в архів або повертає з архіву (повернений стає "активним").
+export async function setArchived(
+  id: string,
+  viewer: Viewer,
+  archived: boolean,
+): Promise<boolean> {
+  if (!/^\d{1,9}$/.test(id)) {
+    return false;
+  }
+
+  const sql = getSql();
+  const status: ClientStatus = archived ? "archived" : "active";
+
+  const rows = await sql`
+    UPDATE clients
+    SET status = ${status}
+    WHERE id = ${Number(id)}
+      AND (owner_id = ${viewer.userId} OR ${viewer.isAdmin}::boolean)
+    RETURNING id
+  `;
+
+  return rows.length > 0;
+}
+
+// Видаляє клієнта остаточно. Дозволено лише для тих, хто вже в архіві.
+export async function deleteArchivedClient(
+  id: string,
+  viewer: Viewer,
+): Promise<boolean> {
+  if (!/^\d{1,9}$/.test(id)) {
+    return false;
+  }
+
+  const sql = getSql();
+
+  const rows = await sql`
+    DELETE FROM clients
+    WHERE id = ${Number(id)}
+      AND status = 'archived'
+      AND (owner_id = ${viewer.userId} OR ${viewer.isAdmin}::boolean)
+    RETURNING id
+  `;
+
+  return rows.length > 0;
 }

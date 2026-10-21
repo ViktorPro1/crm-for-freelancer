@@ -96,7 +96,22 @@
         "email": "Sprawdź adres e-mail: wygląda jak name@example.com.",
         "generic": "Nie udało się zapisać. Sprawdź dane i spróbuj ponownie."
       }
-    }
+    },
+    "edit": {
+      "title": "Edycja klienta",
+      "subtitle": "Zmień dane i zapisz.",
+      "button": "Edytuj",
+      "submit": "Zapisz zmiany",
+      "backToClient": "Do karty klienta"
+    },
+    "archive": "Do archiwum",
+    "restore": "Przywróć",
+    "deleteForever": "Usuń na stałe",
+    "confirmDelete": "Usunąć klienta na stałe? Tej operacji nie można cofnąć.",
+    "archivedNote": "Klient jest w archiwum. Możesz go przywrócić lub usunąć na stałe.",
+    "tabCurrent": "Bieżący",
+    "tabArchive": "Archiwum",
+    "emptyArchive": "Archiwum jest puste"
   },
   "status": {
     "lead": "Potencjalny",
