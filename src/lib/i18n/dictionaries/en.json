@@ -111,7 +111,18 @@
     "archivedNote": "This client is archived. You can restore them or delete them permanently.",
     "tabCurrent": "Current",
     "tabArchive": "Archive",
-    "emptyArchive": "The archive is empty"
+    "emptyArchive": "The archive is empty",
+    "journal": {
+      "title": "Journal",
+      "hint": "Write down what was agreed and what was done. Every entry gets a date.",
+      "placeholder": "What's new with this client?",
+      "label": "New entry",
+      "add": "Add entry",
+      "empty": "No entries yet.",
+      "delete": "Delete",
+      "confirmDelete": "Delete this entry? This cannot be undone.",
+      "archivedHint": "This client is archived, so new entries cannot be added."
+    }
   },
   "status": {
     "lead": "Lead",

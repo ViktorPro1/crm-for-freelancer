@@ -111,7 +111,18 @@
     "archivedNote": "Klient jest w archiwum. Możesz go przywrócić lub usunąć na stałe.",
     "tabCurrent": "Bieżący",
     "tabArchive": "Archiwum",
-    "emptyArchive": "Archiwum jest puste"
+    "emptyArchive": "Archiwum jest puste",
+    "journal": {
+      "title": "Dziennik",
+      "hint": "Zapisuj, co ustalono i co zrobiono. Każdy wpis dostaje datę.",
+      "placeholder": "Co nowego u tego klienta?",
+      "label": "Nowy wpis",
+      "add": "Dodaj wpis",
+      "empty": "Na razie brak wpisów.",
+      "delete": "Usuń",
+      "confirmDelete": "Usunąć ten wpis? Tej operacji nie można cofnąć.",
+      "archivedHint": "Klient jest w archiwum, nie można dodawać nowych wpisów."
+    }
   },
   "status": {
     "lead": "Potencjalny",

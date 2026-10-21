@@ -111,7 +111,18 @@
     "archivedNote": "Klient je v archivu. Můžete ho obnovit nebo smazat navždy.",
     "tabCurrent": "Aktuální",
     "tabArchive": "Archiv",
-    "emptyArchive": "Archiv je prázdný"
+    "emptyArchive": "Archiv je prázdný",
+    "journal": {
+      "title": "Deník",
+      "hint": "Zapisujte, na čem jste se dohodli a co je hotovo. Každý záznam dostane datum.",
+      "placeholder": "Co je nového u tohoto klienta?",
+      "label": "Nový záznam",
+      "add": "Přidat záznam",
+      "empty": "Zatím žádné záznamy.",
+      "delete": "Smazat",
+      "confirmDelete": "Smazat tento záznam? Tuto akci nelze vrátit zpět.",
+      "archivedHint": "Klient je v archivu, nové záznamy nelze přidávat."
+    }
   },
   "status": {
     "lead": "Potenciální",

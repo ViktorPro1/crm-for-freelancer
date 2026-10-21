@@ -15,6 +15,7 @@ import {
   updateClient,
 } from "@/lib/clients";
 import { defaultLocale, hasLocale } from "@/lib/i18n/config";
+import { addNote, deleteNote, NOTE_MAX_LENGTH } from "@/lib/notes";
 
 // Кожна дія спершу перевіряє на сервері, хто її викликає: форму в браузері можна підробити.
 async function authorize(formData: FormData) {
@@ -111,4 +112,29 @@ export async function deleteClientAction(formData: FormData) {
 
   revalidatePath(`/${locale}/clients`, "layout");
   redirect(`/${locale}/clients?view=archive`);
+}
+
+// Записи щоденника. Порожній або задовгий запис просто ігноруємо (форма в браузері
+// теж цього не дозволяє, але перевірка на сервері обов'язкова).
+export async function addNoteAction(formData: FormData) {
+  const { locale, viewer } = await authorize(formData);
+  const clientId = String(formData.get("clientId") ?? "");
+  const body = String(formData.get("body") ?? "").trim();
+
+  if (body.length === 0 || body.length > NOTE_MAX_LENGTH) {
+    return;
+  }
+
+  await addNote(clientId, viewer, body);
+
+  revalidatePath(`/${locale}/clients`, "layout");
+}
+
+export async function deleteNoteAction(formData: FormData) {
+  const { locale, viewer } = await authorize(formData);
+  const noteId = String(formData.get("noteId") ?? "");
+
+  await deleteNote(noteId, viewer);
+
+  revalidatePath(`/${locale}/clients`, "layout");
 }

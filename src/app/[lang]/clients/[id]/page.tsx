@@ -4,13 +4,17 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ChevronLeftIcon } from "@/components/icons";
 import { ConfirmButton } from "@/components/clients/confirm-button";
+import { LocalTime } from "@/components/clients/local-time";
 import { StatusBadge } from "@/components/status-badge";
 import { requireApproved } from "@/lib/auth/session";
 import { getClient } from "@/lib/clients";
 import { formatDate } from "@/lib/format";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
+import { getNotes, NOTE_MAX_LENGTH } from "@/lib/notes";
 import {
+  addNoteAction,
   archiveClientAction,
+  deleteNoteAction,
   deleteClientAction,
   restoreClientAction,
 } from "../actions";
@@ -63,15 +67,16 @@ async function ClientDetails({
   const locale = await getLocale();
   const access = await requireApproved(locale);
   const dict = await getDictionary();
-  const client = await getClient(id, {
-    userId: access.user.id,
-    isAdmin: access.isAdmin,
-  });
+  const viewer = { userId: access.user.id, isAdmin: access.isAdmin };
+  const client = await getClient(id, viewer);
 
   // Якщо клієнта з таким id немає, показуємо сторінку "не знайдено" (not-found.tsx).
   if (!client) {
     notFound();
   }
+
+  const notes = await getNotes(client.id, viewer);
+  const journal = dict.clients.journal;
 
   const rows = [
     { label: dict.clients.fieldEmail, value: client.email },
@@ -149,6 +154,64 @@ async function ClientDetails({
           </div>
         ))}
       </dl>
+
+      {/* Щоденник: записи з датою, найновіші зверху. */}
+      <section className="mt-8" aria-labelledby="journal-title">
+        <h2 id="journal-title" className="text-xl font-semibold tracking-tight">
+          {journal.title}
+        </h2>
+        <p className="mt-1 text-sm text-muted">{journal.hint}</p>
+
+        {client.status === "archived" ? (
+          <p className="mt-4 text-sm text-muted">{journal.archivedHint}</p>
+        ) : (
+          <form action={addNoteAction} className="mt-4 space-y-3">
+            <input type="hidden" name="locale" value={locale} />
+            <input type="hidden" name="clientId" value={client.id} />
+            <textarea
+              name="body"
+              rows={3}
+              required
+              maxLength={NOTE_MAX_LENGTH}
+              placeholder={journal.placeholder}
+              aria-label={journal.label}
+              className="w-full rounded-lg border bg-surface px-3 py-2 text-sm outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary"
+            />
+            <button type="submit" className={primaryButton}>
+              {journal.add}
+            </button>
+          </form>
+        )}
+
+        {notes.length === 0 ? (
+          <p className="mt-6 text-sm text-muted">{journal.empty}</p>
+        ) : (
+          <ul className="mt-6 space-y-3">
+            {notes.map((note) => (
+              <li key={note.id} className="rounded-xl border bg-surface p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xs text-muted">
+                    <LocalTime iso={note.createdAt} locale={locale} />
+                  </span>
+                  <form action={deleteNoteAction}>
+                    <input type="hidden" name="locale" value={locale} />
+                    <input type="hidden" name="noteId" value={note.id} />
+                    <ConfirmButton
+                      message={journal.confirmDelete}
+                      className="rounded-md px-2 py-1 text-xs text-muted transition-colors hover:text-red-700 dark:hover:text-red-400"
+                    >
+                      {journal.delete}
+                    </ConfirmButton>
+                  </form>
+                </div>
+                <p className="mt-2 whitespace-pre-wrap break-words text-sm">
+                  {note.body}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
     </>
   );
 }
