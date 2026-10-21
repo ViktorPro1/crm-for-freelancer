@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { HomeCta, HomeCtaFallback } from "@/components/home-cta";
 import { Calculators } from "@/components/tools/calculators";
+import { Templates } from "@/components/tools/templates";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -35,6 +36,8 @@ export default async function ToolsPage() {
           rate: tools.rate,
         }}
       />
+
+      <Templates labels={tools.templates} />
 
       <section className="rounded-3xl border bg-linear-to-br from-primary/10 via-surface to-surface p-6 sm:p-10">
         <h2 className="text-2xl font-semibold tracking-tight">

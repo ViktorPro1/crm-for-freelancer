@@ -206,7 +206,7 @@
   "tools": {
     "metaTitle": "Nástroje",
     "title": "Bezplatné nástroje pro freelancery",
-    "lead": "Bez registrace: spočítejte cenu projektu a zjistěte, jakou hodinovou sazbu si účtovat.",
+    "lead": "Bez registrace: spočítejte cenu projektu, zjistěte svou hodinovou sazbu a použijte hotové vzory dokumentů.",
     "currency": "Měna",
     "project": {
       "title": "Cena projektu",
@@ -237,6 +237,41 @@
       "empty": "Zadejte fakturovatelné hodiny a zobrazí se sazba."
     },
     "ctaTitle": "Mějte klienty a poznámky na jednom místě",
-    "ctaText": "Vytvořte si účet a po schválení budete moci vést seznam klientů a deník poznámek."
+    "ctaText": "Vytvořte si účet a po schválení budete moci vést seznam klientů a deník poznámek.",
+    "templates": {
+      "title": "Vzory dokumentů",
+      "lead": "Připravené vzory pro práci s klientem. Zkopírujte text a vše v hranatých závorkách nahraďte svými údaji.",
+      "open": "Zobrazit text",
+      "copy": "Kopírovat",
+      "copied": "Zkopírováno",
+      "copyFailed": "Kopírování se nepovedlo, označte text ručně.",
+      "disclaimer": "Jde o obecné vzory, nikoli o právní poradenství. Před použitím je upravte podle právních předpisů své země a u důležitých smluv se poraďte s právníkem.",
+      "items": [
+        {
+          "id": "proposal",
+          "title": "Cenová nabídka",
+          "description": "E-mail klientovi: co uděláte, kdy a za kolik.",
+          "text": "Předmět: Nabídka: [název projektu]\n\nDobrý den, [jméno klienta],\n\nděkuji za zájem o spolupráci. Níže stručně popisuji svůj návrh.\n\nZadání\n[Jedna dvě věty: co je potřeba udělat a proč]\n\nCo práce zahrnuje\n- [bod 1]\n- [bod 2]\n- [bod 3]\n- [počet] kol úprav\n\nTermín\nZačátek: [datum]. Hotový výsledek: [datum]. Termín závisí na tom, kdy od vás dostanu podklady a odpovědi.\n\nCena\n[částka] [měna]. Platba: [například 50 % předem a 50 % po předání práce].\n\nCo není zahrnuto\n[Například: hosting, psaní textů, další stránky. Oceňuji je zvlášť.]\n\nNabídka platí do [datum]. Pokud vám vše vyhovuje, napište mi a pošlu smlouvu a fakturu.\n\nS pozdravem,\n[vaše jméno]\n[kontakty]"
+        },
+        {
+          "id": "brief",
+          "title": "Brief pro klienta",
+          "description": "Otázky, na které je třeba odpovědět před zahájením práce.",
+          "text": "Brief projektu: [název]\n\nOdpovězte prosím na otázky níže. Stačí stručné odpovědi.\n\n1. O vás a firmě\n- Název firmy a obor: \n- Čím se lišíte od konkurence: \n\n2. O projektu\n- Jaký problém má výsledek řešit: \n- Kdo je cílové publikum: \n- Příklady, které se vám líbí (odkazy): \n- Příklady, které se vám nelíbí, a proč: \n\n3. Podklady\n- Logo, firemní barvy, písma (jsou / nejsou): \n- Texty a fotografie (dodáte sami / potřebujete pomoc): \n\n4. Termín a rozpočet\n- Požadované datum dokončení: \n- Orientační rozpočet: \n\n5. Organizace práce\n- Kdo na vaší straně rozhoduje a schvaluje výsledek: \n- Preferovaný způsob komunikace: \n\nDěkuji! Po vašich odpovědích pošlu nabídku s termínem a cenou."
+        },
+        {
+          "id": "contract",
+          "title": "Smlouva o poskytování služeb (zjednodušená)",
+          "description": "Hlavní body dohody mezi dodavatelem a objednatelem.",
+          "text": "SMLOUVA O POSKYTOVÁNÍ SLUŽEB č. [číslo]\n\n[město], [datum]\n\nDodavatel: [jméno a příjmení], [údaje nebo identifikační číslo].\nObjednatel: [jméno a příjmení nebo název firmy], [údaje].\n\n1. Předmět smlouvy\nDodavatel pro Objednatele provede práci: [popis práce]. Rozsah: [seznam nebo odkaz na nabídku].\n\n2. Termíny\nZahájení: [datum]. Předání výsledku: [datum]. Termíny se posouvají o dobu zpoždění podkladů nebo odpovědí Objednatele.\n\n3. Cena a platba\nCena: [částka] [měna]. Způsob platby: [například 50 % záloha, 50 % po předání výsledku] do [počet] dnů.\n\n4. Úpravy\nV ceně jsou [počet] kol úprav v rámci dohodnutého zadání. Další úpravy a nové požadavky se platí zvlášť.\n\n5. Práva k výsledku\nPo úplném zaplacení získává Objednatel právo výsledek užívat v rozsahu: [popište]. Dodavatel smí práci ukázat v portfoliu, pokud není dohodnuto jinak.\n\n6. Mlčenlivost\nStrany nezveřejní důvěrné informace druhé strany získané během práce.\n\n7. Odpovědnost a ukončení\nStrany odpovídají podle platných právních předpisů. Každá strana může smlouvu vypovědět písemně s výpovědní dobou [počet] dnů. Práce provedená do té doby se platí.\n\n8. Podpisy\nDodavatel: ____________  Objednatel: ____________"
+        },
+        {
+          "id": "act",
+          "title": "Předávací protokol",
+          "description": "Krátké potvrzení, že práce byla převzata.",
+          "text": "PŘEDÁVACÍ PROTOKOL č. [číslo]\nke smlouvě č. [číslo] ze dne [datum]\n\n[město], [datum]\n\nDodavatel: [jméno a příjmení], [údaje].\nObjednatel: [jméno a příjmení nebo název firmy], [údaje].\n\nDodavatel provedl a Objednatel převzal tyto práce:\n1. [název práce], cena [částka] [měna]\n2. [název práce], cena [částka] [měna]\n\nCelkem: [celková částka] [měna].\n\nPráce byly provedeny v plném rozsahu a v termínu. Objednatel nemá připomínky ke kvalitě a rozsahu prací.\n\nDodavatel: ____________  Objednatel: ____________"
+        }
+      ]
+    }
   }
 }

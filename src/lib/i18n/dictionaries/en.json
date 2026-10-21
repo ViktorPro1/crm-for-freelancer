@@ -206,7 +206,7 @@
   "tools": {
     "metaTitle": "Tools",
     "title": "Free tools for freelancers",
-    "lead": "No sign-up needed: work out the price of a project and find the hourly rate you should charge.",
+    "lead": "No sign-up needed: work out the price of a project, find your hourly rate and grab ready-made document templates.",
     "currency": "Currency",
     "project": {
       "title": "Project price",
@@ -237,6 +237,41 @@
       "empty": "Enter billable hours to see the rate."
     },
     "ctaTitle": "Keep your clients and notes in one place",
-    "ctaText": "Create an account and, once it is approved, you can manage a client list and a journal of notes."
+    "ctaText": "Create an account and, once it is approved, you can manage a client list and a journal of notes.",
+    "templates": {
+      "title": "Document templates",
+      "lead": "Ready-made samples for working with a client. Copy the text and replace everything in square brackets with your details.",
+      "open": "Show text",
+      "copy": "Copy",
+      "copied": "Copied",
+      "copyFailed": "Could not copy, please select the text manually.",
+      "disclaimer": "These are general samples, not legal advice. Adapt them to the laws of your country before use, and talk to a lawyer for important agreements.",
+      "items": [
+        {
+          "id": "proposal",
+          "title": "Commercial proposal",
+          "description": "An email to the client: what you will do, when and for how much.",
+          "text": "Subject: Proposal: [project name]\n\nHello [client name],\n\nThank you for your interest in working together. Here is a short description of what I propose.\n\nTask\n[One or two sentences: what needs to be done and why]\n\nWhat is included\n- [item 1]\n- [item 2]\n- [item 3]\n- [number] rounds of revisions\n\nTimeline\nStart: [date]. Delivery: [date]. The timeline depends on when I receive your materials and answers.\n\nPrice\n[amount] [currency]. Payment: [for example, 50% upfront and 50% on delivery].\n\nWhat is not included\n[For example: hosting, copywriting, extra pages. These are quoted separately.]\n\nThis proposal is valid until [date]. If everything looks good, let me know and I will send the contract and an invoice.\n\nBest regards,\n[your name]\n[contacts]"
+        },
+        {
+          "id": "brief",
+          "title": "Client brief",
+          "description": "Questions to answer before the work starts.",
+          "text": "Project brief: [name]\n\nPlease answer the questions below. Short answers are fine.\n\n1. About you and your business\n- Company name and field: \n- How you differ from competitors: \n\n2. About the project\n- What problem the result should solve: \n- Who the target audience is: \n- Examples you like (links): \n- Examples you dislike, and why: \n\n3. Materials\n- Logo, brand colors, fonts (yes / no): \n- Texts and photos (you provide / need help): \n\n4. Timeline and budget\n- Desired completion date: \n- Approximate budget: \n\n5. How we work\n- Who on your side makes decisions and approves the result: \n- Preferred way to communicate: \n\nThank you! After your answers I will send a proposal with the timeline and price."
+        },
+        {
+          "id": "contract",
+          "title": "Service agreement (simplified)",
+          "description": "The main points of an agreement between contractor and client.",
+          "text": "SERVICE AGREEMENT No. [number]\n\n[city], [date]\n\nContractor: [full name], [details or ID].\nClient: [full name or company], [details].\n\n1. Subject\nThe Contractor performs the following work for the Client: [description]. Scope: [list or reference to the proposal].\n\n2. Timeline\nStart: [date]. Delivery: [date]. The timeline moves by the length of any delay in the Client's materials or answers.\n\n3. Price and payment\nPrice: [amount] [currency]. Payment: [for example, 50% upfront, 50% on delivery] within [number] days.\n\n4. Revisions\nThe price includes [number] rounds of revisions within the agreed task. Extra revisions and new requirements are paid separately.\n\n5. Rights to the result\nAfter full payment the Client receives the right to use the result as follows: [describe]. The Contractor may show the work in a portfolio unless agreed otherwise.\n\n6. Confidentiality\nThe parties will not disclose each other's confidential information received during the work.\n\n7. Liability and termination\nThe parties are liable under applicable law. Either party may terminate the agreement with [number] days' written notice. Work completed up to that point is paid for.\n\n8. Signatures\nContractor: ____________  Client: ____________"
+        },
+        {
+          "id": "act",
+          "title": "Acceptance certificate",
+          "description": "A short confirmation that the work has been accepted.",
+          "text": "ACCEPTANCE CERTIFICATE No. [number]\nunder agreement No. [number] dated [date]\n\n[city], [date]\n\nContractor: [full name], [details].\nClient: [full name or company], [details].\n\nThe Contractor has performed and the Client has accepted the following work:\n1. [work name], price [amount] [currency]\n2. [work name], price [amount] [currency]\n\nTotal: [total amount] [currency].\n\nThe work was completed in full and on time. The Client has no claims about its quality or scope.\n\nContractor: ____________  Client: ____________"
+        }
+      ]
+    }
   }
 }

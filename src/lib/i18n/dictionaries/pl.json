@@ -206,7 +206,7 @@
   "tools": {
     "metaTitle": "Narzędzia",
     "title": "Darmowe narzędzia dla freelancera",
-    "lead": "Bez rejestracji: policz cenę projektu i sprawdź, jaką stawkę godzinową warto przyjąć.",
+    "lead": "Bez rejestracji: policz cenę projektu, sprawdź swoją stawkę godzinową i skorzystaj z gotowych wzorów dokumentów.",
     "currency": "Waluta",
     "project": {
       "title": "Cena projektu",
@@ -237,6 +237,41 @@
       "empty": "Podaj płatne godziny, aby zobaczyć stawkę."
     },
     "ctaTitle": "Trzymaj klientów i notatki w jednym miejscu",
-    "ctaText": "Załóż konto, a po zatwierdzeniu będziesz mógł prowadzić listę klientów i dziennik notatek."
+    "ctaText": "Załóż konto, a po zatwierdzeniu będziesz mógł prowadzić listę klientów i dziennik notatek.",
+    "templates": {
+      "title": "Wzory dokumentów",
+      "lead": "Gotowe wzory do pracy z klientem. Skopiuj tekst i zamień wszystko, co w nawiasach kwadratowych, na swoje dane.",
+      "open": "Pokaż tekst",
+      "copy": "Kopiuj",
+      "copied": "Skopiowano",
+      "copyFailed": "Nie udało się skopiować, zaznacz tekst ręcznie.",
+      "disclaimer": "To ogólne wzory, a nie porada prawna. Przed użyciem dostosuj je do przepisów swojego kraju, a przy ważnych umowach skonsultuj się z prawnikiem.",
+      "items": [
+        {
+          "id": "proposal",
+          "title": "Oferta handlowa",
+          "description": "Wiadomość do klienta: co zrobisz, kiedy i za ile.",
+          "text": "Temat: Oferta: [nazwa projektu]\n\nDzień dobry, [imię klienta],\n\ndziękuję za zainteresowanie współpracą. Poniżej krótko opisuję moją propozycję.\n\nZadanie\n[Jedno lub dwa zdania: co trzeba zrobić i po co]\n\nCo obejmuje praca\n- [punkt 1]\n- [punkt 2]\n- [punkt 3]\n- [liczba] rund poprawek\n\nTermin\nStart: [data]. Gotowy rezultat: [data]. Termin zależy od tego, kiedy otrzymam od Państwa materiały i odpowiedzi.\n\nCena\n[kwota] [waluta]. Płatność: [na przykład 50% z góry i 50% po oddaniu pracy].\n\nCzego nie obejmuje\n[Na przykład: hosting, pisanie tekstów, dodatkowe podstrony. Wyceniam to osobno.]\n\nOferta jest ważna do [data]. Jeśli wszystko odpowiada, proszę o wiadomość, a prześlę umowę i fakturę.\n\nZ poważaniem,\n[twoje imię i nazwisko]\n[kontakt]"
+        },
+        {
+          "id": "brief",
+          "title": "Brief dla klienta",
+          "description": "Pytania, na które trzeba odpowiedzieć przed startem pracy.",
+          "text": "Brief projektu: [nazwa]\n\nProszę odpowiedzieć na poniższe pytania. Wystarczą krótkie odpowiedzi.\n\n1. O Państwu i firmie\n- Nazwa firmy i branża: \n- Czym różnicie się od konkurencji: \n\n2. O projekcie\n- Jaki problem ma rozwiązać rezultat: \n- Kto jest odbiorcą: \n- Przykłady, które się podobają (linki): \n- Przykłady, które się nie podobają, i dlaczego: \n\n3. Materiały\n- Logo, kolory firmowe, czcionki (są / brak): \n- Teksty i zdjęcia (dostarczą Państwo / potrzebna pomoc): \n\n4. Termin i budżet\n- Pożądana data gotowości: \n- Orientacyjny budżet: \n\n5. Organizacja pracy\n- Kto po Państwa stronie podejmuje decyzje i akceptuje rezultat: \n- Preferowany sposób kontaktu: \n\nDziękuję! Po otrzymaniu odpowiedzi prześlę ofertę z terminem i ceną."
+        },
+        {
+          "id": "contract",
+          "title": "Umowa o świadczenie usług (uproszczona)",
+          "description": "Najważniejsze punkty umowy między wykonawcą a zleceniodawcą.",
+          "text": "UMOWA O ŚWIADCZENIE USŁUG nr [numer]\n\n[miasto], [data]\n\nWykonawca: [imię i nazwisko], [dane lub numer identyfikacyjny].\nZleceniodawca: [imię i nazwisko lub nazwa firmy], [dane].\n\n1. Przedmiot umowy\nWykonawca wykonuje dla Zleceniodawcy pracę: [opis pracy]. Zakres: [lista lub odesłanie do oferty].\n\n2. Terminy\nRozpoczęcie: [data]. Przekazanie rezultatu: [data]. Terminy przesuwają się o czas opóźnienia materiałów lub odpowiedzi Zleceniodawcy.\n\n3. Wynagrodzenie i płatność\nWynagrodzenie: [kwota] [waluta]. Sposób płatności: [na przykład 50% zaliczki, 50% po przekazaniu rezultatu] w ciągu [liczba] dni.\n\n4. Poprawki\nW cenie mieszczą się [liczba] rund poprawek w ramach uzgodnionego zadania. Dodatkowe poprawki i nowe wymagania są płatne osobno.\n\n5. Prawa do rezultatu\nPo pełnej zapłacie Zleceniodawca otrzymuje prawo do korzystania z rezultatu w zakresie: [opis]. Wykonawca może pokazywać pracę w portfolio, o ile nie uzgodniono inaczej.\n\n6. Poufność\nStrony nie ujawniają poufnych informacji drugiej strony uzyskanych podczas pracy.\n\n7. Odpowiedzialność i rozwiązanie\nStrony odpowiadają zgodnie z obowiązującym prawem. Każda ze stron może rozwiązać umowę, zawiadamiając na piśmie [liczba] dni wcześniej. Praca wykonana do tego czasu jest płatna.\n\n8. Podpisy\nWykonawca: ____________  Zleceniodawca: ____________"
+        },
+        {
+          "id": "act",
+          "title": "Protokół odbioru prac",
+          "description": "Krótkie potwierdzenie, że praca została odebrana.",
+          "text": "PROTOKÓŁ ODBIORU PRAC nr [numer]\ndo umowy nr [numer] z dnia [data]\n\n[miasto], [data]\n\nWykonawca: [imię i nazwisko], [dane].\nZleceniodawca: [imię i nazwisko lub nazwa firmy], [dane].\n\nWykonawca wykonał, a Zleceniodawca odebrał następujące prace:\n1. [nazwa pracy], cena [kwota] [waluta]\n2. [nazwa pracy], cena [kwota] [waluta]\n\nRazem: [łączna kwota] [waluta].\n\nPrace wykonano w całości i w terminie. Zleceniodawca nie zgłasza zastrzeżeń co do jakości i zakresu prac.\n\nWykonawca: ____________  Zleceniodawca: ____________"
+        }
+      ]
+    }
   }
 }
