@@ -10,6 +10,7 @@ export async function SidebarNavGate({
   locale: Locale;
   labels: {
     dashboard: string;
+    tools: string;
     clients: string;
     account: string;
     admin: string;

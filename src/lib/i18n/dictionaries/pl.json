@@ -7,6 +7,7 @@
   },
   "nav": {
     "dashboard": "Pulpit",
+    "tools": "Narzędzia",
     "clients": "Klienci",
     "admin": "Admin",
     "account": "Konto"
@@ -201,5 +202,41 @@
     "passwordWrong": "Obecne hasło jest nieprawidłowe.",
     "error": "Coś poszło nie tak. Spróbuj ponownie.",
     "saving": "Zapisywanie..."
+  },
+  "tools": {
+    "metaTitle": "Narzędzia",
+    "title": "Darmowe narzędzia dla freelancera",
+    "lead": "Bez rejestracji: policz cenę projektu i sprawdź, jaką stawkę godzinową warto przyjąć.",
+    "currency": "Waluta",
+    "project": {
+      "title": "Cena projektu",
+      "lead": "Ile poprosić klienta, żeby poprawki i niespodzianki nie zjadły Twojego zarobku.",
+      "hours": "Planowane godziny pracy",
+      "rate": "Twoja stawka za godzinę",
+      "revisions": "Rundy poprawek",
+      "revisionsHint": "Każda runda dodaje 10% do godzin.",
+      "buffer": "Zapas na nieprzewidziane, %",
+      "bufferHint": "Zwykle od 10 do 20%.",
+      "tax": "Podatki i opłaty, %",
+      "resultPrice": "Cena dla klienta",
+      "resultNet": "Dostaniesz po podatkach",
+      "resultHours": "Godziny z poprawkami i zapasem",
+      "resultReal": "Realna stawka za planowaną godzinę",
+      "empty": "Podaj liczbę godzin, aby zobaczyć cenę."
+    },
+    "rate": {
+      "title": "Moja stawka",
+      "lead": "Jaką stawkę godzinową przyjąć, aby osiągać pożądany dochód.",
+      "income": "Pożądany dochód miesięczny po podatkach",
+      "expenses": "Miesięczne koszty (usługi, internet, sprzęt)",
+      "hours": "Płatne godziny w miesiącu",
+      "hoursHint": "Nie każda godzina jest płatna: część idzie na szukanie klientów i korespondencję. Zwykle od 60 do 120.",
+      "tax": "Podatki i opłaty, %",
+      "resultRate": "Potrzebna stawka za godzinę",
+      "resultRevenue": "Przychód miesięczny przed podatkami",
+      "empty": "Podaj płatne godziny, aby zobaczyć stawkę."
+    },
+    "ctaTitle": "Trzymaj klientów i notatki w jednym miejscu",
+    "ctaText": "Załóż konto, a po zatwierdzeniu będziesz mógł prowadzić listę klientów i dziennik notatek."
   }
 }

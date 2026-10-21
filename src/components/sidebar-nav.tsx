@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import {
   DashboardIcon,
   ShieldIcon,
+  ToolsIcon,
   UserIcon,
   UsersIcon,
 } from "@/components/icons";
@@ -17,6 +18,7 @@ type Props = {
   locale: Locale;
   labels: {
     dashboard: string;
+    tools: string;
     clients: string;
     account: string;
     admin: string;
@@ -39,6 +41,8 @@ function NavLinks({
 
   const links = [
     { href: "/", label: labels.dashboard, Icon: DashboardIcon },
+    // Інструменти відкриті для всіх, навіть для гостей.
+    { href: "/tools", label: labels.tools, Icon: ToolsIcon },
     ...(showClients
       ? [{ href: "/clients", label: labels.clients, Icon: UsersIcon }]
       : []),

@@ -7,6 +7,7 @@
   },
   "nav": {
     "dashboard": "Dashboard",
+    "tools": "Tools",
     "clients": "Clients",
     "admin": "Admin",
     "account": "Account"
@@ -201,5 +202,41 @@
     "passwordWrong": "The current password is incorrect.",
     "error": "Something went wrong. Please try again.",
     "saving": "Saving..."
+  },
+  "tools": {
+    "metaTitle": "Tools",
+    "title": "Free tools for freelancers",
+    "lead": "No sign-up needed: work out the price of a project and find the hourly rate you should charge.",
+    "currency": "Currency",
+    "project": {
+      "title": "Project price",
+      "lead": "How much to ask the client so that revisions and surprises do not eat into your earnings.",
+      "hours": "Planned hours of work",
+      "rate": "Your hourly rate",
+      "revisions": "Rounds of revisions",
+      "revisionsHint": "Each round adds 10% to the hours.",
+      "buffer": "Buffer for the unexpected, %",
+      "bufferHint": "Usually 10 to 20%.",
+      "tax": "Taxes and fees, %",
+      "resultPrice": "Price for the client",
+      "resultNet": "You receive after taxes",
+      "resultHours": "Hours with revisions and buffer",
+      "resultReal": "Real rate per planned hour",
+      "empty": "Enter the number of hours to see the price."
+    },
+    "rate": {
+      "title": "My rate",
+      "lead": "The hourly rate you need to charge to earn the income you want.",
+      "income": "Desired monthly income after taxes",
+      "expenses": "Monthly expenses (services, internet, equipment)",
+      "hours": "Billable hours per month",
+      "hoursHint": "Not every hour is billable: some go to finding clients and email. Usually 60 to 120.",
+      "tax": "Taxes and fees, %",
+      "resultRate": "Hourly rate you need",
+      "resultRevenue": "Monthly revenue before taxes",
+      "empty": "Enter billable hours to see the rate."
+    },
+    "ctaTitle": "Keep your clients and notes in one place",
+    "ctaText": "Create an account and, once it is approved, you can manage a client list and a journal of notes."
   }
 }

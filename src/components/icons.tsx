@@ -128,6 +128,17 @@ export function ChevronLeftIcon({ className }: IconProps) {
   );
 }
 
+// Калькулятор: корпус із екраном і кнопками.
+export function ToolsIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <rect x="5" y="3" width="14" height="18" rx="2" />
+      <path d="M8 7h8" />
+      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01" />
+    </Svg>
+  );
+}
+
 // Знак проєкту: літера F з галочкою (файл public/images/logo-mark.png).
 export function BrandMark({ className }: IconProps) {
   return (

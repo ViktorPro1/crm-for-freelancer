@@ -7,6 +7,7 @@
   },
   "nav": {
     "dashboard": "Přehled",
+    "tools": "Nástroje",
     "clients": "Klienti",
     "admin": "Admin",
     "account": "Účet"
@@ -201,5 +202,41 @@
     "passwordWrong": "Současné heslo je nesprávné.",
     "error": "Něco se pokazilo. Zkuste to znovu.",
     "saving": "Ukládání..."
+  },
+  "tools": {
+    "metaTitle": "Nástroje",
+    "title": "Bezplatné nástroje pro freelancery",
+    "lead": "Bez registrace: spočítejte cenu projektu a zjistěte, jakou hodinovou sazbu si účtovat.",
+    "currency": "Měna",
+    "project": {
+      "title": "Cena projektu",
+      "lead": "Kolik chtít od klienta, aby opravy a nečekané události nesnědly váš výdělek.",
+      "hours": "Plánované hodiny práce",
+      "rate": "Vaše sazba za hodinu",
+      "revisions": "Kola oprav",
+      "revisionsHint": "Každé kolo přidá 10 % k hodinám.",
+      "buffer": "Rezerva na nečekané, %",
+      "bufferHint": "Obvykle 10 až 20 %.",
+      "tax": "Daně a poplatky, %",
+      "resultPrice": "Cena pro klienta",
+      "resultNet": "Dostanete po zdanění",
+      "resultHours": "Hodiny s opravami a rezervou",
+      "resultReal": "Skutečná sazba za plánovanou hodinu",
+      "empty": "Zadejte počet hodin a zobrazí se cena."
+    },
+    "rate": {
+      "title": "Moje sazba",
+      "lead": "Jakou hodinovou sazbu účtovat, abyste dosáhli požadovaného příjmu.",
+      "income": "Požadovaný měsíční příjem po zdanění",
+      "expenses": "Měsíční výdaje (služby, internet, vybavení)",
+      "hours": "Fakturovatelné hodiny za měsíc",
+      "hoursHint": "Ne každá hodina je placená: část jde na hledání klientů a korespondenci. Obvykle 60 až 120.",
+      "tax": "Daně a poplatky, %",
+      "resultRate": "Potřebná sazba za hodinu",
+      "resultRevenue": "Měsíční tržby před zdaněním",
+      "empty": "Zadejte fakturovatelné hodiny a zobrazí se sazba."
+    },
+    "ctaTitle": "Mějte klienty a poznámky na jednom místě",
+    "ctaText": "Vytvořte si účet a po schválení budete moci vést seznam klientů a deník poznámek."
   }
 }
