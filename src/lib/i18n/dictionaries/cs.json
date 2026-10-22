@@ -157,7 +157,23 @@
       "emailTaken": "Účet s tímto e-mailem již existuje."
     },
     "passwordNew": "Heslo (alespoň 8 znaků)",
-    "signOut": "Odhlásit se"
+    "signOut": "Odhlásit se",
+    "verifyTitle": "Potvrďte e-mail",
+    "verifyText": "Poslali jsme ověřovací kód na adresu {email}. Zadejte ho níže. Kód platí 15 minut.",
+    "codeLabel": "Kód z e-mailu",
+    "verifySubmit": "Potvrdit",
+    "verifyPending": "Ověřujeme...",
+    "resend": "Poslat kód znovu",
+    "resendIn": "Poslat znovu za {seconds} s",
+    "resent": "Kód odeslán. Zkontrolujte schránku i složku spam.",
+    "backToSignIn": "Zpět k přihlášení",
+    "verifiedNotice": "E-mail potvrzen. Nyní se přihlaste.",
+    "verifyErrors": {
+      "invalid": "Kód je chybný nebo vypršel. Zkontrolujte ho nebo požádejte o nový.",
+      "tooMany": "Příliš mnoho pokusů. Požádejte o nový kód.",
+      "generic": "Něco se pokazilo. Zkuste to znovu.",
+      "resendFailed": "Kód se nepodařilo odeslat. Zkuste to o něco později."
+    }
   },
   "pending": {
     "title": "Vaše žádost se zpracovává",

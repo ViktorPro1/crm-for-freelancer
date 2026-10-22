@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { signInAction } from "@/components/auth/actions";
 import { AuthForm } from "@/components/auth/auth-form";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
@@ -8,7 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: dict.auth.signInTitle };
 }
 
-export default async function SignInPage() {
+export default async function SignInPage({
+  searchParams,
+}: PageProps<"/[lang]/sign-in">) {
   const locale = await getLocale();
   const { auth } = await getDictionary();
 
@@ -17,6 +20,9 @@ export default async function SignInPage() {
       <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
         {auth.signInTitle}
       </h1>
+      <Suspense fallback={null}>
+        <VerifiedNotice searchParams={searchParams} text={auth.verifiedNotice} />
+      </Suspense>
       <AuthForm
         mode="signIn"
         locale={locale}
@@ -34,5 +40,26 @@ export default async function SignInPage() {
         }}
       />
     </main>
+  );
+}
+
+// Після підтвердження пошти людину переносить сюди з адресою ?verified=1.
+async function VerifiedNotice({
+  searchParams,
+  text,
+}: Pick<PageProps<"/[lang]/sign-in">, "searchParams"> & { text: string }) {
+  const params = await searchParams;
+
+  if (params.verified !== "1") {
+    return null;
+  }
+
+  return (
+    <p
+      role="status"
+      className="mt-4 rounded-lg bg-success-bg px-4 py-3 text-sm text-success-fg"
+    >
+      {text}
+    </p>
   );
 }

@@ -157,7 +157,23 @@
       "emailTaken": "An account with this email already exists."
     },
     "passwordNew": "Password (at least 8 characters)",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "verifyTitle": "Confirm your email",
+    "verifyText": "We sent a verification code to {email}. Enter it below. The code is valid for 15 minutes.",
+    "codeLabel": "Code from the email",
+    "verifySubmit": "Confirm",
+    "verifyPending": "Checking...",
+    "resend": "Send the code again",
+    "resendIn": "Send again in {seconds} s",
+    "resent": "Code sent. Check your inbox and the spam folder.",
+    "backToSignIn": "Back to sign in",
+    "verifiedNotice": "Email confirmed. Now sign in.",
+    "verifyErrors": {
+      "invalid": "The code is wrong or expired. Check it or request a new one.",
+      "tooMany": "Too many attempts. Request a new code.",
+      "generic": "Something went wrong. Please try again.",
+      "resendFailed": "Could not send the code. Please try again a little later."
+    }
   },
   "pending": {
     "title": "Your application is being processed",
