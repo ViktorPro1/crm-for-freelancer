@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import "../globals.css";
@@ -9,6 +9,7 @@ import {
 } from "@/components/language-switcher";
 import { AuthButton, AuthButtonFallback } from "@/components/auth/auth-button";
 import { SidebarNavGate } from "@/components/auth/nav-gate";
+import { ServiceWorkerRegister } from "@/components/service-worker-register";
 import { SidebarNavFallback } from "@/components/sidebar-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { locales } from "@/lib/i18n/config";
@@ -19,12 +20,23 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
+// Колір рядка адреси й верхньої панелі на телефоні (світла й темна тема).
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0a3640" },
+    { media: "(prefers-color-scheme: dark)", color: "#041217" },
+  ],
+};
+
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
 
   return {
     title: { default: dict.app.title, template: `%s | ${dict.app.name}` },
     description: dict.app.description,
+    // Значок для екрана "Додому" на iPhone.
+    icons: { apple: "/icons/apple-touch-icon.png" },
+    appleWebApp: { capable: true, title: dict.app.name, statusBarStyle: "default" },
   };
 }
 
@@ -46,6 +58,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <ServiceWorkerRegister />
         <div className="min-h-screen md:flex">
           {/* На телефоні це верхня панель (сітка з двох колонок), на великому екрані бічне меню. */}
           <aside className="grid grid-cols-[1fr_auto] items-center bg-sidebar px-4 py-3 text-sidebar-foreground md:sticky md:top-0 md:flex md:h-screen md:w-64 md:shrink-0 md:flex-col md:items-stretch md:px-3 md:py-0">
