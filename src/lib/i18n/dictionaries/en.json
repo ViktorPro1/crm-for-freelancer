@@ -8,6 +8,7 @@
   "nav": {
     "dashboard": "Dashboard",
     "tools": "Tools",
+    "subscription": "Subscription",
     "clients": "Clients",
     "admin": "Admin",
     "account": "Account"
@@ -62,7 +63,8 @@
       }
     ],
     "closingTitle": "Ready to try?",
-    "closingText": "Submit your application, it takes a minute. As soon as it is approved, your workspace is ready."
+    "closingText": "Submit your application, it takes a minute. As soon as it is approved, your workspace is ready.",
+    "ctaSubscription": "Subscription"
   },
   "clients": {
     "metaTitle": "Clients",
@@ -180,7 +182,15 @@
       "pending": "Pending",
       "approved": "Approved",
       "rejected": "Rejected"
-    }
+    },
+    "colSub": "Subscription",
+    "noTerm": "No term",
+    "unlimited": "Unlimited",
+    "expired": "expired",
+    "daysLeft": "{days} d",
+    "invoiceRequested": "Asked for invoice",
+    "extend": "Extend:",
+    "extendMonths": "+{months} mo"
   },
   "account": {
     "title": "Personal account",
@@ -273,5 +283,61 @@
         }
       ]
     }
+  },
+  "subscription": {
+    "metaTitle": "Subscription",
+    "title": "Subscription",
+    "lead": "A free trial first, then simple monthly payment. No hidden fees.",
+    "plansLabel": "Plans",
+    "trialTitle": "Free trial",
+    "trialDays": "{days} days free",
+    "trialText": "Starts as soon as the administrator approves your request. Every feature is available from day one.",
+    "paidTitle": "Subscription",
+    "perMonth": "per month",
+    "paidText": "Pay only for the months you need. Extend for a month, three months or a year.",
+    "includedTitle": "What is included",
+    "included": [
+      "Unlimited number of clients",
+      "A dated journal of notes for every client",
+      "Archive with restore",
+      "Only you can see your data",
+      "Interface in four languages, light and dark theme",
+      "Free calculators and document templates"
+    ],
+    "stepsTitle": "How it works",
+    "steps": [
+      {
+        "title": "Sign up",
+        "text": "Create an account and wait for your request to be approved."
+      },
+      {
+        "title": "Free trial",
+        "text": "After approval you get access to the CRM for a free trial period."
+      },
+      {
+        "title": "Invoice",
+        "text": "When the term is running out, press \"Request an invoice\" on this page."
+      },
+      {
+        "title": "Payment",
+        "text": "The administrator sends an invoice to your email. After you pay by card transfer, access is extended."
+      }
+    ],
+    "paymentNote": "Payment is a transfer to a card against an invoice that is sent to you personally. No card details are entered on the website.",
+    "guestTitle": "Try it for free",
+    "guestText": "Create an account: once your request is approved you get a free trial.",
+    "register": "Create an account",
+    "adminTitle": "You are the administrator",
+    "adminText": "Your access is unlimited. You can extend users' access in the admin panel.",
+    "pendingTitle": "Request under review",
+    "pendingText": "As soon as the administrator approves your request, the trial starts.",
+    "rejectedTitle": "Request declined",
+    "rejectedText": "The administrator declined your request. If this is a mistake, contact them.",
+    "activeTitle": "Access is active",
+    "activeText": "Access is valid until {date}. Days left: {days}.",
+    "expiredTitle": "Access has expired",
+    "expiredText": "Your access to the CRM ended on {date}. Your data is safe and everything returns after payment. Request an invoice.",
+    "requestInvoice": "Request an invoice",
+    "invoiceSent": "Request sent. The administrator will issue an invoice and send it to {email}."
   }
 }

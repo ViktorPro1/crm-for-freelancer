@@ -4,7 +4,12 @@ import { connection } from "next/server";
 import { cache } from "react";
 import { auth } from "@/lib/auth/server";
 import type { Locale } from "@/lib/i18n/config";
-import { isAdminEmail, syncProfile, type ProfileStatus } from "@/lib/profiles";
+import {
+  isAdminEmail,
+  syncProfile,
+  type ProfileStatus,
+  type Subscription,
+} from "@/lib/profiles";
 
 // Поточний користувач із сесії (cookie) або null, якщо людина не увійшла.
 export async function getUser() {
@@ -20,7 +25,15 @@ export async function getUser() {
 
 export type Access =
   | { kind: "guest" }
-  | { kind: "member"; status: ProfileStatus; isAdmin: boolean; user: NonNullable<Awaited<ReturnType<typeof getUser>>> };
+  | {
+      kind: "member";
+      status: ProfileStatus;
+      isAdmin: boolean;
+      // Схвалений користувач, чий оплачений термін закінчився. Адміністратора це не стосується.
+      expired: boolean;
+      subscription: Subscription;
+      user: NonNullable<Awaited<ReturnType<typeof getUser>>>;
+    };
 
 // Хто зараз на сайті і що йому дозволено. cache() робить запит один раз за візит,
 // навіть якщо його викликають меню, сторінка й інші частини.
@@ -33,15 +46,22 @@ export const getAccess = cache(async (): Promise<Access> => {
 
   // Профіль створюється (або оновлюється) при кожному візиті. Адміністратор має доступ завжди.
   const isAdmin = isAdminEmail(user.email);
-  const savedStatus = await syncProfile(user);
-  const status = isAdmin ? "approved" : savedStatus;
+  const profile = await syncProfile(user);
+  const status = isAdmin ? "approved" : profile.status;
+  const expired =
+    !isAdmin &&
+    status === "approved" &&
+    (profile.daysLeft === null || profile.daysLeft < 0);
 
-  return { kind: "member", status, isAdmin, user };
+  return { kind: "member", status, isAdmin, expired, subscription: profile, user };
 });
 
-// Чи можна показувати користувачу робочі розділи CRM (клієнти тощо).
+// Чи можна показувати користувачу робочі розділи CRM (клієнти тощо):
+// заявку схвалено і термін підписки не минув.
 export function canUseCrm(access: Access) {
-  return access.kind === "member" && access.status === "approved";
+  return (
+    access.kind === "member" && access.status === "approved" && !access.expired
+  );
 }
 
 // Для сторінок із даними. Без входу: на сторінку входу.
@@ -55,6 +75,11 @@ export async function requireApproved(locale: Locale) {
 
   if (access.status !== "approved") {
     redirect(`/${locale}/pending`);
+  }
+
+  // Термін підписки закінчився: повне блокування, показуємо сторінку підписки.
+  if (access.expired) {
+    redirect(`/${locale}/subscription`);
   }
 
   return access;

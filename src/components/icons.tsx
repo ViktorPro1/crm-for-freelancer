@@ -139,6 +139,17 @@ export function ToolsIcon({ className }: IconProps) {
   );
 }
 
+// Банківська картка: пункт "Підписка".
+export function CardIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3 10h18" />
+      <path d="M7 15h3" />
+    </Svg>
+  );
+}
+
 // Знак проєкту: літера F з галочкою (файл public/images/logo-mark.png).
 export function BrandMark({ className }: IconProps) {
   return (

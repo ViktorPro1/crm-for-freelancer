@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  CardIcon,
   DashboardIcon,
   ShieldIcon,
   ToolsIcon,
@@ -19,6 +20,7 @@ type Props = {
   labels: {
     dashboard: string;
     tools: string;
+    subscription: string;
     clients: string;
     account: string;
     admin: string;
@@ -43,6 +45,8 @@ function NavLinks({
     { href: "/", label: labels.dashboard, Icon: DashboardIcon },
     // Інструменти відкриті для всіх, навіть для гостей.
     { href: "/tools", label: labels.tools, Icon: ToolsIcon },
+    // Сторінка підписки теж відкрита для всіх: там ціна і порядок оплати.
+    { href: "/subscription", label: labels.subscription, Icon: CardIcon },
     ...(showClients
       ? [{ href: "/clients", label: labels.clients, Icon: UsersIcon }]
       : []),

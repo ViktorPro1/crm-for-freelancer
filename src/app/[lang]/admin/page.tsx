@@ -10,7 +10,8 @@ import {
   type Dictionary,
 } from "@/lib/i18n/dictionaries";
 import { listProfiles, type ProfileRow } from "@/lib/profiles";
-import { decideAction } from "./actions";
+import { EXTEND_MONTHS } from "@/lib/plans";
+import { decideAction, extendAction } from "./actions";
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
@@ -66,10 +67,13 @@ async function AdminContent() {
             <thead className="bg-surface-muted text-muted">
               <tr>
                 <th className="px-4 py-3 font-medium">{dict.admin.colUser}</th>
-                <th className="hidden px-4 py-3 font-medium sm:table-cell">
+                <th className="hidden px-4 py-3 font-medium xl:table-cell">
                   {dict.admin.colDate}
                 </th>
                 <th className="px-4 py-3 font-medium">{dict.admin.colStatus}</th>
+                <th className="hidden px-4 py-3 font-medium md:table-cell">
+                  {dict.admin.colSub}
+                </th>
                 <th className="hidden px-4 py-3 font-medium sm:table-cell">
                   {dict.admin.colActions}
                 </th>
@@ -90,11 +94,13 @@ async function AdminContent() {
                       <div className="font-medium">{profile.name || profile.email}</div>
                       <div className="break-all text-xs text-muted">{profile.email}</div>
                       {/* На телефоні кнопки стоять під іменем, бо колонка "Дії" там не вміщається. */}
-                      <div className="mt-2 sm:hidden">
+                      <div className="mt-2 space-y-2 sm:hidden">
+                        <Subscription {...decisionProps} />
                         <Decision {...decisionProps} />
+                        <Extend {...decisionProps} />
                       </div>
                     </td>
-                    <td className="hidden px-4 py-3 sm:table-cell">
+                    <td className="hidden px-4 py-3 xl:table-cell">
                       {formatDate(profile.createdAt, locale)}
                     </td>
                     <td className="px-4 py-3">
@@ -103,8 +109,14 @@ async function AdminContent() {
                         label={dict.admin.status[profile.status]}
                       />
                     </td>
+                    <td className="hidden px-4 py-3 md:table-cell">
+                      <Subscription {...decisionProps} />
+                    </td>
                     <td className="hidden px-4 py-3 sm:table-cell">
-                      <Decision {...decisionProps} />
+                      <div className="space-y-2">
+                        <Decision {...decisionProps} />
+                        <Extend {...decisionProps} />
+                      </div>
                     </td>
                   </tr>
                 );
@@ -154,6 +166,60 @@ function Decision({ profile, isSelf, locale, dict }: DecisionProps) {
           {dict.reject}
         </button>
       ) : null}
+    </form>
+  );
+}
+
+// До якої дати відкритий доступ і чи просив користувач рахунок.
+function Subscription({ profile, isSelf, locale, dict }: DecisionProps) {
+  if (isSelf) {
+    return <span className="text-xs text-muted">{dict.unlimited}</span>;
+  }
+
+  if (profile.status !== "approved" || profile.until === null) {
+    return <span className="text-xs text-muted">{dict.noTerm}</span>;
+  }
+
+  const expired = profile.daysLeft !== null && profile.daysLeft < 0;
+
+  return (
+    <div className="space-y-1 text-xs">
+      <div className={expired ? "font-medium text-red-700 dark:text-red-400" : ""}>
+        {formatDate(profile.until, locale)}
+        {" · "}
+        {expired ? dict.expired : interpolate(dict.daysLeft, { days: profile.daysLeft ?? 0 })}
+      </div>
+      {profile.invoiceRequested ? (
+        <span className="inline-block rounded-full bg-info-bg px-2.5 py-0.5 font-medium text-info-fg">
+          {dict.invoiceRequested}
+        </span>
+      ) : null}
+    </div>
+  );
+}
+
+// Кнопки "+1 міс.", "+3 міс.", "+12 міс.": продовжують доступ після отримання оплати.
+function Extend({ profile, isSelf, locale, dict }: DecisionProps) {
+  if (isSelf || profile.status !== "approved") {
+    return null;
+  }
+
+  return (
+    <form action={extendAction} className="flex flex-wrap items-center gap-2">
+      <input type="hidden" name="locale" value={locale} />
+      <input type="hidden" name="userId" value={profile.userId} />
+      <span className="text-xs text-muted">{dict.extend}</span>
+      {EXTEND_MONTHS.map((months) => (
+        <button
+          key={months}
+          type="submit"
+          name="months"
+          value={months}
+          className="h-9 rounded-lg border px-3 text-xs font-medium transition-colors hover:bg-surface-muted"
+        >
+          {interpolate(dict.extendMonths, { months })}
+        </button>
+      ))}
     </form>
   );
 }

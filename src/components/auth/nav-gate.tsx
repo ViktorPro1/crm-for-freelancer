@@ -11,6 +11,7 @@ export async function SidebarNavGate({
   labels: {
     dashboard: string;
     tools: string;
+    subscription: string;
     clients: string;
     account: string;
     admin: string;

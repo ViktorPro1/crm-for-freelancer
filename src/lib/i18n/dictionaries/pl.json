@@ -8,6 +8,7 @@
   "nav": {
     "dashboard": "Pulpit",
     "tools": "Narzędzia",
+    "subscription": "Subskrypcja",
     "clients": "Klienci",
     "admin": "Admin",
     "account": "Konto"
@@ -62,7 +63,8 @@
       }
     ],
     "closingTitle": "Gotowy, by spróbować?",
-    "closingText": "Wyślij zgłoszenie, to zajmuje minutę. Gdy tylko zostanie zatwierdzone, Twoje konto będzie gotowe do pracy."
+    "closingText": "Wyślij zgłoszenie, to zajmuje minutę. Gdy tylko zostanie zatwierdzone, Twoje konto będzie gotowe do pracy.",
+    "ctaSubscription": "Subskrypcja"
   },
   "clients": {
     "metaTitle": "Klienci",
@@ -180,7 +182,15 @@
       "pending": "Oczekuje",
       "approved": "Zatwierdzono",
       "rejected": "Odrzucono"
-    }
+    },
+    "colSub": "Subskrypcja",
+    "noTerm": "Bez terminu",
+    "unlimited": "Bez ograniczeń",
+    "expired": "termin minął",
+    "daysLeft": "{days} dni",
+    "invoiceRequested": "Poprosił o fakturę",
+    "extend": "Przedłuż:",
+    "extendMonths": "+{months} mies."
   },
   "account": {
     "title": "Konto osobiste",
@@ -273,5 +283,61 @@
         }
       ]
     }
+  },
+  "subscription": {
+    "metaTitle": "Subskrypcja",
+    "title": "Subskrypcja",
+    "lead": "Najpierw darmowy okres próbny, potem prosta miesięczna opłata. Bez ukrytych kosztów.",
+    "plansLabel": "Plany",
+    "trialTitle": "Okres próbny",
+    "trialDays": "{days} dni za darmo",
+    "trialText": "Zaczyna się, gdy administrator zatwierdzi zgłoszenie. Wszystkie funkcje są dostępne od razu.",
+    "paidTitle": "Subskrypcja",
+    "perMonth": "miesięcznie",
+    "paidText": "Płacisz tylko za miesiące, których potrzebujesz. Można przedłużyć na miesiąc, trzy miesiące lub rok.",
+    "includedTitle": "Co zawiera",
+    "included": [
+      "Nieograniczona liczba klientów",
+      "Dziennik notatek z datami przy każdym kliencie",
+      "Archiwum z przywracaniem",
+      "Twoje dane widzisz tylko ty",
+      "Interfejs w czterech językach, jasny i ciemny motyw",
+      "Darmowe kalkulatory i wzory dokumentów"
+    ],
+    "stepsTitle": "Jak to działa",
+    "steps": [
+      {
+        "title": "Rejestracja",
+        "text": "Załóż konto i poczekaj na zatwierdzenie zgłoszenia."
+      },
+      {
+        "title": "Okres próbny",
+        "text": "Po zatwierdzeniu otwiera się dostęp do CRM na darmowy okres próbny."
+      },
+      {
+        "title": "Faktura",
+        "text": "Gdy termin się kończy, kliknij „Poproś o fakturę” na tej stronie."
+      },
+      {
+        "title": "Płatność",
+        "text": "Administrator wyśle fakturę na twój e-mail. Po wpłacie na kartę dostęp zostaje przedłużony."
+      }
+    ],
+    "paymentNote": "Płatność to przelew na kartę według faktury, którą wysyłamy osobiście. Na stronie nie podaje się danych karty.",
+    "guestTitle": "Wypróbuj za darmo",
+    "guestText": "Załóż konto: po zatwierdzeniu zgłoszenia dostaniesz okres próbny bez opłat.",
+    "register": "Załóż konto",
+    "adminTitle": "Jesteś administratorem",
+    "adminText": "Twój dostęp jest bez ograniczeń. Dostęp użytkowników przedłużysz w panelu administratora.",
+    "pendingTitle": "Zgłoszenie w trakcie rozpatrywania",
+    "pendingText": "Gdy administrator zatwierdzi zgłoszenie, zacznie się okres próbny.",
+    "rejectedTitle": "Zgłoszenie odrzucone",
+    "rejectedText": "Administrator odrzucił zgłoszenie. Jeśli to pomyłka, skontaktuj się z nim.",
+    "activeTitle": "Dostęp jest aktywny",
+    "activeText": "Dostęp ważny do {date}. Pozostało dni: {days}.",
+    "expiredTitle": "Dostęp wygasł",
+    "expiredText": "Dostęp do CRM zakończył się {date}. Twoje dane są bezpieczne i po opłaceniu wszystko wróci. Poproś o fakturę.",
+    "requestInvoice": "Poproś o fakturę",
+    "invoiceSent": "Prośba wysłana. Administrator wystawi fakturę i wyśle ją na adres {email}."
   }
 }

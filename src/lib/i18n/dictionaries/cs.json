@@ -8,6 +8,7 @@
   "nav": {
     "dashboard": "Přehled",
     "tools": "Nástroje",
+    "subscription": "Předplatné",
     "clients": "Klienti",
     "admin": "Admin",
     "account": "Účet"
@@ -62,7 +63,8 @@
       }
     ],
     "closingTitle": "Chcete to zkusit?",
-    "closingText": "Odešlete žádost, zabere to minutu. Jakmile bude schválena, váš účet je připraven k práci."
+    "closingText": "Odešlete žádost, zabere to minutu. Jakmile bude schválena, váš účet je připraven k práci.",
+    "ctaSubscription": "Předplatné"
   },
   "clients": {
     "metaTitle": "Klienti",
@@ -180,7 +182,15 @@
       "pending": "Čeká",
       "approved": "Schváleno",
       "rejected": "Zamítnuto"
-    }
+    },
+    "colSub": "Předplatné",
+    "noTerm": "Bez termínu",
+    "unlimited": "Bez omezení",
+    "expired": "termín vypršel",
+    "daysLeft": "{days} dní",
+    "invoiceRequested": "Žádal o fakturu",
+    "extend": "Prodloužit:",
+    "extendMonths": "+{months} měs."
   },
   "account": {
     "title": "Osobní účet",
@@ -273,5 +283,61 @@
         }
       ]
     }
+  },
+  "subscription": {
+    "metaTitle": "Předplatné",
+    "title": "Předplatné",
+    "lead": "Nejprve bezplatná zkušební doba, poté jednoduchá měsíční platba. Bez skrytých poplatků.",
+    "plansLabel": "Tarify",
+    "trialTitle": "Zkušební doba",
+    "trialDays": "{days} dní zdarma",
+    "trialText": "Začíná, jakmile administrátor schválí vaši žádost. Všechny funkce jsou dostupné hned.",
+    "paidTitle": "Předplatné",
+    "perMonth": "měsíčně",
+    "paidText": "Platíte jen za měsíce, které potřebujete. Prodloužit lze o měsíc, tři měsíce nebo rok.",
+    "includedTitle": "Co je zahrnuto",
+    "included": [
+      "Neomezený počet klientů",
+      "Deník poznámek s daty u každého klienta",
+      "Archiv s obnovením",
+      "Vaše data vidíte jen vy",
+      "Rozhraní ve čtyřech jazycích, světlý a tmavý motiv",
+      "Bezplatné kalkulačky a vzory dokumentů"
+    ],
+    "stepsTitle": "Jak to funguje",
+    "steps": [
+      {
+        "title": "Registrace",
+        "text": "Vytvořte účet a počkejte na schválení žádosti."
+      },
+      {
+        "title": "Zkušební doba",
+        "text": "Po schválení se otevře přístup do CRM na bezplatnou zkušební dobu."
+      },
+      {
+        "title": "Faktura",
+        "text": "Když se doba blíží ke konci, klikněte na této stránce na „Požádat o fakturu“."
+      },
+      {
+        "title": "Platba",
+        "text": "Administrátor pošle fakturu na váš e-mail. Po zaplacení převodem na kartu se přístup prodlouží."
+      }
+    ],
+    "paymentNote": "Platba je převod na kartu podle faktury, kterou zasíláme osobně. Na webu se nezadávají údaje o kartě.",
+    "guestTitle": "Vyzkoušejte zdarma",
+    "guestText": "Vytvořte si účet: po schválení žádosti získáte zkušební dobu bez platby.",
+    "register": "Vytvořit účet",
+    "adminTitle": "Jste administrátor",
+    "adminText": "Váš přístup je bez omezení. Uživatelům můžete přístup prodloužit v administraci.",
+    "pendingTitle": "Žádost se posuzuje",
+    "pendingText": "Jakmile administrátor žádost schválí, začne zkušební doba.",
+    "rejectedTitle": "Žádost zamítnuta",
+    "rejectedText": "Administrátor vaši žádost zamítl. Pokud jde o omyl, kontaktujte ho.",
+    "activeTitle": "Přístup je aktivní",
+    "activeText": "Přístup platí do {date}. Zbývá dní: {days}.",
+    "expiredTitle": "Přístup vypršel",
+    "expiredText": "Váš přístup do CRM skončil {date}. Data jsou v bezpečí a po zaplacení se vše vrátí. Požádejte o fakturu.",
+    "requestInvoice": "Požádat o fakturu",
+    "invoiceSent": "Žádost odeslána. Administrátor vystaví fakturu a pošle ji na {email}."
   }
 }

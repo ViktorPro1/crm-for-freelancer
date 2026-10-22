@@ -9,6 +9,7 @@ type Props = {
     ctaSignIn: string;
     ctaClients: string;
     ctaStatus: string;
+    ctaSubscription: string;
   };
 };
 
@@ -33,6 +34,15 @@ export async function HomeCta({ locale, labels }: Props) {
           {labels.ctaSignIn}
         </Link>
       </>
+    );
+  }
+
+  // Схвалений, але термін підписки минув: ведемо на сторінку підписки.
+  if (access.status === "approved" && access.expired) {
+    return (
+      <Link href={`/${locale}/subscription`} className={primary}>
+        {labels.ctaSubscription}
+      </Link>
     );
   }
 
