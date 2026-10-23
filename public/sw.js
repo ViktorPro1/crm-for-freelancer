@@ -3,7 +3,7 @@
 // Кешуються лише файли, які не змінюються (скрипти й стилі з /_next/static та іконки).
 // Змінюєш цей файл або іконки: збільш VERSION, і старий кеш буде видалено.
 
-const VERSION = "v1";
+const VERSION = "v2";
 const CACHE = `crm-static-${VERSION}`;
 const OFFLINE_URL = "/offline.html";
 const PRECACHE = [
