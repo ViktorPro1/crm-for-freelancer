@@ -12,6 +12,7 @@ export async function SidebarNavGate({
     dashboard: string;
     tools: string;
     subscription: string;
+    mobileApp: string;
     clients: string;
     account: string;
     admin: string;

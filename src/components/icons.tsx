@@ -150,6 +150,16 @@ export function CardIcon({ className }: IconProps) {
   );
 }
 
+// Телефон: пункт "Застосунок".
+export function PhoneIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <rect x="7" y="2.5" width="10" height="19" rx="2" />
+      <path d="M11 18.5h2" />
+    </Svg>
+  );
+}
+
 // Знак проєкту: літера F з галочкою (файл public/images/logo-mark.png).
 export function BrandMark({ className }: IconProps) {
   return (

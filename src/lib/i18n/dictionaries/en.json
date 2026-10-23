@@ -11,7 +11,8 @@
     "subscription": "Subscription",
     "clients": "Clients",
     "admin": "Admin",
-    "account": "Account"
+    "account": "Account",
+    "mobileApp": "App"
   },
   "controls": {
     "toggleTheme": "Switch theme",
@@ -355,5 +356,26 @@
     "expiredText": "Your access to the CRM ended on {date}. Your data is safe and everything returns after payment. Request an invoice.",
     "requestInvoice": "Request an invoice",
     "invoiceSent": "Request sent. The administrator will issue an invoice and send it to {email}."
+  },
+  "mobileApp": {
+    "metaTitle": "App for your phone",
+    "title": "App for your phone",
+    "lead": "You can install FreelanceCRM on your phone like a regular app. It opens without an address bar, has its own icon and works the same as the website.",
+    "androidTitle": "Android",
+    "download": "Download for Android",
+    "fileInfo": "File FreelanceCRM.apk, 2.2 MB",
+    "stepsTitle": "How to install",
+    "steps": [
+      "Download the FreelanceCRM.apk file to your phone and open it: from the download notification or from the Downloads folder.",
+      "If Android asks for permission to install from this source, allow it for your browser or file manager. This is needed because the app is not from Google Play.",
+      "If Google Play Protect warns about an unknown app, choose \"More details\", then \"Install anyway\".",
+      "Open FreelanceCRM from your app screen and sign in to your account."
+    ],
+    "whatTitle": "What this app is",
+    "whatText": "It is the same website in its own window, with no separate database. All data is kept in your account, so your clients are the same on the phone and on the computer. Website updates appear on their own, you do not need to reinstall the file.",
+    "warnTitle": "Why Android shows a warning",
+    "warnText": "The app is not published on Google Play yet, so the system shows a general warning for all files from other sources. Install it only from this page.",
+    "otherTitle": "iPhone and computer",
+    "otherText": "On iPhone, open the site in Safari, tap Share and choose \"Add to Home Screen\". On a computer in Chrome or Edge, click the install icon in the address bar."
   }
 }

@@ -11,7 +11,8 @@
     "subscription": "Předplatné",
     "clients": "Klienti",
     "admin": "Admin",
-    "account": "Účet"
+    "account": "Účet",
+    "mobileApp": "Aplikace"
   },
   "controls": {
     "toggleTheme": "Přepnout motiv",
@@ -355,5 +356,26 @@
     "expiredText": "Váš přístup do CRM skončil {date}. Data jsou v bezpečí a po zaplacení se vše vrátí. Požádejte o fakturu.",
     "requestInvoice": "Požádat o fakturu",
     "invoiceSent": "Žádost odeslána. Administrátor vystaví fakturu a pošle ji na {email}."
+  },
+  "mobileApp": {
+    "metaTitle": "Aplikace pro telefon",
+    "title": "Aplikace pro telefon",
+    "lead": "FreelanceCRM můžete nainstalovat do telefonu jako běžnou aplikaci. Otevírá se bez adresního řádku, má vlastní ikonu a funguje stejně jako web.",
+    "androidTitle": "Android",
+    "download": "Stáhnout pro Android",
+    "fileInfo": "Soubor FreelanceCRM.apk, 2,2 MB",
+    "stepsTitle": "Jak nainstalovat",
+    "steps": [
+      "Stáhněte soubor FreelanceCRM.apk do telefonu a otevřete ho: z oznámení o stažení nebo ze složky Stažené.",
+      "Pokud se Android zeptá na povolení instalace z tohoto zdroje, povolte ji pro prohlížeč nebo správce souborů. Je to potřeba, protože aplikace není z obchodu Google Play.",
+      "Pokud Google Play Protect upozorní na neznámou aplikaci, vyberte „Další podrobnosti“ a potom „Přesto nainstalovat“.",
+      "Otevřete FreelanceCRM z obrazovky aplikací a přihlaste se ke svému účtu."
+    ],
+    "whatTitle": "Co je to za aplikaci",
+    "whatText": "Je to stejný web ve vlastním okně, bez samostatné databáze. Všechna data jsou ve vašem účtu, takže klienti jsou stejní v telefonu i v počítači. Aktualizace webu se objeví samy, soubor není třeba instalovat znovu.",
+    "warnTitle": "Proč Android varuje",
+    "warnText": "Aplikace zatím není zveřejněna v Google Play, proto systém zobrazuje obecné varování pro všechny soubory z jiných zdrojů. Instalujte ji jen z této stránky.",
+    "otherTitle": "iPhone a počítač",
+    "otherText": "Na iPhonu otevřete web v Safari, klepněte na Sdílet a vyberte „Přidat na plochu“. V počítači v Chrome nebo Edge klikněte na ikonu instalace v adresním řádku."
   }
 }

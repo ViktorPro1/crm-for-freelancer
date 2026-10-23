@@ -11,7 +11,8 @@
     "subscription": "Subskrypcja",
     "clients": "Klienci",
     "admin": "Admin",
-    "account": "Konto"
+    "account": "Konto",
+    "mobileApp": "Aplikacja"
   },
   "controls": {
     "toggleTheme": "Przełącz motyw",
@@ -355,5 +356,26 @@
     "expiredText": "Dostęp do CRM zakończył się {date}. Twoje dane są bezpieczne i po opłaceniu wszystko wróci. Poproś o fakturę.",
     "requestInvoice": "Poproś o fakturę",
     "invoiceSent": "Prośba wysłana. Administrator wystawi fakturę i wyśle ją na adres {email}."
+  },
+  "mobileApp": {
+    "metaTitle": "Aplikacja na telefon",
+    "title": "Aplikacja na telefon",
+    "lead": "FreelanceCRM można zainstalować na telefonie jak zwykłą aplikację. Otwiera się bez paska adresu, ma własną ikonę i działa tak samo jak strona.",
+    "androidTitle": "Android",
+    "download": "Pobierz na Androida",
+    "fileInfo": "Plik FreelanceCRM.apk, 2,2 MB",
+    "stepsTitle": "Jak zainstalować",
+    "steps": [
+      "Pobierz plik FreelanceCRM.apk na telefon i otwórz go: z powiadomienia o pobraniu lub z folderu Pobrane.",
+      "Jeśli Android zapyta o zgodę na instalację z tego źródła, zezwól na to przeglądarce lub menedżerowi plików. To potrzebne, bo aplikacja nie pochodzi ze sklepu Google Play.",
+      "Jeśli Google Play Protect ostrzeże przed nieznaną aplikacją, wybierz „Więcej szczegółów”, a potem „Zainstaluj mimo to”.",
+      "Otwórz FreelanceCRM z ekranu aplikacji i zaloguj się na swoje konto."
+    ],
+    "whatTitle": "Co to za aplikacja",
+    "whatText": "To ta sama strona we własnym oknie, bez osobnej bazy danych. Wszystkie dane są na Twoim koncie, więc klienci są tacy sami na telefonie i komputerze. Aktualizacje strony pojawiają się same, nie trzeba instalować pliku ponownie.",
+    "warnTitle": "Dlaczego Android ostrzega",
+    "warnText": "Aplikacja nie jest jeszcze opublikowana w Google Play, więc system pokazuje ogólne ostrzeżenie dla wszystkich plików z innych źródeł. Instaluj ją tylko z tej strony.",
+    "otherTitle": "iPhone i komputer",
+    "otherText": "Na iPhonie otwórz stronę w Safari, naciśnij „Udostępnij” i wybierz „Do ekranu początkowego”. Na komputerze w Chrome lub Edge kliknij ikonę instalacji w pasku adresu."
   }
 }

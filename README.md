@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FreelanceCRM
 
-## Getting Started
+Невелика CRM для фрилансера: облік клієнтів із щоденником нотаток, калькулятори вартості проєкту
+й ставки, шаблони документів, реєстрація із схваленням адміністратором та підписка з ручною оплатою.
+Інтерфейс чотирма мовами: українська (основна), англійська, польська, чеська.
 
-First, run the development server:
+Сайт: https://freelancer-crm-ua.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Проєкт навчальний: його будують поступово, по одному невеликому кроку.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Можливості
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Реєстрація і вхід** через Neon Auth, підтвердження пошти кодом з листа (можна вимкнути в Neon).
+- **Схвалення заявок.** Нова людина потрапляє на сторінку «Заявка в обробці», адміністратор схвалює її в адмінці.
+- **Клієнти.** Додавання, редагування, архів (з відновленням або остаточним видаленням), щоденник нотаток.
+  Кожен користувач бачить лише своїх клієнтів, адміністратор бачить усіх.
+- **Інструменти** (відкриті всім, навіть гостям): калькулятор вартості проєкту, калькулятор погодинної ставки,
+  шаблони документів.
+- **Підписка.** Безкоштовний пробний період, потім доступ до дати «оплачено до». Оплата вручну на картку,
+  адміністратор вказує дату в адмінці. Після закінчення доступ до CRM закривається.
+- **Кабінет.** Зміна імені та пароля.
+- **Адмінка.** Заявки, схвалення, відхилення, продовження доступу на 1, 3 або 12 місяців.
+- **Застосунок для телефона.** PWA (встановлення з браузера) і Android-застосунок (TWA) для завантаження
+  на сторінці «Застосунок».
+- Світла й темна теми, мобільна адаптація.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Технології
 
-## Learn More
+| Що | Чим |
+|---|---|
+| Фреймворк | Next.js 16 (App Router, Turbopack, Cache Components) |
+| Мова | TypeScript, React 19 |
+| Стилі | Tailwind CSS 4 |
+| База даних | Neon Postgres через `@neondatabase/serverless` |
+| Автентифікація | Neon Auth (`@neondatabase/auth`) |
+| Хостинг | Vercel |
 
-To learn more about Next.js, take a look at the following resources:
+Next.js у цьому проєкті має зміни порівняно зі старими версіями. Перед змінами в коді дивись
+документацію в `node_modules/next/dist/docs/` і файл `AGENTS.md`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Швидкий старт
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Потрібні Node.js і npm.
 
-## Deploy on Vercel
+    npm install
+    npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Сайт відкриється на http://localhost:3000. Без змінних середовища (нижче) сторінки,
+що працюють з базою чи входом, не запустяться.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Змінні середовища
+
+Створи файл `.env.local` у корені проєкту. Він є в `.gitignore` і не потрапляє на GitHub.
+
+| Змінна | Що це |
+|---|---|
+| `DATABASE_URL` | рядок підключення до Neon Postgres |
+| `NEON_AUTH_BASE_URL` | адреса Neon Auth зі сторінки Auth у Neon Console |
+| `NEON_AUTH_COOKIE_SECRET` | довгий випадковий рядок, щонайменше 32 символи, для підпису cookie |
+| `ADMIN_EMAIL` | пошта адміністратора: людина з цією поштою потрапляє в адмінку |
+
+Значення нікому не показуй і не коміть. На Vercel ті самі чотири змінні додаються в налаштуваннях
+проєкту (Settings, Environment Variables).
+
+### База даних
+
+Зміни схеми лежать у папці `migrations/` і застосовуються по порядку:
+
+    npm run db:status    # що вже застосовано
+    npm run db:migrate   # застосувати нові файли
+
+Подробиці та правила написання нових міграцій: `migrations/README.md`.
+
+### Neon Auth
+
+У Neon Console, розділ Auth, Configure Auth:
+
+- у Domains додай адреси сайту (`https://...` без слеша в кінці);
+- «Allow Localhost» потрібен лише для розробки, перед публічним запуском його варто вимкнути;
+- «Sign-up with Email» увімкнено;
+- «Verify at Sign-up» з методом «Verification code» вмикає підтвердження пошти кодом.
+  Якщо щось піде не так, достатньо вимкнути цей перемикач, код працює і без нього.
+
+## Команди
+
+| Команда | Що робить |
+|---|---|
+| `npm run dev` | сервер розробки |
+| `npm run build` | збірка для production |
+| `npm start` | запуск зібраного сайту (спершу зупини `npm run dev`, інакше порт 3000 буде зайнятий) |
+| `npm run lint` | перевірка ESLint |
+| `npm run db:status` | стан міграцій |
+| `npm run db:migrate` | застосування міграцій |
+
+Допоміжні скрипти: `node --env-file=.env.local scripts/check-db.mjs` перевіряє підключення до бази,
+`scripts/check-auth-env.mjs` перевіряє змінні Neon Auth, не показуючи секрет.
+
+## Структура
+
+    migrations/        SQL-міграції бази
+    scripts/           скрипт міграцій і допоміжні перевірки
+    public/            sw.js, offline.html, іконки, зображення,
+                       downloads/ (APK), .well-known/assetlinks.json
+    src/proxy.ts       вибір мови: перенаправлення на /uk, /en, /pl, /cs
+    src/app/[lang]/    сторінки сайту (головна, clients, tools, subscription,
+                       account, admin, sign-in, sign-up, verify, pending, mobile-app)
+    src/app/api/auth/  маршрут Neon Auth
+    src/app/manifest.ts  опис PWA
+    src/components/    компоненти (клієнти, інструменти, форми входу, меню)
+    src/lib/           робота з базою, авторизація й доступ (auth/session.ts),
+                       підписка (plans.ts, profiles.ts), калькулятори, переклади (i18n/)
+
+### Доступ
+
+`getAccess()` визначає, хто користувач: гість, учасник із заявкою в обробці, схвалений, прострочений
+або адміністратор. Сторінки CRM викликають `requireApproved()`, адмінка викликає `requireAdmin()`.
+Власника запису перевіряє SQL-запит (`owner_id`), а не лише інтерфейс, а серверні дії перевіряють
+права ще раз.
+
+### Мови
+
+Переклади лежать у `src/lib/i18n/dictionaries/{uk,en,pl,cs}.json`. Типи ключів беруться з `uk.json`,
+тож нового ключа у будь-якому з файлів, якого немає в `uk.json`, TypeScript не прийме.
+Польські й чеські тексти бажано показати носієві мови або юристу перед публічним запуском.
+
+### Ціни й підписка
+
+Усе налаштовується в `src/lib/plans.ts`: тривалість пробного періоду (`TRIAL_DAYS`), ціна за місяць
+у кожній валюті (`PRICE_PER_MONTH`), варіанти продовження в адмінці (`EXTEND_MONTHS`).
+Ціна на сайті лише інформація, суму для рахунку називає адміністратор.
+
+## Розгортання
+
+Сайт розгорнуто на Vercel: кожен `git push` у головну гілку запускає нову збірку.
+Після зміни схеми бази запусти `npm run db:migrate`. Він використовує `DATABASE_URL` з `.env.local`,
+а це та сама база Neon, що й на Vercel, якщо рядок підключення той самий.
+
+## PWA і Android-застосунок
+
+- **PWA.** `src/app/manifest.ts` описує застосунок, `public/sw.js` кешує лише статичні файли й іконки
+  та показує `public/offline.html`, коли немає мережі. Service worker вмикається тільки в production.
+  Змінюєш `sw.js` або іконки: збільш `VERSION` у `sw.js`, щоб старий кеш видалився.
+- **Android (TWA).** Файл `public/downloads/FreelanceCRM.apk` збирається на pwabuilder.com
+  (Package For Stores, Android, вкладка Google Play, підпис «New» або «Use mine»).
+  Файл `public/.well-known/assetlinks.json` містить відбиток ключа підпису й прибирає адресний рядок
+  у застосунку. Пакет: `ua.freelancercrm.app`.
+- **Нова версія APK** потрібна лише тоді, коли змінюються іконка чи екран запуску, бо вони вшиті в APK.
+  Зміни сайту доходять до застосунку самі. При пересборці вибери «Use mine», підстав той самий
+  `signing.keystore` і збільш Version code, тоді відбиток у `assetlinks.json` лишиться тим самим.
+- **Ключ підпису** (`signing.keystore`) і файл із паролями (`signing-key-info.txt`) зберігай окремо
+  в надійному місці й **ніколи не додавай у git**. Без ключа оновити застосунок неможливо.
+
+## Перед публічним запуском
+
+- вимкнути «Allow Localhost» у Neon Auth;
+- перевірити польські й чеські переклади;
+- перевірити ціни в `src/lib/plans.ts`;
+- пройти шлях нового користувача: реєстрація, лист із кодом, пробний період, рахунок, продовження.
+
+## Плани
+
+- публікація в Google Play (потрібен платний акаунт розробника);
+- скріншоти й орієнтація в маніфесті PWA;
+- ціни за період (3 і 12 місяців) на сторінці підписки.
