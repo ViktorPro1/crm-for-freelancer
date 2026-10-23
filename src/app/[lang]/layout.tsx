@@ -7,6 +7,7 @@ import {
   LanguageSwitcher,
   LanguageSwitcherFallback,
 } from "@/components/language-switcher";
+import { Analytics } from "@/components/analytics";
 import { AuthButton, AuthButtonFallback } from "@/components/auth/auth-button";
 import { SidebarNavGate } from "@/components/auth/nav-gate";
 import { ServiceWorkerRegister } from "@/components/service-worker-register";
@@ -59,6 +60,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
       </head>
       <body>
         <ServiceWorkerRegister />
+        <Analytics />
         <div className="min-h-screen md:flex">
           {/* На телефоні це верхня панель (сітка з двох колонок), на великому екрані бічне меню. */}
           <aside className="grid grid-cols-[1fr_auto] items-center bg-sidebar px-4 py-3 text-sidebar-foreground md:sticky md:top-0 md:flex md:h-screen md:w-64 md:shrink-0 md:flex-col md:items-stretch md:px-3 md:py-0">
