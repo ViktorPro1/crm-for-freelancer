@@ -1,11 +1,32 @@
+"use client";
+
 import Script from "next/script";
+import { useEffect, useSyncExternalStore } from "react";
+import {
+  clearAnalyticsCookies,
+  readConsent,
+  subscribeConsent,
+} from "@/lib/consent";
 import { GA_MEASUREMENT_ID } from "@/lib/site";
 
-// Google Analytics (GA4). Вмикається лише в production, щоб розробка на localhost
-// не потрапляла в статистику. Скрипт вантажиться після того, як сторінка стала інтерактивною,
-// тому на швидкість першого показу майже не впливає.
+// Google Analytics (GA4). Вмикається лише в production і лише після згоди людини.
+// Без згоди (або після її відкликання) скрипт не вантажиться, а cookie _ga видаляються.
 export function Analytics() {
-  if (process.env.NODE_ENV !== "production") {
+  // На сервері й під час гідратації відповідь undefined: аналітика вимкнена.
+  const consent = useSyncExternalStore(subscribeConsent, readConsent, () => undefined);
+  const enabled = process.env.NODE_ENV === "production" && consent === "granted";
+
+  useEffect(() => {
+    // Прапорець, який Google сам враховує: true повністю зупиняє збір даних.
+    (window as unknown as Record<string, boolean>)[`ga-disable-${GA_MEASUREMENT_ID}`] =
+      !enabled;
+
+    if (consent !== undefined && consent !== "granted") {
+      clearAnalyticsCookies();
+    }
+  }, [enabled, consent]);
+
+  if (!enabled) {
     return null;
   }
 

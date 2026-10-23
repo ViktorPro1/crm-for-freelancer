@@ -377,5 +377,291 @@
     "warnText": "Aplikace zatím není zveřejněna v Google Play, proto systém zobrazuje obecné varování pro všechny soubory z jiných zdrojů. Instalujte ji jen z této stránky.",
     "otherTitle": "iPhone a počítač",
     "otherText": "Na iPhonu otevřete web v Safari, klepněte na Sdílet a vyberte „Přidat na plochu“. V počítači v Chrome nebo Edge klikněte na ikonu instalace v adresním řádku."
+  },
+  "legal": {
+    "updatedLabel": "Poslední aktualizace",
+    "updatedDate": "23. října 2026",
+    "contact": {
+      "title": "Kontakt",
+      "email": "Dotazy k těmto stránkám nebo vašim údajům posílejte na adresu",
+      "github": "Dotaz můžete položit přes repozitář projektu na GitHubu:"
+    },
+    "footer": {
+      "navLabel": "Informace o webu",
+      "about": "O projektu",
+      "terms": "Podmínky",
+      "privacy": "Soukromí a cookies",
+      "cookieSettings": "Nastavení cookies",
+      "copyright": "© 2026 FreelanceCRM"
+    },
+    "consent": {
+      "title": "Cookies a analytika",
+      "text": "Používáme nezbytné cookies, aby web fungoval. S vaším souhlasem zapneme také Google Analytics, abychom chápali, jak se web používá. Můžete odmítnout a web bude fungovat stejně.",
+      "accept": "Přijmout analytiku",
+      "decline": "Odmítnout",
+      "learnMore": "Více informací"
+    },
+    "about": {
+      "metaTitle": "O projektu",
+      "title": "O projektu",
+      "lead": "FreelanceCRM je malé CRM pro freelancery: klienti, poznámky, kalkulačky a vzory dokumentů na jednom místě.",
+      "sections": [
+        {
+          "heading": "Proč vzniklo",
+          "paragraphs": [
+            "Freelanceři obvykle nepotřebují velký systém s desítkami nastavení. Chtějí vědět, kdo je klient, na čem se dohodli, kolik práce stojí a které dokumenty poslat. FreelanceCRM to shrnuje do jednoduchého rozhraní, které funguje v telefonu i na počítači."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Co už je hotové",
+          "paragraphs": [],
+          "items": [
+            "Klienti s archivem, obnovením a deníkem poznámek.",
+            "Kalkulačky ceny projektu a hodinové sazby.",
+            "Vzory dokumentů.",
+            "Čtyři jazyky: ukrajinština, angličtina, polština, čeština.",
+            "Instalace do telefonu jako aplikace (PWA a Android)."
+          ]
+        },
+        {
+          "heading": "Jak to funguje",
+          "paragraphs": [
+            "Registrace je zdarma. Novou žádost posuzuje administrátor, po schválení platí bezplatné zkušební období, poté přístup na základě předplatného. Platba je ruční: administrátor pošle fakturu a otevře přístup do dohodnutého data. Podrobnosti jsou na stránce „Předplatné“."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Kdo za tím stojí",
+          "paragraphs": [
+            "Projekt vytváří a udržuje jeden nezávislý vývojář. Rozvíjí se postupně, takže některé věci se mohou měnit a některé ještě chybí: například vystavování faktur v systému a evidence projektů zatím nejsou hotové."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Otevřenost",
+          "paragraphs": [
+            "Zdrojový kód lze prohlížet v repozitáři projektu na GitHubu. Je chráněn autorským právem, podmínky jsou v souboru LICENSE."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "metaTitle": "Podmínky používání",
+      "title": "Podmínky používání",
+      "lead": "Tyto podmínky upravují používání webu FreelanceCRM. Registrací a používáním služby s nimi souhlasíte.",
+      "sections": [
+        {
+          "heading": "Služba",
+          "paragraphs": [
+            "FreelanceCRM je online služba pro evidenci klientů, poznámek, výpočtů a vzorů dokumentů. Část nástrojů je dostupná bez registrace, pro evidenci klientů je potřeba účet."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Účet",
+          "paragraphs": [],
+          "items": [
+            "Uveďte skutečný e-mail, ke kterému máte přístup, a potvrďte jej kódem z e-mailu.",
+            "Odpovídáte za uchování hesla a za jednání pod svým účtem.",
+            "Jeden účet je určen pro jednu osobu.",
+            "Služba je určena pro zletilé osoby."
+          ]
+        },
+        {
+          "heading": "Schválení a přístup",
+          "paragraphs": [
+            "Novou žádost posuzuje administrátor. Může ji schválit, zamítnout nebo uzavřít přístup, pokud jsou podmínky porušeny. Po schválení platí bezplatné zkušební období, jeho délka je uvedena na stránce „Předplatné“."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Předplatné a platba",
+          "paragraphs": [],
+          "items": [
+            "Placený přístup je otevřen do data „zaplaceno do“.",
+            "Platba je ruční: na vaši žádost administrátor pošle fakturu a po zaplacení otevře přístup.",
+            "Aktuální cena je uvedena na stránce „Předplatné“. Žádné automatické strhávání plateb neexistuje a předplatné se samo neprodlužuje.",
+            "Podmínky vrácení peněz, pokud je potřebujete, dohodnete s administrátorem před platbou.",
+            "Po skončení přístupu je přihlášení do evidence klientů uzavřeno, vaše data se však nemažou."
+          ]
+        },
+        {
+          "heading": "Vaše data",
+          "paragraphs": [],
+          "items": [
+            "Údaje o klientech a poznámky, které zadáváte, patří vám. Službě dáváte právo je ukládat a zpracovávat pouze pro provoz služby.",
+            "Odpovídáte za to, že máte zákonné právo tyto údaje zadávat, včetně osobních údajů svých klientů, a že je používáte v souladu se zákonem.",
+            "Klienty můžete archivovat a trvale mazat a požádat o smazání účtu.",
+            "Více informací: stránka „Soukromí a cookies“."
+          ]
+        },
+        {
+          "heading": "Pravidla používání",
+          "paragraphs": [
+            "Je zakázáno porušovat zákon, získávat přístup k cizím údajům nebo účtům, přetěžovat službu a kopírovat či šířit službu, její kód a vzhled bez povolení. O nalezených zranitelnostech informujte soukromě, jak popisují zásady zabezpečení projektu."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Kalkulačky a vzory",
+          "paragraphs": [
+            "Výsledky kalkulaček a texty vzorů dokumentů mají informativní charakter. Nejsou právním, daňovým ani finančním poradenstvím. Před použitím vzoru jej zkontrolujte a v případě potřeby přizpůsobte své situaci a právu své země."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Dostupnost a změny",
+          "paragraphs": [
+            "Služba se rozvíjí postupně a je poskytována „tak, jak je“. Nezaručujeme nepřerušený provoz, možné jsou výpadky a funkce se mohou měnit. Důležitá data si zálohujte sami."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Omezení odpovědnosti",
+          "paragraphs": [
+            "V rozsahu povoleném zákonem vlastník služby neodpovídá za nepřímé škody, ušlý zisk ani ztrátu dat způsobenou používáním služby. Tyto podmínky neomezují práva spotřebitele, která nelze podle práva jeho země omezit."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Ukončení používání",
+          "paragraphs": [
+            "Používání můžete kdykoli ukončit. Administrátor může přístup pozastavit nebo uzavřít při porušení podmínek. Na vaši žádost se účet a související data smažou, jak popisují zásady ochrany soukromí."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Změny a rozhodné právo",
+          "paragraphs": [
+            "Podmínky se mohou aktualizovat, nová verze platí od okamžiku zveřejnění na této stránce. Podmínky se řídí právem Ukrajiny, pokud závazná ustanovení práva země bydliště spotřebitele nestanoví jinak."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "privacy": {
+      "metaTitle": "Soukromí a cookies",
+      "title": "Soukromí a cookies",
+      "lead": "Tato stránka vysvětluje, jaké údaje FreelanceCRM shromažďuje, proč, komu je předává a jaká máte práva.",
+      "sections": [
+        {
+          "heading": "Kdo odpovídá za údaje",
+          "paragraphs": [
+            "Vlastník služby FreelanceCRM určuje, proč a jak se zpracovávají údaje účtů. Údaje o vašich klientech, které zadáváte, zpracováváte na vlastní odpovědnost a služba je pro vás pouze ukládá."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Jaké údaje shromažďujeme",
+          "paragraphs": [],
+          "items": [
+            "Účet: jméno, e-mail a heslo. Heslo je uloženo pouze jako chráněný otisk v Neon Auth, nevidíme ho.",
+            "Stav žádosti a předplatného: schváleno či ne, datum konce přístupu, zda byla vyžádána faktura.",
+            "Údaje, které zadáváte: klienti, poznámky a jejich data.",
+            "Technické údaje: IP adresa, typ prohlížeče a záznamy požadavků, které vede hosting pro bezpečnost a provoz webu.",
+            "Nastavení: jazyk a motiv.",
+            "Statistiky návštěv Google Analytics, pouze pokud dáte souhlas."
+          ]
+        },
+        {
+          "heading": "Proč a na jakém základě",
+          "paragraphs": [],
+          "items": [
+            "Abychom vytvořili účet a poskytovali službu: plnění smlouvy (podmínky používání).",
+            "Abychom poslali kód pro potvrzení e-mailu: plnění smlouvy.",
+            "Abychom chránili službu před zneužitím a chybami: oprávněný zájem.",
+            "Abychom chápali, jak se web používá, a vylepšovali ho: váš souhlas (Google Analytics). Bez souhlasu se analytika nezapne."
+          ]
+        },
+        {
+          "heading": "Komu údaje předáváme",
+          "paragraphs": [
+            "Údaje zpracovávají poskytovatelé, bez nichž služba nefunguje: Neon (databáze a ověřování; databáze se nachází v EU, ve Frankfurtu), Vercel (hosting webu) a pouze s vaším souhlasem Google (analytika). Někteří z nich mohou údaje zpracovávat mimo EU a Ukrajinu, podrobnosti najdete v jejich zásadách ochrany soukromí. Vaše údaje neprodáváme a nepředáváme inzerentům."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Jak dlouho údaje uchováváme",
+          "paragraphs": [
+            "Údaje účtu a vaše záznamy se uchovávají, dokud službu používáte. Archivovaní klienti zůstávají, dokud je trvale nesmažete. Na vaši žádost smažeme účet a související údaje. Zálohy poskytovatelů mohou existovat ještě omezenou dobu."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Vaše práva",
+          "paragraphs": [],
+          "items": [
+            "Zjistit, jaké údaje o vás uchováváme, a získat jejich kopii.",
+            "Opravit nepřesné údaje.",
+            "Smazat údaje nebo omezit jejich zpracování.",
+            "Vznést námitku proti zpracování a získat údaje ve vhodném formátu.",
+            "Kdykoli odvolat souhlas s analytikou: odkaz „Nastavení cookies“ dole na stránce.",
+            "Podat stížnost u úřadu pro ochranu osobních údajů: v Česku je to Úřad pro ochranu osobních údajů, na Ukrajině Zmocněnec Nejvyšší rady Ukrajiny pro lidská práva."
+          ]
+        },
+        {
+          "heading": "Děti",
+          "paragraphs": [
+            "Služba není určena osobám mladším 18 let. Jejich údaje vědomě neshromažďujeme."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Změny",
+          "paragraphs": [
+            "Tuto stránku můžeme aktualizovat. Datum poslední verze je uvedeno nahoře."
+          ],
+          "items": []
+        }
+      ],
+      "cookieHeading": "Cookies a místní úložiště",
+      "cookieIntro": "Některé soubory jsou nutné pro fungování webu a nelze je vypnout. Analytika se zapne až po vašem souhlasu. Volbu můžete kdykoli změnit odkazem „Nastavení cookies“ dole na stránce.",
+      "cookieColumns": [
+        "Název",
+        "Účel",
+        "Doba",
+        "Potřebný souhlas"
+      ],
+      "cookieRows": [
+        [
+          "Relace přihlášení (Neon Auth)",
+          "Udržuje vás přihlášené po přihlášení",
+          "Do odhlášení nebo konce relace",
+          "Ne"
+        ],
+        [
+          "NEXT_LOCALE",
+          "Pamatuje jazyk webu",
+          "1 rok",
+          "Ne"
+        ],
+        [
+          "theme (místní úložiště)",
+          "Pamatuje světlý nebo tmavý motiv",
+          "Dokud nevymažete data prohlížeče",
+          "Ne"
+        ],
+        [
+          "crm-consent (místní úložiště)",
+          "Pamatuje vaši volbu ohledně cookies",
+          "Dokud nevymažete data prohlížeče nebo nezměníte volbu",
+          "Ne"
+        ],
+        [
+          "Mezipaměť aplikace (service worker)",
+          "Ukládá statické soubory a ikony pro rychlý start a offline stránku, neobsahuje osobní údaje",
+          "Do aktualizace verze",
+          "Ne"
+        ],
+        [
+          "_ga, _ga_* (Google Analytics)",
+          "Statistiky návštěv",
+          "Až 2 roky",
+          "Ano"
+        ]
+      ]
+    }
   }
 }

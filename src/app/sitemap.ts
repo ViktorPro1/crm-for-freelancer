@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 
 // Публічні сторінки, які мають бути в пошуку. Кабінет, адмінка й клієнти приховані за входом,
 // тож їх тут немає. Для кожної сторінки перелічено всі мови, щоб пошукач показував потрібну.
-const PUBLIC_PAGES = ["", "/tools", "/subscription", "/mobile-app"];
+const PUBLIC_PAGES = ["", "/tools", "/subscription", "/mobile-app", "/about", "/terms", "/privacy"];
 
 function pageUrl(locale: string, page: string) {
   return `${SITE_URL}/${locale}${page}`;

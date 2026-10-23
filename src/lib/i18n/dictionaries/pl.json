@@ -377,5 +377,291 @@
     "warnText": "Aplikacja nie jest jeszcze opublikowana w Google Play, więc system pokazuje ogólne ostrzeżenie dla wszystkich plików z innych źródeł. Instaluj ją tylko z tej strony.",
     "otherTitle": "iPhone i komputer",
     "otherText": "Na iPhonie otwórz stronę w Safari, naciśnij „Udostępnij” i wybierz „Do ekranu początkowego”. Na komputerze w Chrome lub Edge kliknij ikonę instalacji w pasku adresu."
+  },
+  "legal": {
+    "updatedLabel": "Ostatnia aktualizacja",
+    "updatedDate": "23 października 2026",
+    "contact": {
+      "title": "Kontakt",
+      "email": "Pytania dotyczące tych stron lub Twoich danych wysyłaj na adres",
+      "github": "Pytania możesz zadać przez repozytorium projektu na GitHubie:"
+    },
+    "footer": {
+      "navLabel": "Informacje o serwisie",
+      "about": "O projekcie",
+      "terms": "Regulamin",
+      "privacy": "Prywatność i cookies",
+      "cookieSettings": "Ustawienia cookies",
+      "copyright": "© 2026 FreelanceCRM"
+    },
+    "consent": {
+      "title": "Cookies i analityka",
+      "text": "Używamy niezbędnych plików cookie, aby serwis działał. Za Twoją zgodą włączamy też Google Analytics, aby rozumieć, jak serwis jest używany. Możesz odmówić, a serwis będzie działał tak samo.",
+      "accept": "Zaakceptuj analitykę",
+      "decline": "Odrzuć",
+      "learnMore": "Dowiedz się więcej"
+    },
+    "about": {
+      "metaTitle": "O projekcie",
+      "title": "O projekcie",
+      "lead": "FreelanceCRM to małe CRM dla freelancera: klienci, notatki, kalkulatory i wzory dokumentów w jednym miejscu.",
+      "sections": [
+        {
+          "heading": "Po co powstał",
+          "paragraphs": [
+            "Freelancerzy zwykle nie potrzebują dużego systemu z dziesiątkami ustawień. Chcą wiedzieć, kim jest klient, co ustalono, ile kosztuje praca i jakie dokumenty wysłać. FreelanceCRM zbiera to w prostym interfejsie, który działa na telefonie i komputerze."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Co już jest",
+          "paragraphs": [],
+          "items": [
+            "Klienci z archiwum, przywracaniem i dziennikiem notatek.",
+            "Kalkulatory kosztu projektu i stawki godzinowej.",
+            "Wzory dokumentów.",
+            "Cztery języki: ukraiński, angielski, polski, czeski.",
+            "Instalacja na telefonie jako aplikacja (PWA i Android)."
+          ]
+        },
+        {
+          "heading": "Jak to działa",
+          "paragraphs": [
+            "Rejestracja jest bezpłatna. Nowe zgłoszenie rozpatruje administrator, po zatwierdzeniu obowiązuje bezpłatny okres próbny, potem dostęp w ramach subskrypcji. Płatność jest ręczna: administrator wysyła fakturę i otwiera dostęp do uzgodnionej daty. Szczegóły na stronie „Subskrypcja”."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Kto za tym stoi",
+          "paragraphs": [
+            "Projekt tworzy i utrzymuje jeden niezależny programista. Rozwija się stopniowo, więc coś może się zmieniać, a czegoś jeszcze brakuje: na przykład wystawianie faktur w systemie i ewidencja projektów nie są jeszcze zrealizowane."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Otwartość",
+          "paragraphs": [
+            "Kod źródłowy można przeglądać w repozytorium projektu na GitHubie. Jest chroniony prawem autorskim, warunki podano w pliku LICENSE."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "metaTitle": "Regulamin",
+      "title": "Regulamin korzystania",
+      "lead": "Niniejszy regulamin określa zasady korzystania z serwisu FreelanceCRM. Rejestrując się i korzystając z usługi, akceptujesz go.",
+      "sections": [
+        {
+          "heading": "Usługa",
+          "paragraphs": [
+            "FreelanceCRM to usługa online do prowadzenia klientów, notatek, obliczeń i wzorów dokumentów. Część narzędzi jest dostępna bez rejestracji, a do obsługi klientów potrzebne jest konto."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Konto",
+          "paragraphs": [],
+          "items": [
+            "Podaj prawdziwy adres e-mail, do którego masz dostęp, i potwierdź go kodem z wiadomości.",
+            "Odpowiadasz za zachowanie hasła w tajemnicy i za działania na swoim koncie.",
+            "Jedno konto jest przeznaczone dla jednej osoby.",
+            "Usługa jest przeznaczona dla osób pełnoletnich."
+          ]
+        },
+        {
+          "heading": "Zatwierdzenie i dostęp",
+          "paragraphs": [
+            "Nowe zgłoszenie rozpatruje administrator. Może je zatwierdzić, odrzucić albo zamknąć dostęp, jeśli regulamin zostanie naruszony. Po zatwierdzeniu obowiązuje bezpłatny okres próbny, jego długość jest podana na stronie „Subskrypcja”."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Subskrypcja i płatność",
+          "paragraphs": [],
+          "items": [
+            "Płatny dostęp jest otwarty do daty „opłacono do”.",
+            "Płatność jest ręczna: na Twoją prośbę administrator wysyła fakturę i po zapłacie otwiera dostęp.",
+            "Aktualna cena jest podana na stronie „Subskrypcja”. Nie ma automatycznego pobierania opłat, a subskrypcja nie odnawia się sama.",
+            "Zasady zwrotu pieniędzy, jeśli są potrzebne, uzgadniasz z administratorem przed płatnością.",
+            "Po zakończeniu dostępu logowanie do obsługi klientów jest zamknięte, ale Twoje dane nie są usuwane."
+          ]
+        },
+        {
+          "heading": "Twoje dane",
+          "paragraphs": [],
+          "items": [
+            "Dane klientów i notatki, które wprowadzasz, należą do Ciebie. Zezwalasz usłudze na ich przechowywanie i przetwarzanie wyłącznie w celu działania usługi.",
+            "Odpowiadasz za to, że masz prawo wprowadzać te dane, w tym dane osobowe swoich klientów, i że korzystasz z nich zgodnie z prawem.",
+            "Możesz archiwizować i trwale usuwać klientów oraz poprosić o usunięcie konta.",
+            "Więcej informacji: strona „Prywatność i cookies”."
+          ]
+        },
+        {
+          "heading": "Zasady korzystania",
+          "paragraphs": [
+            "Zabronione jest łamanie prawa, uzyskiwanie dostępu do cudzych danych lub kont, przeciążanie usługi oraz kopiowanie lub rozpowszechnianie usługi, jej kodu i wyglądu bez zgody. O znalezionych podatnościach informuj prywatnie, zgodnie z polityką bezpieczeństwa projektu."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Kalkulatory i wzory",
+          "paragraphs": [
+            "Wyniki kalkulatorów i teksty wzorów dokumentów mają charakter poglądowy. Nie stanowią porady prawnej, podatkowej ani finansowej. Przed użyciem wzoru sprawdź go i w razie potrzeby dostosuj do swojej sytuacji i prawa swojego kraju."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Dostępność i zmiany",
+          "paragraphs": [
+            "Usługa rozwija się stopniowo i jest udostępniana „tak jak jest”. Nie gwarantujemy nieprzerwanego działania, możliwe są awarie i przerwy, a funkcje mogą się zmieniać. Przechowuj własne kopie ważnych danych."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Ograniczenie odpowiedzialności",
+          "paragraphs": [
+            "W granicach dozwolonych prawem właściciel usługi nie odpowiada za szkody pośrednie, utracone zyski ani utratę danych wynikające z korzystania z usługi. Regulamin nie ogranicza praw konsumenta, których nie można ograniczyć na podstawie prawa jego kraju."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Zakończenie korzystania",
+          "paragraphs": [
+            "Możesz przestać korzystać z usługi w dowolnym momencie. Administrator może zawiesić lub zamknąć dostęp w razie naruszenia regulaminu. Na Twoją prośbę konto i powiązane dane są usuwane, zgodnie z polityką prywatności."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Zmiany i prawo właściwe",
+          "paragraphs": [
+            "Regulamin może być aktualizowany, a nowa wersja obowiązuje od chwili publikacji na tej stronie. Do regulaminu stosuje się prawo Ukrainy, chyba że bezwzględnie obowiązujące przepisy kraju zamieszkania konsumenta stanowią inaczej."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "privacy": {
+      "metaTitle": "Prywatność i cookies",
+      "title": "Prywatność i cookies",
+      "lead": "Ta strona wyjaśnia, jakie dane zbiera FreelanceCRM, w jakim celu, komu je przekazuje i jakie masz prawa.",
+      "sections": [
+        {
+          "heading": "Kto odpowiada za dane",
+          "paragraphs": [
+            "Właściciel serwisu FreelanceCRM decyduje, w jakim celu i w jaki sposób przetwarzane są dane kont. Dane Twoich klientów, które wprowadzasz, przetwarzasz na własną odpowiedzialność, a serwis jedynie je dla Ciebie przechowuje."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Jakie dane zbieramy",
+          "paragraphs": [],
+          "items": [
+            "Konto: imię, adres e-mail i hasło. Hasło jest przechowywane wyłącznie jako zabezpieczony skrót w Neon Auth, nie widzimy go.",
+            "Status zgłoszenia i subskrypcji: zatwierdzone lub nie, data końca dostępu, czy poproszono o fakturę.",
+            "Dane, które wprowadzasz: klienci, notatki i ich daty.",
+            "Dane techniczne: adres IP, typ przeglądarki i dzienniki żądań prowadzone przez hosting dla bezpieczeństwa i działania serwisu.",
+            "Ustawienia: język i motyw.",
+            "Statystyki odwiedzin Google Analytics, tylko jeśli wyrazisz zgodę."
+          ]
+        },
+        {
+          "heading": "W jakim celu i na jakiej podstawie",
+          "paragraphs": [],
+          "items": [
+            "Aby utworzyć konto i świadczyć usługę: wykonanie umowy (regulamin).",
+            "Aby wysłać kod potwierdzający e-mail: wykonanie umowy.",
+            "Aby chronić usługę przed nadużyciami i błędami: prawnie uzasadniony interes.",
+            "Aby rozumieć, jak serwis jest używany, i go ulepszać: Twoja zgoda (Google Analytics). Bez zgody analityka nie jest włączana."
+          ]
+        },
+        {
+          "heading": "Komu przekazujemy dane",
+          "paragraphs": [
+            "Dane przetwarzają dostawcy, bez których usługa nie działa: Neon (baza danych i uwierzytelnianie; baza znajduje się w UE, we Frankfurcie), Vercel (hosting serwisu) oraz, tylko za Twoją zgodą, Google (analityka). Niektórzy z nich mogą przetwarzać dane poza UE i Ukrainą, szczegóły znajdziesz w ich politykach prywatności. Nie sprzedajemy Twoich danych i nie przekazujemy ich reklamodawcom."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Jak długo przechowujemy",
+          "paragraphs": [
+            "Dane konta i Twoje wpisy są przechowywane, dopóki korzystasz z usługi. Zarchiwizowani klienci pozostają, dopóki nie usuniesz ich trwale. Na Twoją prośbę usuwamy konto i powiązane dane. Kopie zapasowe dostawców mogą istnieć jeszcze przez ograniczony czas."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Twoje prawa",
+          "paragraphs": [],
+          "items": [
+            "Dowiedzieć się, jakie dane o Tobie przechowujemy, i otrzymać ich kopię.",
+            "Sprostować nieprawidłowe dane.",
+            "Usunąć dane lub ograniczyć ich przetwarzanie.",
+            "Sprzeciwić się przetwarzaniu i otrzymać dane w wygodnym formacie.",
+            "W każdej chwili wycofać zgodę na analitykę: link „Ustawienia cookies” na dole strony.",
+            "Złożyć skargę do organu ochrony danych: w Polsce jest to Prezes Urzędu Ochrony Danych Osobowych, w Ukrainie Rzecznik Praw Człowieka Rady Najwyższej."
+          ]
+        },
+        {
+          "heading": "Dzieci",
+          "paragraphs": [
+            "Usługa nie jest przeznaczona dla osób poniżej 18 lat. Świadomie nie zbieramy ich danych."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Zmiany",
+          "paragraphs": [
+            "Możemy aktualizować tę stronę. Data ostatniej wersji jest podana na górze."
+          ],
+          "items": []
+        }
+      ],
+      "cookieHeading": "Cookies i pamięć lokalna",
+      "cookieIntro": "Niektóre pliki są potrzebne do działania serwisu i nie można ich wyłączyć. Analityka jest włączana dopiero po Twojej zgodzie. Wybór możesz zmienić w każdej chwili linkiem „Ustawienia cookies” na dole strony.",
+      "cookieColumns": [
+        "Nazwa",
+        "Cel",
+        "Okres",
+        "Wymagana zgoda"
+      ],
+      "cookieRows": [
+        [
+          "Sesja logowania (Neon Auth)",
+          "Utrzymuje Cię w systemie po zalogowaniu",
+          "Do wylogowania lub wygaśnięcia sesji",
+          "Nie"
+        ],
+        [
+          "NEXT_LOCALE",
+          "Zapamiętuje język serwisu",
+          "1 rok",
+          "Nie"
+        ],
+        [
+          "theme (pamięć lokalna)",
+          "Zapamiętuje jasny lub ciemny motyw",
+          "Dopóki nie wyczyścisz danych przeglądarki",
+          "Nie"
+        ],
+        [
+          "crm-consent (pamięć lokalna)",
+          "Zapamiętuje Twój wybór dotyczący cookies",
+          "Dopóki nie wyczyścisz danych przeglądarki lub nie zmienisz wyboru",
+          "Nie"
+        ],
+        [
+          "Pamięć podręczna aplikacji (service worker)",
+          "Przechowuje pliki statyczne i ikony dla szybkiego startu oraz stronę offline, nie zawiera danych osobowych",
+          "Do aktualizacji wersji",
+          "Nie"
+        ],
+        [
+          "_ga, _ga_* (Google Analytics)",
+          "Statystyki odwiedzin",
+          "Do 2 lat",
+          "Tak"
+        ]
+      ]
+    }
   }
 }

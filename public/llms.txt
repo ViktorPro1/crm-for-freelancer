@@ -11,6 +11,10 @@
 - [Підписка](https://freelancer-crm-ua.vercel.app/uk/subscription): пробний період, актуальна ціна й порядок оплати
 - [Застосунок для телефона](https://freelancer-crm-ua.vercel.app/uk/mobile-app): встановлення на Android і додавання на головний екран iPhone
 
+- [Про проект](https://freelancer-crm-ua.vercel.app/uk/about): навіщо створено сервіс і що в ньому вже є
+- [Умови користування](https://freelancer-crm-ua.vercel.app/uk/terms)
+- [Конфіденційність і cookie](https://freelancer-crm-ua.vercel.app/uk/privacy): які дані збираються й які cookie використовуються
+
 ## Докладніше
 
 - [Повний опис для ШІ-агентів](https://freelancer-crm-ua.vercel.app/llms-full.txt): можливості, модель доступу, обмеження

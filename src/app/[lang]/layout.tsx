@@ -8,6 +8,8 @@ import {
   LanguageSwitcherFallback,
 } from "@/components/language-switcher";
 import { Analytics } from "@/components/analytics";
+import { CookieBanner } from "@/components/legal/cookie-banner";
+import { SiteFooter } from "@/components/legal/site-footer";
 import { AuthButton, AuthButtonFallback } from "@/components/auth/auth-button";
 import { SidebarNavGate } from "@/components/auth/nav-gate";
 import { ServiceWorkerRegister } from "@/components/service-worker-register";
@@ -118,8 +120,12 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
             </div>
           </aside>
 
-          <div className="min-w-0 flex-1">{children}</div>
+          <div className="flex min-w-0 flex-1 flex-col">
+            <div className="flex-1">{children}</div>
+            <SiteFooter locale={locale} labels={dict.legal.footer} />
+          </div>
         </div>
+        <CookieBanner privacyHref={`/${locale}/privacy`} labels={dict.legal.consent} />
       </body>
     </html>
   );

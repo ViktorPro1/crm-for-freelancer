@@ -377,5 +377,291 @@
     "warnText": "The app is not published on Google Play yet, so the system shows a general warning for all files from other sources. Install it only from this page.",
     "otherTitle": "iPhone and computer",
     "otherText": "On iPhone, open the site in Safari, tap Share and choose \"Add to Home Screen\". On a computer in Chrome or Edge, click the install icon in the address bar."
+  },
+  "legal": {
+    "updatedLabel": "Last updated",
+    "updatedDate": "23 October 2026",
+    "contact": {
+      "title": "Contact",
+      "email": "Send questions about these pages or your data to",
+      "github": "You can ask questions through the project repository on GitHub:"
+    },
+    "footer": {
+      "navLabel": "Site information",
+      "about": "About",
+      "terms": "Terms",
+      "privacy": "Privacy and cookies",
+      "cookieSettings": "Cookie settings",
+      "copyright": "© 2026 FreelanceCRM"
+    },
+    "consent": {
+      "title": "Cookies and analytics",
+      "text": "We use necessary cookies to make the site work. With your consent we also enable Google Analytics to understand how the site is used. You can decline and the site will work the same.",
+      "accept": "Accept analytics",
+      "decline": "Decline",
+      "learnMore": "Learn more"
+    },
+    "about": {
+      "metaTitle": "About the project",
+      "title": "About the project",
+      "lead": "FreelanceCRM is a small CRM for freelancers: clients, notes, calculators and document templates in one place.",
+      "sections": [
+        {
+          "heading": "Why it exists",
+          "paragraphs": [
+            "Freelancers rarely need a large system with dozens of settings. They need to know who the client is, what was agreed, how much the work costs and which documents to send. FreelanceCRM puts this into a simple interface that works on a phone and on a computer."
+          ],
+          "items": []
+        },
+        {
+          "heading": "What is already there",
+          "paragraphs": [],
+          "items": [
+            "Clients with an archive, restore and a notes diary.",
+            "Calculators for project cost and hourly rate.",
+            "Document templates.",
+            "Four languages: Ukrainian, English, Polish, Czech.",
+            "Installation on a phone as an app (PWA and Android)."
+          ]
+        },
+        {
+          "heading": "How it works",
+          "paragraphs": [
+            "Registration is free. The administrator reviews each new request. After approval a free trial starts, then access works by subscription. Payment is manual: the administrator sends an invoice and opens access until the agreed date. Details are on the Subscription page."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Who is behind it",
+          "paragraphs": [
+            "The project is built and maintained by one independent developer. It grows step by step, so some things may change and some are not there yet: for example, issuing invoices inside the system and project tracking are not implemented."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Openness",
+          "paragraphs": [
+            "The source code can be viewed in the project repository on GitHub. It is protected by copyright, see the LICENSE file for the terms."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "terms": {
+      "metaTitle": "Terms of use",
+      "title": "Terms of use",
+      "lead": "These terms govern the use of the FreelanceCRM website. By registering and using the service you agree to them.",
+      "sections": [
+        {
+          "heading": "The service",
+          "paragraphs": [
+            "FreelanceCRM is an online service for managing clients, notes, calculations and document templates. Some tools are open without registration, while client management requires an account."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Account",
+          "paragraphs": [],
+          "items": [
+            "Provide a real email address you can access and confirm it with the code sent to you.",
+            "You are responsible for keeping your password safe and for actions under your account.",
+            "One account is meant for one person.",
+            "The service is intended for adults."
+          ]
+        },
+        {
+          "heading": "Approval and access",
+          "paragraphs": [
+            "The administrator reviews each new request. They may approve it, decline it or close access if these terms are broken. After approval a free trial applies, its length is shown on the Subscription page."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Subscription and payment",
+          "paragraphs": [],
+          "items": [
+            "Paid access is open until the \"paid until\" date.",
+            "Payment is manual: on your request the administrator sends an invoice and opens access after payment.",
+            "The current price is shown on the Subscription page. There is no automatic charging and the subscription does not renew by itself.",
+            "Refund terms, if you need them, are agreed with the administrator before payment.",
+            "When access ends, sign-in to client management is closed, but your data is not deleted."
+          ]
+        },
+        {
+          "heading": "Your data",
+          "paragraphs": [],
+          "items": [
+            "The client data and notes you enter belong to you. You allow the service to store and process them only to run the service.",
+            "You are responsible for having the lawful right to enter this data, including personal data of your clients, and for using it in accordance with the law.",
+            "You can archive and permanently delete clients and ask for your account to be deleted.",
+            "More details: the Privacy and cookies page."
+          ]
+        },
+        {
+          "heading": "Rules of use",
+          "paragraphs": [
+            "You must not break the law, access other people's data or accounts, overload the service, or copy or distribute the service, its code and design without permission. Report vulnerabilities privately, as described in the project's security policy."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Calculators and templates",
+          "paragraphs": [
+            "Calculator results and document template texts are for reference only. They are not legal, tax or financial advice. Check a template before using it and adapt it to your situation and the laws of your country."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Availability and changes",
+          "paragraphs": [
+            "The service grows step by step and is provided \"as is\". We do not guarantee uninterrupted operation, outages are possible and features may change. Keep your own copies of important data."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Limitation of liability",
+          "paragraphs": [
+            "To the extent permitted by law, the service owner is not liable for indirect damage, lost profit or lost data caused by using the service. These terms do not limit consumer rights that cannot be limited under the law of your country."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Ending use",
+          "paragraphs": [
+            "You can stop using the service at any time. The administrator may suspend or close access for breaking these terms. On your request your account and related data are deleted, as described in the privacy policy."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Changes and governing law",
+          "paragraphs": [
+            "The terms may be updated, and a new version applies from the moment it is published on this page. These terms are governed by the law of Ukraine, unless mandatory rules of the consumer's country of residence provide otherwise."
+          ],
+          "items": []
+        }
+      ]
+    },
+    "privacy": {
+      "metaTitle": "Privacy and cookies",
+      "title": "Privacy and cookies",
+      "lead": "This page explains what data FreelanceCRM collects, why, who receives it and what rights you have.",
+      "sections": [
+        {
+          "heading": "Who is responsible for the data",
+          "paragraphs": [
+            "The owner of FreelanceCRM decides why and how account data is processed. The data about your clients that you enter is processed by you on your own responsibility, and the service only stores it for you."
+          ],
+          "items": []
+        },
+        {
+          "heading": "What data we collect",
+          "paragraphs": [],
+          "items": [
+            "Account: name, email address and password. The password is stored only as a protected hash in Neon Auth and we cannot see it.",
+            "Request and subscription status: approved or not, access end date, whether an invoice was requested.",
+            "Data you enter: clients, notes and their dates.",
+            "Technical data: IP address, browser type and request logs kept by the hosting provider for security and operation.",
+            "Preferences: language and theme.",
+            "Google Analytics visit statistics, only if you gave consent."
+          ]
+        },
+        {
+          "heading": "Why and on what basis",
+          "paragraphs": [],
+          "items": [
+            "To create your account and provide the service: performance of a contract (terms of use).",
+            "To send the email verification code: performance of a contract.",
+            "To protect the service from abuse and errors: legitimate interest.",
+            "To understand how the site is used and improve it: your consent (Google Analytics). Without consent analytics is not enabled."
+          ]
+        },
+        {
+          "heading": "Who receives the data",
+          "paragraphs": [
+            "Data is processed by providers the service cannot work without: Neon (database and authentication; the database is located in the EU, in Frankfurt), Vercel (website hosting) and, only with your consent, Google (analytics). Some of them may process data outside the EU and Ukraine, see their privacy policies for details. We do not sell your data and do not pass it to advertisers."
+          ],
+          "items": []
+        },
+        {
+          "heading": "How long we keep it",
+          "paragraphs": [
+            "Account data and your records are kept while you use the service. Archived clients stay until you delete them permanently. On your request we delete your account and related data. Providers' backups may exist for a limited time longer."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Your rights",
+          "paragraphs": [],
+          "items": [
+            "To learn what data we hold about you and get a copy.",
+            "To correct inaccurate data.",
+            "To delete data or restrict its processing.",
+            "To object to processing and to receive your data in a convenient format.",
+            "To withdraw consent to analytics at any time: use the \"Cookie settings\" link at the bottom of the page.",
+            "To complain to a data protection authority: in Ukraine, the Parliament Commissioner for Human Rights; in EU countries, the authority of your country."
+          ]
+        },
+        {
+          "heading": "Children",
+          "paragraphs": [
+            "The service is not intended for people under 18. We do not knowingly collect their data."
+          ],
+          "items": []
+        },
+        {
+          "heading": "Changes",
+          "paragraphs": [
+            "We may update this page. The date of the latest version is shown at the top."
+          ],
+          "items": []
+        }
+      ],
+      "cookieHeading": "Cookies and local storage",
+      "cookieIntro": "Some files are needed for the site to work and cannot be turned off. Analytics is enabled only after your consent. You can change your choice at any time with the \"Cookie settings\" link at the bottom of the page.",
+      "cookieColumns": [
+        "Name",
+        "Purpose",
+        "Duration",
+        "Consent needed"
+      ],
+      "cookieRows": [
+        [
+          "Sign-in session (Neon Auth)",
+          "Keeps you signed in after login",
+          "Until sign-out or session expiry",
+          "No"
+        ],
+        [
+          "NEXT_LOCALE",
+          "Remembers the site language",
+          "1 year",
+          "No"
+        ],
+        [
+          "theme (local storage)",
+          "Remembers the light or dark theme",
+          "Until you clear browser data",
+          "No"
+        ],
+        [
+          "crm-consent (local storage)",
+          "Remembers your cookie choice",
+          "Until you clear browser data or change the choice",
+          "No"
+        ],
+        [
+          "App cache (service worker)",
+          "Stores static files and icons for fast start and the offline page, contains no personal data",
+          "Until the version is updated",
+          "No"
+        ],
+        [
+          "_ga, _ga_* (Google Analytics)",
+          "Visit statistics",
+          "Up to 2 years",
+          "Yes"
+        ]
+      ]
+    }
   }
 }
