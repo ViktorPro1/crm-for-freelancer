@@ -1,0 +1,5 @@
+Contact: https://github.com/ViktorPro1/crm-for-freelancer/security/advisories/new
+Expires: 2027-10-23T00:00:00.000Z
+Preferred-Languages: uk, en
+Canonical: https://freelancer-crm-ua.vercel.app/.well-known/security.txt
+Policy: https://github.com/ViktorPro1/crm-for-freelancer/security/policy

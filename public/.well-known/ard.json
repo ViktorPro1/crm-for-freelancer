@@ -1,0 +1,39 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:freelancer-crm-ua.vercel.app:docs:llms-txt",
+      "displayName": "FreelanceCRM: короткий опис сайту",
+      "type": "text/plain",
+      "url": "https://freelancer-crm-ua.vercel.app/llms.txt",
+      "description": "Що таке FreelanceCRM і список публічних сторінок сайту.",
+      "representativeQueries": [
+        "що таке FreelanceCRM",
+        "CRM для фрилансера українською",
+        "які сторінки є на сайті FreelanceCRM"
+      ]
+    },
+    {
+      "identifier": "urn:air:freelancer-crm-ua.vercel.app:docs:llms-full-txt",
+      "displayName": "FreelanceCRM: повний опис можливостей і доступу",
+      "type": "text/plain",
+      "url": "https://freelancer-crm-ua.vercel.app/llms-full.txt",
+      "description": "Можливості, модель доступу, підписка, дані, технології й обмеження.",
+      "representativeQueries": [
+        "як отримати доступ до FreelanceCRM",
+        "що вміє FreelanceCRM",
+        "як працює підписка FreelanceCRM"
+      ]
+    },
+    {
+      "identifier": "urn:air:freelancer-crm-ua.vercel.app:sitemap:xml",
+      "displayName": "FreelanceCRM: карта сайту",
+      "type": "application/xml",
+      "url": "https://freelancer-crm-ua.vercel.app/sitemap.xml",
+      "description": "Перелік публічних сторінок усіма мовами.",
+      "representativeQueries": [
+        "карта сайту FreelanceCRM",
+        "список сторінок FreelanceCRM усіма мовами"
+      ]
+    }
+  ]
+}

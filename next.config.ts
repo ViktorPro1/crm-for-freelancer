@@ -15,6 +15,14 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
         ],
       },
+      // Файли для пошукових агентів і ШІ-агентів: дозволяємо читати їх з будь-якого сайту.
+      {
+        source: "/.well-known/:file(ard\\.json|ai-catalog\\.json)",
+        headers: [
+          { key: "Content-Type", value: "application/json; charset=utf-8" },
+          { key: "Access-Control-Allow-Origin", value: "*" },
+        ],
+      },
       {
         source: "/sw.js",
         headers: [

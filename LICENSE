@@ -1,0 +1,37 @@
+FreelanceCRM - Proprietary License (All Rights Reserved)
+
+Copyright (c) 2026 Viktor. All rights reserved.
+
+This license applies to the source code, documentation, design, texts, translations,
+logo and other materials in this repository ("the Software"), except for third-party
+components listed in NOTICE.md, which remain under their own licenses.
+
+1. Ownership. The Software is the property of the copyright holder. No rights are
+   granted except those stated expressly in this license.
+
+2. Viewing. You may view the source code in this repository for personal, non-commercial
+   study and evaluation.
+
+3. Restrictions. Without prior written permission of the copyright holder you may not:
+   a) copy, reproduce or republish the Software or any substantial part of it;
+   b) modify the Software or create derivative works based on it;
+   c) distribute, sublicense, sell, rent or lend the Software;
+   d) host, run or offer the Software or a derivative of it as a service to third parties;
+   e) use the Software, its name, logo or design for commercial purposes;
+   f) remove or alter copyright notices.
+
+4. GitHub. Nothing in this license limits the rights that the GitHub Terms of Service
+   grant to other GitHub users to view and fork public repositories within GitHub.
+
+5. Third-party components. They are used under their own licenses, see NOTICE.md.
+
+6. No warranty. The Software is provided "as is", without warranty of any kind, express
+   or implied, including but not limited to merchantability, fitness for a particular
+   purpose and non-infringement. In no event shall the copyright holder be liable for any
+   claim, damages or other liability arising from the use of the Software.
+
+7. Languages. A Ukrainian translation is provided in LICENSE.uk.md for convenience.
+   If the two texts differ, this English text prevails.
+
+To request permission, contact the copyright holder through the GitHub repository
+https://github.com/ViktorPro1/crm-for-freelancer
