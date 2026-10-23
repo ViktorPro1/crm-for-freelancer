@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "ua.freelancercrm.app",
+        "sha256_cert_fingerprints": ["E1:71:7A:61:63:CE:02:A3:D2:2B:9F:76:1D:95:B4:70:CC:9A:5A:27:F3:D4:AA:B1:AE:4E:E6:02:7F:7C:24:A5"]
+      }
+    }]
