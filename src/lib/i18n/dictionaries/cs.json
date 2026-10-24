@@ -207,7 +207,35 @@
     "daysLeft": "{days} dní",
     "invoiceRequested": "Žádal o fakturu",
     "extend": "Prodloužit:",
-    "extendMonths": "+{months} měs."
+    "extendMonths": "+{months} měs.",
+    "stats": {
+      "title": "Statistika",
+      "dbTitle": "Místo v databázi",
+      "usedOf": "Využito {used} z {limit}",
+      "filled": "Zaplnění: {percent} %",
+      "free": "Volné: {free}",
+      "warn": "Pozor: databáze je zaplněná z více než 80 %. Až dosáhne limitu, nové záznamy se přestanou ukládat.",
+      "userData": "Data uživatelů (klienti a poznámky)",
+      "otherData": "Indexy, ověřování a systémová data",
+      "computeTitle": "Hodiny výpočtů",
+      "computeLimit": "Limit: {hours} hodin měsíčně",
+      "computeNote": "Toto je limit bezplatného plánu Neon. Kolik hodin už bylo využito, ukazuje jen konzole Neon, aplikace to zjistit nemůže. Když hodiny dojdou, databáze se pozastaví do dalšího měsíce.",
+      "computeLink": "Otevřít Neon Console",
+      "perUserTitle": "Podle uživatelů",
+      "colUser": "Uživatel",
+      "colClients": "Klienti",
+      "colNotes": "Poznámky",
+      "colData": "Data",
+      "colShare": "Podíl limitu",
+      "archivedShort": "v archivu: {count}",
+      "perUserNote": "Velikost dat je přibližná: jde o velikost samotných záznamů klientů a poznámek bez indexů a systémových dat databáze.",
+      "units": {
+        "b": "B",
+        "kb": "KB",
+        "mb": "MB",
+        "gb": "GB"
+      }
+    }
   },
   "account": {
     "title": "Osobní účet",

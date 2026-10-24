@@ -207,7 +207,35 @@
     "daysLeft": "{days} dni",
     "invoiceRequested": "Poprosił o fakturę",
     "extend": "Przedłuż:",
-    "extendMonths": "+{months} mies."
+    "extendMonths": "+{months} mies.",
+    "stats": {
+      "title": "Statystyka",
+      "dbTitle": "Miejsce w bazie danych",
+      "usedOf": "Wykorzystano {used} z {limit}",
+      "filled": "Zapełnienie: {percent}%",
+      "free": "Wolne: {free}",
+      "warn": "Uwaga: baza jest zapełniona w ponad 80%. Gdy osiągnie limit, nowe wpisy przestaną się zapisywać.",
+      "userData": "Dane użytkowników (klienci i notatki)",
+      "otherData": "Indeksy, uwierzytelnianie i dane systemowe",
+      "computeTitle": "Godziny obliczeń",
+      "computeLimit": "Limit: {hours} godzin miesięcznie",
+      "computeNote": "To limit darmowego planu Neon. Ile godzin już wykorzystano, pokazuje tylko konsola Neon, aplikacja nie może tego sprawdzić. Gdy godziny się skończą, baza jest wstrzymana do następnego miesiąca.",
+      "computeLink": "Otwórz Neon Console",
+      "perUserTitle": "Według użytkowników",
+      "colUser": "Użytkownik",
+      "colClients": "Klienci",
+      "colNotes": "Notatki",
+      "colData": "Dane",
+      "colShare": "Udział w limicie",
+      "archivedShort": "w archiwum: {count}",
+      "perUserNote": "Rozmiar danych jest przybliżony: to rozmiar samych wpisów klientów i notatek, bez indeksów i danych systemowych bazy.",
+      "units": {
+        "b": "B",
+        "kb": "KB",
+        "mb": "MB",
+        "gb": "GB"
+      }
+    }
   },
   "account": {
     "title": "Konto osobiste",

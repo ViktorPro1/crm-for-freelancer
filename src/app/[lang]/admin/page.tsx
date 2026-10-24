@@ -12,6 +12,7 @@ import {
 import { listProfiles, type ProfileRow } from "@/lib/profiles";
 import { EXTEND_MONTHS } from "@/lib/plans";
 import { decideAction, extendAction } from "./actions";
+import { AdminStats } from "./stats";
 
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
@@ -58,6 +59,12 @@ async function AdminContent() {
           pending: pendingCount,
         })}
       </p>
+
+      <Suspense
+        fallback={<div className="mt-8 h-48 rounded-xl border bg-surface" aria-hidden="true" />}
+      >
+        <AdminStats locale={locale} dict={dict.admin.stats} />
+      </Suspense>
 
       {profiles.length === 0 ? (
         <p className="mt-6 text-sm text-muted">{dict.admin.empty}</p>

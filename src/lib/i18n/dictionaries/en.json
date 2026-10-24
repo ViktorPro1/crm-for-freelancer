@@ -207,7 +207,35 @@
     "daysLeft": "{days} d",
     "invoiceRequested": "Asked for invoice",
     "extend": "Extend:",
-    "extendMonths": "+{months} mo"
+    "extendMonths": "+{months} mo",
+    "stats": {
+      "title": "Statistics",
+      "dbTitle": "Database space",
+      "usedOf": "Used {used} of {limit}",
+      "filled": "{percent}% full",
+      "free": "Free: {free}",
+      "warn": "Warning: the database is more than 80% full. When it reaches the limit, new records will stop being saved.",
+      "userData": "User data (clients and notes)",
+      "otherData": "Indexes, authentication and system data",
+      "computeTitle": "Compute hours",
+      "computeLimit": "Limit: {hours} hours per month",
+      "computeNote": "This is the limit of the Neon free plan. Neon shows how many hours are already used only in its own console, the app cannot find this out. When the hours run out, the database is paused until next month.",
+      "computeLink": "Open Neon Console",
+      "perUserTitle": "By user",
+      "colUser": "User",
+      "colClients": "Clients",
+      "colNotes": "Notes",
+      "colData": "Data",
+      "colShare": "Share of limit",
+      "archivedShort": "archived: {count}",
+      "perUserNote": "Data size is approximate: it is the size of the client and note records themselves, without indexes and database system data.",
+      "units": {
+        "b": "B",
+        "kb": "KB",
+        "mb": "MB",
+        "gb": "GB"
+      }
+    }
   },
   "account": {
     "title": "Personal account",
