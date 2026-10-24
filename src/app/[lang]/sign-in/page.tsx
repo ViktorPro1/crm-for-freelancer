@@ -21,7 +21,11 @@ export default async function SignInPage({
         {auth.signInTitle}
       </h1>
       <Suspense fallback={null}>
-        <VerifiedNotice searchParams={searchParams} text={auth.verifiedNotice} />
+        <VerifiedNotice
+          searchParams={searchParams}
+          verifiedText={auth.verifiedNotice}
+          deletedText={auth.deletedNotice}
+        />
       </Suspense>
       <AuthForm
         mode="signIn"
@@ -43,14 +47,24 @@ export default async function SignInPage({
   );
 }
 
-// Після підтвердження пошти людину переносить сюди з адресою ?verified=1.
+// Після підтвердження пошти (?verified=1) або видалення акаунта (?deleted=1) людину переносить сюди.
 async function VerifiedNotice({
   searchParams,
-  text,
-}: Pick<PageProps<"/[lang]/sign-in">, "searchParams"> & { text: string }) {
+  verifiedText,
+  deletedText,
+}: Pick<PageProps<"/[lang]/sign-in">, "searchParams"> & {
+  verifiedText: string;
+  deletedText: string;
+}) {
   const params = await searchParams;
+  const text =
+    params.verified === "1"
+      ? verifiedText
+      : params.deleted === "1"
+        ? deletedText
+        : null;
 
-  if (params.verified !== "1") {
+  if (!text) {
     return null;
   }
 

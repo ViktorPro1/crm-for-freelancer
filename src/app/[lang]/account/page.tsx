@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { NameForm, PasswordForm } from "@/components/account/account-forms";
+import { DataSection } from "@/components/account/data-section";
 import { requireApproved } from "@/lib/auth/session";
 import { formatDate } from "@/lib/format";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
@@ -79,6 +80,8 @@ async function AccountContent() {
           <PasswordForm locale={locale} labels={account} />
         </div>
       </section>
+
+      <DataSection locale={locale} isAdmin={isAdmin} labels={account.data} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import { DataSection } from "@/components/account/data-section";
 import { getAccess } from "@/lib/auth/session";
 import { formatMoney, DEFAULT_CURRENCY } from "@/lib/calculator";
 import { formatDate } from "@/lib/format";
@@ -104,7 +105,7 @@ export default async function SubscriptionPage() {
 
 // Блок про конкретну людину: гість, заявка на розгляді, діюча підписка або термін минув.
 async function Personal({ locale }: { locale: "uk" | "en" | "pl" | "cs" }) {
-  const { subscription: t } = await getDictionary();
+  const { subscription: t, account } = await getDictionary();
   const access = await getAccess();
 
   const card = "rounded-2xl border bg-surface p-6";
@@ -134,20 +135,23 @@ async function Personal({ locale }: { locale: "uk" | "en" | "pl" | "cs" }) {
 
   if (access.status !== "approved") {
     return (
-      <div className={card}>
-        <h2 className="text-lg font-semibold">
-          {access.status === "rejected" ? t.rejectedTitle : t.pendingTitle}
-        </h2>
-        <p className="mt-2 text-sm text-muted">
-          {access.status === "rejected" ? t.rejectedText : t.pendingText}
-        </p>
+      <div className="space-y-6">
+        <div className={card}>
+          <h2 className="text-lg font-semibold">
+            {access.status === "rejected" ? t.rejectedTitle : t.pendingTitle}
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            {access.status === "rejected" ? t.rejectedText : t.pendingText}
+          </p>
+        </div>
+        <DataSection locale={locale} isAdmin={false} labels={account.data} />
       </div>
     );
   }
 
   const { until, daysLeft, invoiceRequested } = access.subscription;
 
-  return (
+  const status = (
     <div
       className={`${card} ${access.expired ? "border-red-300 dark:border-red-500/40" : ""}`}
     >
@@ -181,4 +185,17 @@ async function Personal({ locale }: { locale: "uk" | "en" | "pl" | "cs" }) {
       </div>
     </div>
   );
+
+  // Коли кабінет закритий (термін минув чи заявку не схвалено), копія даних і видалення акаунта лишаються доступними.
+  if (!access.expired) {
+    return status;
+  }
+
+  return (
+    <div className="space-y-6">
+      {status}
+      <DataSection locale={locale} isAdmin={false} labels={account.data} />
+    </div>
+  );
 }
+

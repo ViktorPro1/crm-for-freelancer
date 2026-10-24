@@ -174,7 +174,8 @@
       "tooMany": "Zbyt wiele prób. Poproś o nowy kod.",
       "generic": "Coś poszło nie tak. Spróbuj ponownie.",
       "resendFailed": "Nie udało się wysłać kodu. Spróbuj trochę później."
-    }
+    },
+    "deletedNotice": "Konto i dane zostały usunięte."
   },
   "pending": {
     "title": "Twoje zgłoszenie jest rozpatrywane",
@@ -256,7 +257,38 @@
     "passwordSaved": "Hasło zmienione.",
     "passwordWrong": "Obecne hasło jest nieprawidłowe.",
     "error": "Coś poszło nie tak. Spróbuj ponownie.",
-    "saving": "Zapisywanie..."
+    "saving": "Zapisywanie...",
+    "data": {
+      "title": "Moje dane",
+      "exportTitle": "Pobierz kopię danych",
+      "exportText": "Pliki CSV otwierają się w Excelu i Arkuszach Google. Zawierają tylko Twoje dane, także zarchiwizowanych klientów.",
+      "exportClients": "Klienci (CSV)",
+      "exportNotes": "Notatki (CSV)",
+      "deleteTitle": "Usuń konto",
+      "deleteText": "Konto, wszyscy Twoi klienci i notatki zostaną trwale usunięte. Tej operacji nie można cofnąć. Najpierw pobierz kopię danych.",
+      "deletePassword": "Wpisz hasło, aby potwierdzić",
+      "deleteButton": "Usuń konto i wszystkie dane",
+      "deleteConfirm": "Usunąć konto i wszystkie dane na stałe? Tej operacji nie można cofnąć.",
+      "deleting": "Usuwamy...",
+      "deleteWrong": "Nieprawidłowe hasło.",
+      "deleteAdmin": "Konta administratora nie można usunąć.",
+      "deleteError": "Nie udało się usunąć konta. Spróbuj ponownie lub napisz do nas.",
+      "csvClients": [
+        "ID",
+        "Imię",
+        "Firma",
+        "E-mail",
+        "Status",
+        "Dodano",
+        "Notatki"
+      ],
+      "csvNotes": [
+        "ID klienta",
+        "Klient",
+        "Data i godzina (UTC)",
+        "Wpis"
+      ]
+    }
   },
   "tools": {
     "metaTitle": "Narzędzia",
@@ -521,7 +553,7 @@
           "items": [
             "Dane klientów i notatki, które wprowadzasz, należą do Ciebie. Zezwalasz usłudze na ich przechowywanie i przetwarzanie wyłącznie w celu działania usługi.",
             "Odpowiadasz za to, że masz prawo wprowadzać te dane, w tym dane osobowe swoich klientów, i że korzystasz z nich zgodnie z prawem.",
-            "Możesz archiwizować i trwale usuwać klientów oraz poprosić o usunięcie konta.",
+            "Możesz archiwizować i trwale usuwać klientów oraz samodzielnie pobrać swoje dane i usunąć konto na stronie konta.",
             "Więcej informacji: strona „Prywatność i cookies”."
           ]
         },
@@ -556,7 +588,7 @@
         {
           "heading": "Zakończenie korzystania",
           "paragraphs": [
-            "Możesz przestać korzystać z usługi w dowolnym momencie. Administrator może zawiesić lub zamknąć dostęp w razie naruszenia regulaminu. Na Twoją prośbę konto i powiązane dane są usuwane, zgodnie z polityką prywatności."
+            "Możesz przestać korzystać z usługi w dowolnym momencie. Administrator może zawiesić lub zamknąć dostęp w razie naruszenia regulaminu. Konto i powiązane dane są usuwane, gdy usuniesz konto na stronie konta lub o to poprosisz, zgodnie z polityką prywatności."
           ],
           "items": []
         },
@@ -613,7 +645,7 @@
         {
           "heading": "Jak długo przechowujemy",
           "paragraphs": [
-            "Dane konta i Twoje wpisy są przechowywane, dopóki korzystasz z usługi. Zarchiwizowani klienci pozostają, dopóki nie usuniesz ich trwale. Na Twoją prośbę usuwamy konto i powiązane dane. Kopie zapasowe dostawców mogą istnieć jeszcze przez ograniczony czas."
+            "Dane konta i Twoje wpisy są przechowywane, dopóki korzystasz z usługi. Zarchiwizowani klienci pozostają, dopóki nie usuniesz ich trwale. Kopię swoich danych (CSV) możesz pobrać, a konto i powiązane dane usunąć samodzielnie na stronie konta. Kopie zapasowe dostawców mogą istnieć jeszcze przez ograniczony czas."
           ],
           "items": []
         },

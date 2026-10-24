@@ -26,6 +26,11 @@ export async function getLocale(): Promise<Locale> {
   return value;
 }
 
+// Переклади для вказаної мови. Потрібні там, де немає адреси сторінки з мовою (наприклад, у /api).
+export async function getDictionaryFor(locale: Locale): Promise<Dictionary> {
+  return dictionaries[locale]();
+}
+
 // Переклади для поточної мови. Працює лише в серверних компонентах.
 export async function getDictionary(): Promise<Dictionary> {
   return dictionaries[await getLocale()]();

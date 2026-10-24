@@ -174,7 +174,8 @@
       "tooMany": "Too many attempts. Request a new code.",
       "generic": "Something went wrong. Please try again.",
       "resendFailed": "Could not send the code. Please try again a little later."
-    }
+    },
+    "deletedNotice": "Account and data deleted."
   },
   "pending": {
     "title": "Your application is being processed",
@@ -256,7 +257,38 @@
     "passwordSaved": "Password changed.",
     "passwordWrong": "The current password is incorrect.",
     "error": "Something went wrong. Please try again.",
-    "saving": "Saving..."
+    "saving": "Saving...",
+    "data": {
+      "title": "My data",
+      "exportTitle": "Download a copy of your data",
+      "exportText": "CSV files open in Excel and Google Sheets. They contain only your own data, including archived clients.",
+      "exportClients": "Clients (CSV)",
+      "exportNotes": "Notes (CSV)",
+      "deleteTitle": "Delete account",
+      "deleteText": "Your account, all your clients and notes will be permanently deleted. This cannot be undone. Download a copy of your data first.",
+      "deletePassword": "Enter your password to confirm",
+      "deleteButton": "Delete account and all data",
+      "deleteConfirm": "Delete your account and all data permanently? This cannot be undone.",
+      "deleting": "Deleting...",
+      "deleteWrong": "Wrong password.",
+      "deleteAdmin": "The administrator account cannot be deleted.",
+      "deleteError": "Could not delete the account. Try again or contact us.",
+      "csvClients": [
+        "ID",
+        "Name",
+        "Company",
+        "Email",
+        "Status",
+        "Added",
+        "Notes"
+      ],
+      "csvNotes": [
+        "Client ID",
+        "Client",
+        "Date and time (UTC)",
+        "Entry"
+      ]
+    }
   },
   "tools": {
     "metaTitle": "Tools",
@@ -521,7 +553,7 @@
           "items": [
             "The client data and notes you enter belong to you. You allow the service to store and process them only to run the service.",
             "You are responsible for having the lawful right to enter this data, including personal data of your clients, and for using it in accordance with the law.",
-            "You can archive and permanently delete clients and ask for your account to be deleted.",
+            "You can archive and permanently delete clients and download your data and delete your account yourself in your account page.",
             "More details: the Privacy and cookies page."
           ]
         },
@@ -556,7 +588,7 @@
         {
           "heading": "Ending use",
           "paragraphs": [
-            "You can stop using the service at any time. The administrator may suspend or close access for breaking these terms. On your request your account and related data are deleted, as described in the privacy policy."
+            "You can stop using the service at any time. The administrator may suspend or close access for breaking these terms. Your account and related data are deleted when you delete the account in your account page or ask us to, as described in the privacy policy."
           ],
           "items": []
         },
@@ -613,7 +645,7 @@
         {
           "heading": "How long we keep it",
           "paragraphs": [
-            "Account data and your records are kept while you use the service. Archived clients stay until you delete them permanently. On your request we delete your account and related data. Providers' backups may exist for a limited time longer."
+            "Account data and your records are kept while you use the service. Archived clients stay until you delete them permanently. You can download a copy of your data (CSV) and delete your account and related data yourself in your account page. Providers' backups may exist for a limited time longer."
           ],
           "items": []
         },

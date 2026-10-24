@@ -174,7 +174,8 @@
       "tooMany": "Příliš mnoho pokusů. Požádejte o nový kód.",
       "generic": "Něco se pokazilo. Zkuste to znovu.",
       "resendFailed": "Kód se nepodařilo odeslat. Zkuste to o něco později."
-    }
+    },
+    "deletedNotice": "Účet a data byly smazány."
   },
   "pending": {
     "title": "Vaše žádost se zpracovává",
@@ -256,7 +257,38 @@
     "passwordSaved": "Heslo změněno.",
     "passwordWrong": "Současné heslo je nesprávné.",
     "error": "Něco se pokazilo. Zkuste to znovu.",
-    "saving": "Ukládání..."
+    "saving": "Ukládání...",
+    "data": {
+      "title": "Moje údaje",
+      "exportTitle": "Stáhnout kopii údajů",
+      "exportText": "Soubory CSV se otevřou v Excelu a Tabulkách Google. Obsahují jen vaše údaje, včetně archivovaných klientů.",
+      "exportClients": "Klienti (CSV)",
+      "exportNotes": "Poznámky (CSV)",
+      "deleteTitle": "Smazat účet",
+      "deleteText": "Účet, všichni vaši klienti a poznámky budou trvale smazáni. Tuto akci nelze vrátit. Nejdříve si stáhněte kopii údajů.",
+      "deletePassword": "Zadejte heslo pro potvrzení",
+      "deleteButton": "Smazat účet a všechna data",
+      "deleteConfirm": "Trvale smazat účet a všechna data? Tuto akci nelze vrátit.",
+      "deleting": "Mažeme...",
+      "deleteWrong": "Nesprávné heslo.",
+      "deleteAdmin": "Účet správce nelze smazat.",
+      "deleteError": "Účet se nepodařilo smazat. Zkuste to znovu nebo nám napište.",
+      "csvClients": [
+        "ID",
+        "Jméno",
+        "Firma",
+        "E-mail",
+        "Stav",
+        "Přidáno",
+        "Poznámky"
+      ],
+      "csvNotes": [
+        "ID klienta",
+        "Klient",
+        "Datum a čas (UTC)",
+        "Záznam"
+      ]
+    }
   },
   "tools": {
     "metaTitle": "Nástroje",
@@ -521,7 +553,7 @@
           "items": [
             "Údaje o klientech a poznámky, které zadáváte, patří vám. Službě dáváte právo je ukládat a zpracovávat pouze pro provoz služby.",
             "Odpovídáte za to, že máte zákonné právo tyto údaje zadávat, včetně osobních údajů svých klientů, a že je používáte v souladu se zákonem.",
-            "Klienty můžete archivovat a trvale mazat a požádat o smazání účtu.",
+            "Klienty můžete archivovat a trvale mazat a sami si stáhnout své údaje a smazat účet na stránce účtu.",
             "Více informací: stránka „Soukromí a cookies“."
           ]
         },
@@ -556,7 +588,7 @@
         {
           "heading": "Ukončení používání",
           "paragraphs": [
-            "Používání můžete kdykoli ukončit. Administrátor může přístup pozastavit nebo uzavřít při porušení podmínek. Na vaši žádost se účet a související data smažou, jak popisují zásady ochrany soukromí."
+            "Používání můžete kdykoli ukončit. Administrátor může přístup pozastavit nebo uzavřít při porušení podmínek. Účet a související data se smažou, když účet smažete na stránce účtu nebo o to požádáte, jak popisují zásady ochrany soukromí."
           ],
           "items": []
         },
@@ -613,7 +645,7 @@
         {
           "heading": "Jak dlouho údaje uchováváme",
           "paragraphs": [
-            "Údaje účtu a vaše záznamy se uchovávají, dokud službu používáte. Archivovaní klienti zůstávají, dokud je trvale nesmažete. Na vaši žádost smažeme účet a související údaje. Zálohy poskytovatelů mohou existovat ještě omezenou dobu."
+            "Údaje účtu a vaše záznamy se uchovávají, dokud službu používáte. Archivovaní klienti zůstávají, dokud je trvale nesmažete. Kopii svých údajů (CSV) si můžete stáhnout a účet i související údaje smazat sami na stránce účtu. Zálohy poskytovatelů mohou existovat ještě omezenou dobu."
           ],
           "items": []
         },
