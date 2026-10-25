@@ -24,6 +24,8 @@ function LanguageSelect({
 }: Props & { onChange?: (next: Locale) => void; disabled?: boolean }) {
   return (
     <select
+      // name потрібен, щоб браузер не скаржився на поле без імені й коректно його розпізнавав.
+      name="language"
       aria-label={label}
       title={label}
       value={currentLocale}

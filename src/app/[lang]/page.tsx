@@ -123,6 +123,8 @@ export default async function Home() {
           width={1600}
           height={1067}
           sizes="(min-width: 1024px) 520px, 100vw"
+          // Явне співвідношення сторін: місце під фото резервується ще до завантаження.
+          style={{ aspectRatio: "1600 / 1067" }}
           className="h-auto w-full rounded-2xl shadow-lg"
         />
       </section>

@@ -188,6 +188,8 @@ export function BrandMark({ className }: IconProps) {
       aria-hidden="true"
       width={72}
       height={72}
+      // Логотип завжди на першому екрані, тому відкладене завантаження йому не потрібне.
+      priority
       className={`shrink-0 rounded-lg ${className ?? "size-9"}`}
     />
   );
