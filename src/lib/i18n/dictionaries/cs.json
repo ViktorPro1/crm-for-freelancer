@@ -12,7 +12,8 @@
     "clients": "Klienti",
     "admin": "Admin",
     "account": "Účet",
-    "mobileApp": "Aplikace"
+    "mobileApp": "Aplikace",
+    "more": "Více"
   },
   "controls": {
     "toggleTheme": "Přepnout motiv",

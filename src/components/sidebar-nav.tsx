@@ -1,13 +1,20 @@
 "use client";
 
 // Клієнтський компонент, бо йому потрібно знати, на якій сторінці
-// зараз користувач (usePathname), щоб підсвітити активний пункт меню.
+// зараз користувач (usePathname), щоб підсвітити активний пункт меню,
+// і пам'ятати, відкрито меню "Ще" чи ні.
+//
+// На великому екрані це бічне меню (стовпчик). На телефоні це нижня панель:
+// чотири головні розділи й кнопка "Ще" з рештою. Якщо розділів п'ять чи менше,
+// усі вони стоять у панелі й кнопка "Ще" не потрібна.
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import {
   CardIcon,
   DashboardIcon,
+  MenuIcon,
   PhoneIcon,
   ShieldIcon,
   ToolsIcon,
@@ -26,11 +33,21 @@ type Props = {
     clients: string;
     account: string;
     admin: string;
+    more: string;
   };
   // Пункт "Клієнти" бачить лише той, кому дозволено працювати з CRM.
   showClients: boolean;
   // Пункт "Адмінка" бачить лише адміністратор.
   showAdmin?: boolean;
+};
+
+// У нижній панелі стоять не більше чотирьох пунктів плюс "Ще".
+const MAX_IN_BAR = 4;
+
+type NavItem = {
+  href: string;
+  label: string;
+  Icon: (props: { className?: string }) => React.ReactNode;
 };
 
 function NavLinks({
@@ -43,7 +60,7 @@ function NavLinks({
   // Адреса в браузері виглядає як /uk/clients/3. Відрізаємо мову, щоб порівнювати "/clients/3".
   const path = pathname === null ? null : pathname.slice(locale.length + 1) || "/";
 
-  const links = [
+  const links: NavItem[] = [
     { href: "/", label: labels.dashboard, Icon: DashboardIcon },
     // Інструменти відкриті для всіх, навіть для гостей.
     { href: "/tools", label: labels.tools, Icon: ToolsIcon },
@@ -62,20 +79,22 @@ function NavLinks({
       : []),
   ];
 
-  return (
-    // На телефоні пункти йдуть у рядок, на великому екрані стовпчиком.
-    <nav className="flex gap-1 overflow-x-auto md:flex-col">
-      {links.map(({ href, label, Icon }) => {
-        const isActive =
-          path !== null && (href === "/" ? path === "/" : path.startsWith(href));
+  const isActive = (href: string) =>
+    path !== null && (href === "/" ? path === "/" : path.startsWith(href));
+  const hrefOf = (href: string) =>
+    href === "/" ? `/${locale}` : `/${locale}${href}`;
 
-        return (
+  return (
+    <>
+      {/* Великий екран: бічне меню стовпчиком. */}
+      <nav className="hidden gap-1 md:flex md:flex-col">
+        {links.map(({ href, label, Icon }) => (
           <Link
             key={href}
-            href={href === "/" ? `/${locale}` : `/${locale}${href}`}
-            aria-current={isActive ? "page" : undefined}
+            href={hrefOf(href)}
+            aria-current={isActive(href) ? "page" : undefined}
             className={`flex items-center gap-3 whitespace-nowrap rounded-lg px-3 py-2.5 text-sm transition-colors focus-visible:outline-sidebar-ring ${
-              isActive
+              isActive(href)
                 ? "bg-sidebar-active font-medium text-white"
                 : "text-sidebar-muted hover:bg-sidebar-active/60 hover:text-white"
             }`}
@@ -83,9 +102,156 @@ function NavLinks({
             <Icon className="size-5 shrink-0" />
             {label}
           </Link>
-        );
-      })}
-    </nav>
+        ))}
+      </nav>
+
+      {/* Телефон: нижня панель. */}
+      <MobileBar
+        links={links}
+        showClients={showClients}
+        moreLabel={labels.more}
+        pathname={pathname}
+        isActive={isActive}
+        hrefOf={hrefOf}
+      />
+    </>
+  );
+}
+
+// Порядок на телефоні: для того, хто працює з CRM, спершу найпотрібніше
+// (клієнти, інструменти, підписка, кабінет), решта йде в "Ще". Для гостя порядок звичайний.
+const CRM_PRIORITY = ["/clients", "/tools", "/subscription", "/account"];
+
+function MobileBar({
+  links,
+  showClients,
+  moreLabel,
+  pathname,
+  isActive,
+  hrefOf,
+}: {
+  links: NavItem[];
+  showClients: boolean;
+  moreLabel: string;
+  pathname: string | null;
+  isActive: (href: string) => boolean;
+  hrefOf: (href: string) => string;
+}) {
+  const [open, setOpen] = useState(false);
+  const [openedAt, setOpenedAt] = useState(pathname);
+  const moreButton = useRef<HTMLButtonElement>(null);
+
+  // Після переходу на іншу сторінку меню "Ще" закривається.
+  if (pathname !== openedAt) {
+    setOpenedAt(pathname);
+    setOpen(false);
+  }
+
+  // Escape закриває меню й повертає фокус на кнопку "Ще".
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        moreButton.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  const ordered = showClients
+    ? [...links].sort((a, b) => {
+        const rank = (href: string) => {
+          const index = CRM_PRIORITY.indexOf(href);
+
+          return index === -1 ? CRM_PRIORITY.length : index;
+        };
+
+        return rank(a.href) - rank(b.href);
+      })
+    : links;
+
+  const needsMore = ordered.length > MAX_IN_BAR + 1;
+  const inBar = needsMore ? ordered.slice(0, MAX_IN_BAR) : ordered;
+  const inMore = needsMore ? ordered.slice(MAX_IN_BAR) : [];
+  const moreActive = inMore.some((item) => isActive(item.href));
+
+  const itemBase =
+    "flex min-w-0 flex-1 flex-col items-center justify-center gap-1 px-1 text-[11px] leading-tight transition-colors focus-visible:outline-sidebar-ring";
+
+  return (
+    <>
+      {open ? (
+        <button
+          type="button"
+          aria-hidden="true"
+          tabIndex={-1}
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 bg-black/40 md:hidden"
+        />
+      ) : null}
+
+      {open ? (
+        <ul
+          id="mobile-more-menu"
+          className="fixed inset-x-3 bottom-[4.5rem] z-50 rounded-2xl bg-sidebar p-2 text-sidebar-foreground shadow-lg md:hidden"
+        >
+          {inMore.map(({ href, label, Icon }) => (
+            <li key={href}>
+              <Link
+                href={hrefOf(href)}
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`flex items-center gap-3 rounded-lg px-3 py-3 text-sm transition-colors focus-visible:outline-sidebar-ring ${
+                  isActive(href)
+                    ? "bg-sidebar-active font-medium text-white"
+                    : "text-sidebar-muted hover:bg-sidebar-active/60 hover:text-white"
+                }`}
+              >
+                <Icon className="size-5 shrink-0" />
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+
+      <nav className="fixed inset-x-0 bottom-0 z-50 flex h-16 border-t border-white/10 bg-sidebar text-sidebar-foreground md:hidden">
+        {inBar.map(({ href, label, Icon }) => (
+          <Link
+            key={href}
+            href={hrefOf(href)}
+            aria-current={isActive(href) ? "page" : undefined}
+            className={`${itemBase} ${
+              isActive(href) ? "font-medium text-white" : "text-sidebar-muted"
+            }`}
+          >
+            <Icon className="size-6 shrink-0" />
+            <span className="max-w-full truncate">{label}</span>
+          </Link>
+        ))}
+        {needsMore ? (
+          <button
+            ref={moreButton}
+            type="button"
+            aria-expanded={open}
+            aria-controls="mobile-more-menu"
+            onClick={() => setOpen((value) => !value)}
+            className={`${itemBase} ${
+              open || moreActive ? "font-medium text-white" : "text-sidebar-muted"
+            }`}
+          >
+            <MenuIcon className="size-6 shrink-0" />
+            <span className="max-w-full truncate">{moreLabel}</span>
+          </button>
+        ) : null}
+      </nav>
+    </>
   );
 }
 

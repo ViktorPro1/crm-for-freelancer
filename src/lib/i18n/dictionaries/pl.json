@@ -12,7 +12,8 @@
     "clients": "Klienci",
     "admin": "Admin",
     "account": "Konto",
-    "mobileApp": "Aplikacja"
+    "mobileApp": "Aplikacja",
+    "more": "Więcej"
   },
   "controls": {
     "toggleTheme": "Przełącz motyw",

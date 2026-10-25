@@ -12,7 +12,8 @@
     "clients": "Клієнти",
     "admin": "Адмінка",
     "account": "Кабінет",
-    "mobileApp": "Застосунок"
+    "mobileApp": "Застосунок",
+    "more": "Ще"
   },
   "controls": {
     "toggleTheme": "Перемкнути тему",

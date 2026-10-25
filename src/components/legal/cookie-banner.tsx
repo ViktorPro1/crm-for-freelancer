@@ -25,7 +25,7 @@ export function CookieBanner({ privacyHref, labels }: Props) {
   return (
     <section
       aria-labelledby="cookie-banner-title"
-      className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-2xl rounded-2xl border bg-surface p-4 shadow-lg sm:p-5"
+      className="fixed inset-x-3 bottom-[4.75rem] z-[60] md:bottom-3 mx-auto max-w-2xl rounded-2xl border bg-surface p-4 shadow-lg sm:p-5"
     >
       <h2 id="cookie-banner-title" className="text-base font-semibold">
         {labels.title}

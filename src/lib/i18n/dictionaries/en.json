@@ -12,7 +12,8 @@
     "clients": "Clients",
     "admin": "Admin",
     "account": "Account",
-    "mobileApp": "App"
+    "mobileApp": "App",
+    "more": "More"
   },
   "controls": {
     "toggleTheme": "Switch theme",

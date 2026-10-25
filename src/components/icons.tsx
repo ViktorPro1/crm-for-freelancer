@@ -160,6 +160,15 @@ export function PhoneIcon({ className }: IconProps) {
   );
 }
 
+// Три смужки: кнопка "Ще" в нижній панелі на телефоні.
+export function MenuIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </Svg>
+  );
+}
+
 // Знак проєкту: літера F з галочкою (файл public/images/logo-mark.png).
 export function BrandMark({ className }: IconProps) {
   return (

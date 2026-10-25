@@ -64,7 +64,8 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         <ServiceWorkerRegister />
         <Analytics />
         <div className="min-h-screen md:flex">
-          {/* На телефоні це верхня панель (сітка з двох колонок), на великому екрані бічне меню. */}
+          {/* На телефоні це верхня панель (логотип і кнопки мови, теми, входу), а розділи йдуть
+              у нижню панель. На великому екрані це бічне меню. */}
           <aside className="grid grid-cols-[1fr_auto] items-center bg-sidebar px-4 py-3 text-sidebar-foreground md:sticky md:top-0 md:flex md:h-screen md:w-64 md:shrink-0 md:flex-col md:items-stretch md:px-3 md:py-0">
             <Link
               href={`/${locale}`}
@@ -75,13 +76,13 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
                 <span className="block text-base font-semibold tracking-tight text-white">
                   {dict.app.name}
                 </span>
-                <span className="block text-xs text-sidebar-muted">
+                <span className="hidden text-xs text-sidebar-muted min-[360px]:block">
                   {dict.app.tagline}
                 </span>
               </span>
             </Link>
 
-            <div className="col-span-2 row-start-2 mt-3 md:order-2 md:mt-0">
+            <div className="contents md:block md:order-2">
               <Suspense
                 fallback={
                   <SidebarNavFallback
@@ -120,7 +121,8 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
             </div>
           </aside>
 
-          <div className="flex min-w-0 flex-1 flex-col">
+          {/* Знизу на телефоні лишаємо місце під нижню панель (висота 4rem). */}
+          <div className="flex min-w-0 flex-1 flex-col pb-16 md:pb-0">
             <div className="flex-1">{children}</div>
             <SiteFooter locale={locale} labels={dict.legal.footer} />
           </div>

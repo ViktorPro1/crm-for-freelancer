@@ -16,6 +16,7 @@ export async function SidebarNavGate({
     clients: string;
     account: string;
     admin: string;
+    more: string;
   };
 }) {
   const access = await getAccess();
