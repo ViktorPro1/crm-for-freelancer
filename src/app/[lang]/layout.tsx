@@ -17,6 +17,7 @@ import { SidebarNavFallback } from "@/components/sidebar-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { locales } from "@/lib/i18n/config";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
+import { SITE_URL } from "@/lib/site";
 
 // Кажемо Next.js, які мови існують, щоб підготувати сторінки для кожної заздалегідь.
 export function generateStaticParams() {
@@ -31,12 +32,46 @@ export const viewport: Viewport = {
   ],
 };
 
+// Мова для Open Graph у форматі "мова_КРАЇНА", як вимагають Facebook і Telegram.
+const OG_LOCALES = {
+  uk: "uk_UA",
+  en: "en_US",
+  pl: "pl_PL",
+  cs: "cs_CZ",
+} as const;
+
 export async function generateMetadata(): Promise<Metadata> {
   const dict = await getDictionary();
+  const locale = await getLocale();
+  // Картинка для превʼю посилання: public/og/og-<мова>.png, 1200x630.
+  const image = {
+    url: `/og/og-${locale}.png`,
+    width: 1200,
+    height: 630,
+    alt: dict.app.title,
+  };
 
   return {
+    // З metadataBase відносні адреси картинок стають повними (https://домен/og/...).
+    metadataBase: new URL(SITE_URL),
     title: { default: dict.app.title, template: `%s | ${dict.app.name}` },
     description: dict.app.description,
+    // Картка при вставці посилання в Telegram, Facebook, LinkedIn, Viber тощо.
+    // Адресу сторінки (url) тут не задаємо: інакше всі сторінки вказували б на одну адресу.
+    openGraph: {
+      type: "website",
+      siteName: "FreelanceCRM",
+      title: dict.app.title,
+      description: dict.app.description,
+      locale: OG_LOCALES[locale],
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.app.title,
+      description: dict.app.description,
+      images: [image.url],
+    },
     // Значок для екрана "Додому" на iPhone.
     icons: { apple: "/icons/apple-touch-icon.png" },
     appleWebApp: { capable: true, title: dict.app.name, statusBarStyle: "default" },

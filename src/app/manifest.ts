@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
     id: "/",
     name: "FreelanceCRM",
     short_name: "CRM",
-    description: "Облік клієнтів, проєктів і рахунків для фрилансера",
+    description: "Облік клієнтів, нотатки, нагадування і калькулятори для фрилансера",
     lang: "uk",
     start_url: "/",
     scope: "/",
