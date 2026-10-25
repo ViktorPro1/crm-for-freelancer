@@ -5,6 +5,7 @@ import { deleteUserData } from "@/lib/account-data";
 import { auth } from "@/lib/auth/server";
 import { getUser, requireApproved } from "@/lib/auth/session";
 import { defaultLocale, hasLocale } from "@/lib/i18n/config";
+import { deleteNeonAuthUser } from "@/lib/neon-api";
 import { isAdminEmail } from "@/lib/profiles";
 
 export type AccountState = {
@@ -75,8 +76,9 @@ export async function changePasswordAction(
 export type DeleteState = { result: "wrong" | "admin" | "error" } | null;
 
 // Видалення акаунта самим користувачем. Доступне й тоді, коли підписка закінчилась,
-// тому перевіряємо лише вхід, а не схвалення. Спершу видаляємо запис у Neon Auth:
-// якщо це не вдалося (наприклад, невірний пароль), у базі нічого не чіпаємо.
+// тому перевіряємо лише вхід, а не схвалення. Порядок: перевірка пароля, видалення користувача
+// в Neon Auth (через API Neon), видалення даних у нашій базі. Якщо будь-який із перших двох
+// кроків не вдався, нічого не видаляється.
 export async function deleteAccountAction(
   _previous: DeleteState,
   formData: FormData,
@@ -100,18 +102,36 @@ export async function deleteAccountAction(
     return { result: "wrong" };
   }
 
-  const { error } = await auth.deleteUser({ password });
+  // Neon API не питає пароль, тому перевіряємо його самі: це звичайний вхід з поточною поштою.
+  // Він лише створює ще одну сесію, а далі акаунт видаляється й сесії зникають разом з ним.
+  const { error } = await auth.signIn.email({ email: user.email, password });
 
   if (error) {
     const code = String(error.code ?? "");
-    // У журнал (Vercel Logs) пишемо лише код і статус, без паролів і даних людини.
-    console.error("deleteUser: Neon Auth повернув помилку", error.status, code);
     const wrong =
+      error.status === 401 ||
       code === "invalid_credentials" ||
-      code.includes("INVALID_PASSWORD") ||
-      /invalid password/i.test(String(error.message ?? ""));
+      code.includes("INVALID") ||
+      /invalid (email or )?password/i.test(String(error.message ?? ""));
+
+    // У журнал (Vercel Logs) пишемо лише статус і код, без паролів і даних людини.
+    console.error("deleteAccount: перевірка пароля не вдалась", error.status, code);
 
     return { result: wrong ? "wrong" : "error" };
+  }
+
+  // Видаляємо користувача в Neon Auth через API Neon. Якщо не вдалось, у нашій базі нічого не чіпаємо.
+  const removed = await deleteNeonAuthUser(user.id);
+
+  if (!removed.ok) {
+    console.error(
+      removed.reason === "not-configured"
+        ? "deleteAccount: не задано NEON_API_KEY, NEON_PROJECT_ID або NEON_BRANCH_ID"
+        : "deleteAccount: API Neon не видалив користувача, статус",
+      removed.reason === "failed" ? removed.status : "",
+    );
+
+    return { result: "error" };
   }
 
   // Користувача в Neon Auth видалено. Тепер прибираємо його дані в нашій базі.
