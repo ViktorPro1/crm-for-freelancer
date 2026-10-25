@@ -1,0 +1,60 @@
+# Автоматична перевірка коду. Запускається на GitHub після кожного push і для кожного pull request.
+# Вона нічого не публікує: сайт, як і раніше, розгортає Vercel. Тут лише перевіряємо,
+# що код збирається без помилок, щоб зламаний код не дійшов до користувачів.
+name: Перевірка коду
+
+on:
+  push:
+  pull_request:
+
+# Лише читання репозиторію. Жодних інших прав ця перевірка не має.
+permissions:
+  contents: read
+
+# Якщо надійшов новіший push у ту саму гілку, стару перевірку зупиняємо.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Типи, стиль, збірка
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    # Тестові значення, щоб збірка проходила без справжніх секретів.
+    # Це вигадані адреси та рядки, вони не підключаються ні до якої бази чи облікових записів.
+    # Справжні значення лежать лише у Vercel і в локальному .env.local.
+    env:
+      DATABASE_URL: postgresql://ci:ci@ep-ci-placeholder.eu-central-1.aws.neon.tech/neondb?sslmode=require
+      NEON_AUTH_BASE_URL: https://ep-ci-placeholder.neonauth.eu-central-1.aws.neon.tech/neondb/auth
+      NEON_AUTH_COOKIE_SECRET: ci-placeholder-secret-at-least-32-characters-long
+      ADMIN_EMAIL: ci@example.com
+      NEXT_TELEMETRY_DISABLED: "1"
+
+    steps:
+      - name: Завантажити код
+        uses: actions/checkout@v4
+
+      - name: Встановити Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Встановити залежності
+        run: npm ci
+
+      # Next.js створює файли типів для сторінок (PageProps, LayoutProps) окремою командою.
+      # Без неї перевірка типів нижче не знайде ці типи.
+      - name: Створити типи Next.js
+        run: npx next typegen
+
+      - name: Перевірка типів (TypeScript)
+        run: npx tsc --noEmit
+
+      - name: Перевірка стилю коду (ESLint)
+        run: npm run lint
+
+      - name: Збірка
+        run: npm run build
