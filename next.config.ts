@@ -4,16 +4,17 @@ import type { NextConfig } from "next";
 // Це головний захист від впровадженого чужого скрипта (XSS).
 // 'unsafe-inline' потрібен, бо Next.js вставляє у сторінку власні короткі скрипти й стилі,
 // а скрипт вибору теми в layout.tsx теж вбудований. Google Analytics дозволено за списком із
-// документації Google (адреси googletagmanager.com і google-analytics.com).
+// документації Google, плюс www.google.com і doubleclick.net, куди GA4 теж надсилає дані
+// (це підтвердила помилка в консолі на справжньому сайті).
 // У режимі розробки React потребує ще 'unsafe-eval' і WebSocket для швидкого оновлення,
 // тому в dev політику не вмикаємо: перевіряємо її лише в production.
 const contentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com",
+  "img-src 'self' data: blob: https://*.google-analytics.com https://*.googletagmanager.com https://www.google.com https://*.g.doubleclick.net",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.google.com https://*.g.doubleclick.net",
   "worker-src 'self'",
   "manifest-src 'self'",
   "object-src 'none'",
