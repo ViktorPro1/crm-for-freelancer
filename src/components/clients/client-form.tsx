@@ -23,12 +23,14 @@ type Props = {
     email: string;
     status: string;
     notes: string;
+    followUp: string;
+    followUpHint: string;
     submit: string;
     saving: string;
     cancel: string;
     statusLead: string;
     statusActive: string;
-    errors: { name: string; email: string; generic: string };
+    errors: { name: string; email: string; followUp: string; generic: string };
   };
 };
 
@@ -105,6 +107,21 @@ export function ClientForm({
       ) : (
         <input type="hidden" name="status" value="lead" />
       )}
+
+      <label className="block text-sm font-medium">
+        {labels.followUp}
+        <input
+          name="followUp"
+          type="date"
+          min="2000-01-01"
+          max="2100-12-31"
+          defaultValue={values?.followUp}
+          className={`${inputClass} h-11`}
+        />
+        <span className="mt-1 block text-xs font-normal text-muted">
+          {labels.followUpHint}
+        </span>
+      </label>
 
       <label className="block text-sm font-medium">
         {labels.notes}

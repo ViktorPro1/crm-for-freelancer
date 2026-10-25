@@ -13,7 +13,8 @@
     "admin": "Admin",
     "account": "Konto",
     "mobileApp": "Aplikacja",
-    "more": "Więcej"
+    "more": "Więcej",
+    "calendar": "Kalendarz"
   },
   "controls": {
     "toggleTheme": "Przełącz motyw",
@@ -99,7 +100,8 @@
       "errors": {
         "name": "Podaj imię klienta (do 100 znaków).",
         "email": "Sprawdź adres e-mail: wygląda jak name@example.com.",
-        "generic": "Nie udało się zapisać. Sprawdź dane i spróbuj ponownie."
+        "generic": "Nie udało się zapisać. Sprawdź dane i spróbuj ponownie.",
+        "followUp": "Podaj poprawną datę przypomnienia."
       }
     },
     "edit": {
@@ -138,6 +140,17 @@
       "found": "Znaleziono: {count} z {total}",
       "noResults": "Nic nie znaleziono",
       "noResultsHint": "Spróbuj innego słowa lub wyczyść wyszukiwanie."
+    },
+    "followUp": {
+      "label": "Skontaktuj się do",
+      "hint": "Opcjonalnie. Klient pojawi się w sekcji „Kalendarz”, gdy nadejdzie ta data.",
+      "overdue": "Zaległe: {days} dn.",
+      "today": "Dzisiaj",
+      "tomorrow": "Jutro",
+      "inDays": "Za {days} dn.",
+      "done": "Skontaktowano się",
+      "snooze3": "Odłóż o 3 dni",
+      "snooze7": "Odłóż o tydzień"
     }
   },
   "status": {
@@ -735,5 +748,17 @@
         ]
       ]
     }
+  },
+  "calendar": {
+    "title": "Kalendarz",
+    "subtitle": "Wszystkie przypomnienia „Skontaktuj się do”: zaległe, na dziś i przyszłe. Przypomnienia są tylko tutaj, w aplikacji.",
+    "overdue": "Zaległe",
+    "today": "Dzisiaj",
+    "soon": "Najbliższe 7 dni",
+    "later": "Później",
+    "empty": "Brak przypomnień",
+    "emptyHint": "Ustaw klientowi datę „Skontaktuj się do” w jego karcie, a pojawi się tutaj.",
+    "toClients": "Do klientów",
+    "summary": "Wymagają uwagi: {count}"
   }
 }

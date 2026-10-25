@@ -9,9 +9,11 @@ import {
   type ClientFormState,
 } from "@/lib/client-input";
 import {
+  completeFollowUp,
   createClient,
   deleteArchivedClient,
   setArchived,
+  snoozeFollowUp,
   updateClient,
 } from "@/lib/clients";
 import { defaultLocale, hasLocale } from "@/lib/i18n/config";
@@ -50,6 +52,9 @@ export async function createClientAction(
     return { error: "generic", values };
   }
 
+  // Новий клієнт міг отримати дату нагадування: оновлюємо меню (кружечок біля "Календар").
+  revalidatePath(`/${locale}`, "layout");
+
   // redirect поза try/catch, бо він працює через спеціальну помилку.
   redirect(`/${locale}/clients/${id}`);
 }
@@ -82,6 +87,31 @@ export async function updateClientAction(
 
   revalidatePath(`/${locale}/clients`, "layout");
   redirect(`/${locale}/clients/${id}`);
+}
+
+// "Зв'язався": прибирає нагадування. Головну сторінку (блок "Сьогодні") теж оновлюємо.
+export async function completeFollowUpAction(formData: FormData) {
+  const { locale, viewer } = await authorize(formData);
+  const id = String(formData.get("id") ?? "");
+
+  await completeFollowUp(id, viewer);
+
+  revalidatePath(`/${locale}`, "layout");
+}
+
+// Переносить нагадування на 3 або 7 днів від сьогодні. Інші значення ігноруємо.
+export async function snoozeFollowUpAction(formData: FormData) {
+  const { locale, viewer } = await authorize(formData);
+  const id = String(formData.get("id") ?? "");
+  const days = Number(formData.get("days"));
+
+  if (days !== 3 && days !== 7) {
+    return;
+  }
+
+  await snoozeFollowUp(id, viewer, days, locale);
+
+  revalidatePath(`/${locale}`, "layout");
 }
 
 export async function archiveClientAction(formData: FormData) {

@@ -12,6 +12,10 @@ export type Client = {
   status: ClientStatus;
   createdAt: string; // дата у форматі РРРР-ММ-ДД
   notes: string;
+  // Коли треба зв'язатися (дата "2026-10-28") і скільки днів до цієї дати за часом користувача:
+  // 0 сьогодні, від'ємне число прострочено. Обидва null, якщо нагадування немає.
+  followUpOn: string | null;
+  followUpDays: number | null;
   // Чий це клієнт. Заповнюється лише для адміністратора, щоб він бачив власника.
   ownerLabel: string | null;
 };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import { FollowUpBadge } from "@/components/follow-up-badge";
 import { StatusBadge } from "@/components/status-badge";
 import { requireApproved } from "@/lib/auth/session";
 import { getClients } from "@/lib/clients";
@@ -90,10 +91,10 @@ async function ClientsContent({
   const locale = await getLocale();
   const access = await requireApproved(locale);
   const dict = await getDictionary();
-  const all = await getClients({
-    userId: access.user.id,
-    isAdmin: access.isAdmin,
-  });
+  const all = await getClients(
+    { userId: access.user.id, isAdmin: access.isAdmin },
+    locale,
+  );
   const archivedCount = all.filter((c) => c.status === "archived").length;
   const tabClients = all.filter((c) =>
     showArchive ? c.status === "archived" : c.status !== "archived",
@@ -284,6 +285,18 @@ async function ClientsContent({
                     {client.name}
                   </Link>
                   <div className="text-xs text-muted">{client.email}</div>
+                  {client.followUpOn !== null &&
+                  client.followUpDays !== null &&
+                  client.status !== "archived" ? (
+                    <div className="mt-1.5">
+                      <FollowUpBadge
+                        date={client.followUpOn}
+                        days={client.followUpDays}
+                        locale={locale}
+                        labels={dict.clients.followUp}
+                      />
+                    </div>
+                  ) : null}
                   <div className="mt-0.5 text-xs text-muted sm:hidden">
                     {client.company}
                   </div>

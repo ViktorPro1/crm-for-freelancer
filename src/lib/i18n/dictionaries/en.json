@@ -13,7 +13,8 @@
     "admin": "Admin",
     "account": "Account",
     "mobileApp": "App",
-    "more": "More"
+    "more": "More",
+    "calendar": "Calendar"
   },
   "controls": {
     "toggleTheme": "Switch theme",
@@ -99,7 +100,8 @@
       "errors": {
         "name": "Enter the client's name (up to 100 characters).",
         "email": "Check the email address: it looks like name@example.com.",
-        "generic": "Could not save. Check the details and try again."
+        "generic": "Could not save. Check the details and try again.",
+        "followUp": "Enter a valid reminder date."
       }
     },
     "edit": {
@@ -138,6 +140,17 @@
       "found": "Found: {count} of {total}",
       "noResults": "Nothing found",
       "noResultsHint": "Try another word or reset the search."
+    },
+    "followUp": {
+      "label": "Contact by",
+      "hint": "Optional. The client will appear in the \"Calendar\" section when this date comes.",
+      "overdue": "Overdue: {days} d",
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "inDays": "In {days} d",
+      "done": "Contacted",
+      "snooze3": "Postpone 3 days",
+      "snooze7": "Postpone a week"
     }
   },
   "status": {
@@ -735,5 +748,17 @@
         ]
       ]
     }
+  },
+  "calendar": {
+    "title": "Calendar",
+    "subtitle": "All \"Contact by\" reminders: overdue, due today and upcoming. Reminders appear only here, in the app.",
+    "overdue": "Overdue",
+    "today": "Today",
+    "soon": "Next 7 days",
+    "later": "Later",
+    "empty": "No reminders",
+    "emptyHint": "Set a \"Contact by\" date on a client's page and they will appear here.",
+    "toClients": "Go to clients",
+    "summary": "Need attention: {count}"
   }
 }

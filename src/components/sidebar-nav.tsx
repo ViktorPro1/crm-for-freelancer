@@ -10,8 +10,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import {
+  CalendarIcon,
   CardIcon,
   DashboardIcon,
   MenuIcon,
@@ -21,6 +22,7 @@ import {
   UserIcon,
   UsersIcon,
 } from "@/components/icons";
+import { readCalendarSeen, subscribeCalendarSeen } from "@/lib/calendar-seen";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = {
@@ -31,6 +33,7 @@ type Props = {
     subscription: string;
     mobileApp: string;
     clients: string;
+    calendar: string;
     account: string;
     admin: string;
     more: string;
@@ -39,6 +42,9 @@ type Props = {
   showClients: boolean;
   // Пункт "Адмінка" бачить лише адміністратор.
   showAdmin?: boolean;
+  // Скільки клієнтів потребують уваги (прострочені й на сьогодні) і відбиток цього набору.
+  // Червоний кружечок біля "Календар" показується, поки людина не відкрила календар.
+  calendarDue?: { count: number; signature: string };
 };
 
 // У нижній панелі стоять не більше чотирьох пунктів плюс "Ще".
@@ -50,13 +56,59 @@ type NavItem = {
   Icon: (props: { className?: string }) => React.ReactNode;
 };
 
+// Скільки показувати в кружечку біля "Календар": 0, якщо нічого не потребує уваги
+// або людина вже бачила цей набір. До завантаження сторінки в браузері кружечка немає,
+// щоб він не блимав у тих, хто вже все переглянув.
+function useCalendarBadge(due: Props["calendarDue"]): number {
+  const seen = useSyncExternalStore(
+    subscribeCalendarSeen,
+    readCalendarSeen,
+    () => undefined,
+  );
+
+  if (!due || due.count === 0 || seen === undefined || seen === due.signature) {
+    return 0;
+  }
+
+  return due.count;
+}
+
+// Червоний кружечок із числом.
+function Badge({
+  count,
+  className,
+  small = false,
+}: {
+  count: number | undefined;
+  className?: string;
+  small?: boolean;
+}) {
+  if (!count) {
+    return null;
+  }
+
+  return (
+    <span
+      className={`grid place-items-center rounded-full bg-red-500 font-semibold leading-none text-white ${
+        small ? "h-4 min-w-4 px-1 text-[10px]" : "h-5 min-w-5 px-1.5 text-xs"
+      } ${className ?? ""}`}
+    >
+      {count > 99 ? "99+" : count}
+    </span>
+  );
+}
+
 function NavLinks({
   locale,
   labels,
   showClients,
   showAdmin = false,
+  calendarDue,
   pathname,
 }: Props & { pathname: string | null }) {
+  const calendarBadge = useCalendarBadge(calendarDue);
+  const badges: Record<string, number> = { "/calendar": calendarBadge };
+
   // Адреса в браузері виглядає як /uk/clients/3. Відрізаємо мову, щоб порівнювати "/clients/3".
   const path = pathname === null ? null : pathname.slice(locale.length + 1) || "/";
 
@@ -70,6 +122,9 @@ function NavLinks({
     { href: "/mobile-app", label: labels.mobileApp, Icon: PhoneIcon },
     ...(showClients
       ? [{ href: "/clients", label: labels.clients, Icon: UsersIcon }]
+      : []),
+    ...(showClients
+      ? [{ href: "/calendar", label: labels.calendar, Icon: CalendarIcon }]
       : []),
     ...(showClients
       ? [{ href: "/account", label: labels.account, Icon: UserIcon }]
@@ -101,6 +156,7 @@ function NavLinks({
           >
             <Icon className="size-5 shrink-0" />
             {label}
+            <Badge count={badges[href]} className="ml-auto" />
           </Link>
         ))}
       </nav>
@@ -110,6 +166,7 @@ function NavLinks({
         links={links}
         showClients={showClients}
         moreLabel={labels.more}
+        badges={badges}
         pathname={pathname}
         isActive={isActive}
         hrefOf={hrefOf}
@@ -119,13 +176,14 @@ function NavLinks({
 }
 
 // Порядок на телефоні: для того, хто працює з CRM, спершу найпотрібніше
-// (клієнти, інструменти, підписка, кабінет), решта йде в "Ще". Для гостя порядок звичайний.
-const CRM_PRIORITY = ["/clients", "/tools", "/subscription", "/account"];
+// (клієнти, календар, інструменти, кабінет), решта йде в "Ще". Для гостя порядок звичайний.
+const CRM_PRIORITY = ["/clients", "/calendar", "/tools", "/account"];
 
 function MobileBar({
   links,
   showClients,
   moreLabel,
+  badges,
   pathname,
   isActive,
   hrefOf,
@@ -133,6 +191,7 @@ function MobileBar({
   links: NavItem[];
   showClients: boolean;
   moreLabel: string;
+  badges: Record<string, number>;
   pathname: string | null;
   isActive: (href: string) => boolean;
   hrefOf: (href: string) => string;
@@ -181,6 +240,7 @@ function MobileBar({
   const inBar = needsMore ? ordered.slice(0, MAX_IN_BAR) : ordered;
   const inMore = needsMore ? ordered.slice(MAX_IN_BAR) : [];
   const moreActive = inMore.some((item) => isActive(item.href));
+  const moreBadge = inMore.reduce((sum, item) => sum + (badges[item.href] ?? 0), 0);
 
   const itemBase =
     "flex min-w-0 flex-1 flex-col items-center justify-center gap-1 px-1 text-[11px] leading-tight transition-colors focus-visible:outline-sidebar-ring";
@@ -215,6 +275,7 @@ function MobileBar({
               >
                 <Icon className="size-5 shrink-0" />
                 {label}
+                <Badge count={badges[href]} className="ml-auto" />
               </Link>
             </li>
           ))}
@@ -231,7 +292,10 @@ function MobileBar({
               isActive(href) ? "font-medium text-white" : "text-sidebar-muted"
             }`}
           >
-            <Icon className="size-6 shrink-0" />
+            <span className="relative">
+              <Icon className="size-6 shrink-0" />
+              <Badge count={badges[href]} className="absolute -right-2.5 -top-1.5" small />
+            </span>
             <span className="max-w-full truncate">{label}</span>
           </Link>
         ))}
@@ -246,7 +310,10 @@ function MobileBar({
               open || moreActive ? "font-medium text-white" : "text-sidebar-muted"
             }`}
           >
-            <MenuIcon className="size-6 shrink-0" />
+            <span className="relative">
+              <MenuIcon className="size-6 shrink-0" />
+              <Badge count={moreBadge} className="absolute -right-2.5 -top-1.5" small />
+            </span>
             <span className="max-w-full truncate">{moreLabel}</span>
           </button>
         ) : null}

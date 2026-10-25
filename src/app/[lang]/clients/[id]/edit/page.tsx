@@ -44,10 +44,11 @@ async function EditForm({
   const access = await requireApproved(locale);
   const { clients, status } = await getDictionary();
 
-  const client = await getClient(id, {
-    userId: access.user.id,
-    isAdmin: access.isAdmin,
-  });
+  const client = await getClient(
+    id,
+    { userId: access.user.id, isAdmin: access.isAdmin },
+    locale,
+  );
 
   if (!client) {
     notFound();
@@ -77,6 +78,7 @@ async function EditForm({
           email: client.email,
           status: client.status,
           notes: client.notes,
+          followUp: client.followUpOn ?? "",
         }}
         labels={{
           name: clients.new.name,
@@ -84,6 +86,8 @@ async function EditForm({
           email: clients.new.email,
           status: clients.new.status,
           notes: clients.new.notes,
+          followUp: clients.followUp.label,
+          followUpHint: clients.followUp.hint,
           submit: e.submit,
           saving: clients.new.saving,
           cancel: clients.new.cancel,

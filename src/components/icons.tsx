@@ -160,6 +160,16 @@ export function PhoneIcon({ className }: IconProps) {
   );
 }
 
+// Календар: пункт "Календар".
+export function CalendarIcon({ className }: IconProps) {
+  return (
+    <Svg className={className}>
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+      <path d="M3.5 10h17M8 3v4M16 3v4" />
+    </Svg>
+  );
+}
+
 // Три смужки: кнопка "Ще" в нижній панелі на телефоні.
 export function MenuIcon({ className }: IconProps) {
   return (

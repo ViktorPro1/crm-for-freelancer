@@ -56,6 +56,8 @@ async function NewClientForm() {
         email: n.email,
         status: n.status,
         notes: n.notes,
+        followUp: clients.followUp.label,
+        followUpHint: clients.followUp.hint,
         submit: n.submit,
         saving: n.saving,
         cancel: n.cancel,

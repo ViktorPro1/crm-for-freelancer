@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { ChevronLeftIcon } from "@/components/icons";
 import { ConfirmButton } from "@/components/clients/confirm-button";
 import { LocalTime } from "@/components/clients/local-time";
+import { FollowUpBadge } from "@/components/follow-up-badge";
 import { StatusBadge } from "@/components/status-badge";
 import { requireApproved } from "@/lib/auth/session";
 import { getClient } from "@/lib/clients";
@@ -14,6 +15,8 @@ import { getNotes, NOTE_MAX_LENGTH } from "@/lib/notes";
 import {
   addNoteAction,
   archiveClientAction,
+  completeFollowUpAction,
+  snoozeFollowUpAction,
   deleteNoteAction,
   deleteClientAction,
   restoreClientAction,
@@ -68,7 +71,7 @@ async function ClientDetails({
   const access = await requireApproved(locale);
   const dict = await getDictionary();
   const viewer = { userId: access.user.id, isAdmin: access.isAdmin };
-  const client = await getClient(id, viewer);
+  const client = await getClient(id, viewer, locale);
 
   // Якщо клієнта з таким id немає, показуємо сторінку "не знайдено" (not-found.tsx).
   if (!client) {
@@ -142,6 +145,48 @@ async function ClientDetails({
           </form>
         )}
       </div>
+
+      {/* Нагадування: показуємо, якщо дата задана і клієнт не в архіві. */}
+      {client.followUpOn !== null &&
+      client.followUpDays !== null &&
+      client.status !== "archived" ? (
+        <section
+          aria-label={dict.clients.followUp.label}
+          className="mt-6 rounded-xl border bg-surface p-4"
+        >
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+            <span className="text-sm font-medium">{dict.clients.followUp.label}</span>
+            <span className="text-sm">{formatDate(client.followUpOn, locale)}</span>
+            <FollowUpBadge
+              date={client.followUpOn}
+              days={client.followUpDays}
+              locale={locale}
+              labels={dict.clients.followUp}
+            />
+          </div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <form action={completeFollowUpAction}>
+              <input type="hidden" name="locale" value={locale} />
+              <input type="hidden" name="id" value={client.id} />
+              <button type="submit" className={primaryButton}>
+                {dict.clients.followUp.done}
+              </button>
+            </form>
+            {[3, 7].map((days) => (
+              <form key={days} action={snoozeFollowUpAction}>
+                <input type="hidden" name="locale" value={locale} />
+                <input type="hidden" name="id" value={client.id} />
+                <input type="hidden" name="days" value={days} />
+                <button type="submit" className={secondaryButton}>
+                  {days === 3
+                    ? dict.clients.followUp.snooze3
+                    : dict.clients.followUp.snooze7}
+                </button>
+              </form>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <dl className="mt-6 divide-y rounded-xl border bg-surface text-sm">
         {rows.map(({ label, value }) => (

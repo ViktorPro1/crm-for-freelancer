@@ -7,6 +7,8 @@ export type ClientInput = {
   email: string;
   status: "lead" | "active";
   notes: string;
+  // Дата нагадування або null, якщо поле порожнє.
+  followUpOn: string | null;
 };
 
 export type ClientFormValues = {
@@ -15,10 +17,14 @@ export type ClientFormValues = {
   email: string;
   status: string;
   notes: string;
+  // Те, що в полі дати: "2026-10-28" або порожній рядок.
+  followUp: string;
 };
 
+export type ClientFormError = "name" | "email" | "followUp" | "generic";
+
 export type ClientFormState = {
-  error: "name" | "email" | "generic";
+  error: ClientFormError;
   // Повертаємо введене, бо React очищає форму після відправки.
   values: ClientFormValues;
 } | null;
@@ -33,13 +39,31 @@ export function readClientForm(formData: FormData): ClientFormValues {
     email: String(formData.get("email") ?? "").trim(),
     status: String(formData.get("status") ?? "lead"),
     notes: String(formData.get("notes") ?? "").trim(),
+    followUp: String(formData.get("followUp") ?? "").trim(),
   };
+}
+
+// Чи це справжня дата у форматі РРРР-ММ-ДД (а не "2026-02-31") у розумних межах.
+export function isValidDate(text: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    return false;
+  }
+
+  const date = new Date(`${text}T00:00:00Z`);
+  const year = date.getUTCFullYear();
+
+  return (
+    !Number.isNaN(date.getTime()) &&
+    date.toISOString().slice(0, 10) === text &&
+    year >= 2000 &&
+    year <= 2100
+  );
 }
 
 // Повертає або перевірені дані, або ключ помилки для показу на сторінці.
 export function validateClient(
   values: ClientFormValues,
-): { ok: true; input: ClientInput } | { ok: false; error: "name" | "email" | "generic" } {
+): { ok: true; input: ClientInput } | { ok: false; error: ClientFormError } {
   if (values.name.length === 0 || values.name.length > 100) {
     return { ok: false, error: "name" };
   }
@@ -49,6 +73,10 @@ export function validateClient(
     (values.email.length > 200 || !EMAIL_PATTERN.test(values.email))
   ) {
     return { ok: false, error: "email" };
+  }
+
+  if (values.followUp !== "" && !isValidDate(values.followUp)) {
+    return { ok: false, error: "followUp" };
   }
 
   if (
@@ -67,6 +95,7 @@ export function validateClient(
       email: values.email,
       status: values.status,
       notes: values.notes,
+      followUpOn: values.followUp === "" ? null : values.followUp,
     },
   };
 }

@@ -13,7 +13,8 @@
     "admin": "Admin",
     "account": "Účet",
     "mobileApp": "Aplikace",
-    "more": "Více"
+    "more": "Více",
+    "calendar": "Kalendář"
   },
   "controls": {
     "toggleTheme": "Přepnout motiv",
@@ -99,7 +100,8 @@
       "errors": {
         "name": "Zadejte jméno klienta (nejvýše 100 znaků).",
         "email": "Zkontrolujte e-mail: vypadá jako name@example.com.",
-        "generic": "Uložení se nezdařilo. Zkontrolujte údaje a zkuste to znovu."
+        "generic": "Uložení se nezdařilo. Zkontrolujte údaje a zkuste to znovu.",
+        "followUp": "Zadejte platné datum připomenutí."
       }
     },
     "edit": {
@@ -138,6 +140,17 @@
       "found": "Nalezeno: {count} z {total}",
       "noResults": "Nic nenalezeno",
       "noResultsHint": "Zkuste jiné slovo nebo hledání zrušte."
+    },
+    "followUp": {
+      "label": "Kontaktovat do",
+      "hint": "Nepovinné. Klient se zobrazí v sekci „Kalendář“, až nastane toto datum.",
+      "overdue": "Po termínu: {days} dn.",
+      "today": "Dnes",
+      "tomorrow": "Zítra",
+      "inDays": "Za {days} dn.",
+      "done": "Kontaktováno",
+      "snooze3": "Odložit o 3 dny",
+      "snooze7": "Odložit o týden"
     }
   },
   "status": {
@@ -735,5 +748,17 @@
         ]
       ]
     }
+  },
+  "calendar": {
+    "title": "Kalendář",
+    "subtitle": "Všechna připomenutí „Kontaktovat do“: po termínu, na dnes i budoucí. Připomenutí jsou jen zde, v aplikaci.",
+    "overdue": "Po termínu",
+    "today": "Dnes",
+    "soon": "Nejbližších 7 dní",
+    "later": "Později",
+    "empty": "Žádná připomenutí",
+    "emptyHint": "Nastavte klientovi datum „Kontaktovat do“ v jeho kartě a zobrazí se zde.",
+    "toClients": "Ke klientům",
+    "summary": "Vyžadují pozornost: {count}"
   }
 }
