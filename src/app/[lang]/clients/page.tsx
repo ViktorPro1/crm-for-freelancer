@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { StatusBadge } from "@/components/status-badge";
 import { requireApproved } from "@/lib/auth/session";
 import { getClients } from "@/lib/clients";
+import type { Client } from "@/lib/types";
 import { interpolate } from "@/lib/i18n/config";
 import { getDictionary, getLocale } from "@/lib/i18n/dictionaries";
 
@@ -52,12 +53,40 @@ async function Header() {
   );
 }
 
+// Чи підходить клієнт під пошуковий запит. Шукаємо за іменем, компанією, поштою та нотатками
+// (для адміністратора ще й за власником). Регістр не важливий, слова з запиту можуть
+// стояти в будь-якому порядку: клієнт має містити кожне з них.
+function matchesQuery(client: Client, query: string, isAdmin: boolean) {
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+
+  if (words.length === 0) {
+    return true;
+  }
+
+  const haystack = [
+    client.name,
+    client.company,
+    client.email,
+    client.notes,
+    isAdmin ? (client.ownerLabel ?? "") : "",
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return words.every((word) => haystack.includes(word));
+}
+
 // Серверний компонент: перевіряє вхід і сам іде в базу за даними.
 async function ClientsContent({
   searchParams,
 }: Pick<PageProps<"/[lang]/clients">, "searchParams">) {
-  const { view } = await searchParams;
+  const { view, q, status } = await searchParams;
   const showArchive = view === "archive";
+  // Пошуковий запит і фільтр беремо з адреси (?q=...&status=...). Це звичайна форма GET,
+  // тому пошук працює без JavaScript, а результат можна додати в закладки.
+  const query = (typeof q === "string" ? q : "").trim().slice(0, 100);
+  const statusFilter =
+    !showArchive && (status === "lead" || status === "active") ? status : "";
   const locale = await getLocale();
   const access = await requireApproved(locale);
   const dict = await getDictionary();
@@ -66,16 +95,39 @@ async function ClientsContent({
     isAdmin: access.isAdmin,
   });
   const archivedCount = all.filter((c) => c.status === "archived").length;
-  const clients = all.filter((c) =>
+  const tabClients = all.filter((c) =>
     showArchive ? c.status === "archived" : c.status !== "archived",
   );
+  const clients = tabClients.filter(
+    (c) =>
+      (statusFilter === "" || c.status === statusFilter) &&
+      matchesQuery(c, query, access.isAdmin),
+  );
+  const filtering = query !== "" || statusFilter !== "";
+
+  // Вкладки зберігають пошуковий запит, а фільтр за статусом діє лише на поточних клієнтах.
+  const tabParams = (archive: boolean) => {
+    const params = new URLSearchParams();
+
+    if (archive) {
+      params.set("view", "archive");
+    }
+
+    if (query) {
+      params.set("q", query);
+    }
+
+    const text = params.toString();
+
+    return `/${locale}/clients${text ? `?${text}` : ""}`;
+  };
 
   const tabs = (
     <nav className="mt-5 flex gap-2">
       {[
-        { href: `/${locale}/clients`, label: dict.clients.tabCurrent, active: !showArchive },
+        { href: tabParams(false), label: dict.clients.tabCurrent, active: !showArchive },
         {
-          href: `/${locale}/clients?view=archive`,
+          href: tabParams(true),
           label: `${dict.clients.tabArchive} (${archivedCount})`,
           active: showArchive,
         },
@@ -96,7 +148,7 @@ async function ClientsContent({
     </nav>
   );
 
-  if (clients.length === 0 && showArchive) {
+  if (tabClients.length === 0 && showArchive) {
     return (
       <>
         {tabs}
@@ -107,7 +159,7 @@ async function ClientsContent({
     );
   }
 
-  if (clients.length === 0) {
+  if (tabClients.length === 0) {
     return (
       <>
         {tabs}
@@ -125,14 +177,83 @@ async function ClientsContent({
     );
   }
 
+  const searchForm = (
+    <form
+      method="get"
+      action={`/${locale}/clients`}
+      role="search"
+      className="mt-4 flex flex-wrap items-end gap-3"
+    >
+      {showArchive ? <input type="hidden" name="view" value="archive" /> : null}
+      <label className="block min-w-0 flex-1 basis-56 text-sm font-medium">
+        {dict.clients.search.label}
+        <input
+          type="search"
+          name="q"
+          defaultValue={query}
+          maxLength={100}
+          placeholder={dict.clients.search.placeholder}
+          className="mt-1 h-11 w-full rounded-lg border bg-surface px-3 text-sm outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary"
+        />
+      </label>
+      {showArchive ? null : (
+        <label className="block text-sm font-medium">
+          {dict.clients.search.statusLabel}
+          <select
+            name="status"
+            defaultValue={statusFilter}
+            className="mt-1 h-11 w-full rounded-lg border bg-surface px-3 text-sm outline-offset-2 focus-visible:outline-2 focus-visible:outline-primary"
+          >
+            <option value="">{dict.clients.search.statusAll}</option>
+            <option value="lead">{dict.status.lead}</option>
+            <option value="active">{dict.status.active}</option>
+          </select>
+        </label>
+      )}
+      <button
+        type="submit"
+        className="inline-flex h-11 items-center rounded-lg bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+      >
+        {dict.clients.search.button}
+      </button>
+      {filtering ? (
+        <Link
+          href={showArchive ? `/${locale}/clients?view=archive` : `/${locale}/clients`}
+          className="inline-flex h-11 items-center px-2 text-sm text-muted underline-offset-4 hover:text-foreground hover:underline"
+        >
+          {dict.clients.search.reset}
+        </Link>
+      ) : null}
+    </form>
+  );
+
+  if (clients.length === 0) {
+    return (
+      <>
+        {tabs}
+        {searchForm}
+        <div className="mt-6 rounded-2xl border bg-surface p-8 text-center">
+          <p className="text-lg font-semibold">{dict.clients.search.noResults}</p>
+          <p className="mt-2 text-sm text-muted">{dict.clients.search.noResultsHint}</p>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       {tabs}
-      <p className="mt-1 text-sm text-muted">
-        {interpolate(dict.clients.total, { count: clients.length })}
+      {searchForm}
+      <p className="mt-4 text-sm text-muted" role="status">
+        {filtering
+          ? interpolate(dict.clients.search.found, {
+              count: clients.length,
+              total: tabClients.length,
+            })
+          : interpolate(dict.clients.total, { count: clients.length })}
       </p>
 
-      <div className="mt-6 overflow-hidden rounded-xl border bg-surface">
+      <div className="mt-3 overflow-hidden rounded-xl border bg-surface">
         <table className="w-full text-left text-sm">
           <thead className="bg-surface-muted text-muted">
             <tr>

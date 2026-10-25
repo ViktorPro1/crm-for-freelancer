@@ -126,6 +126,17 @@
       "delete": "Smazat",
       "confirmDelete": "Smazat tento záznam? Tuto akci nelze vrátit zpět.",
       "archivedHint": "Klient je v archivu, nové záznamy nelze přidávat."
+    },
+    "search": {
+      "label": "Hledat",
+      "placeholder": "Jméno, firma, e-mail nebo poznámka",
+      "statusLabel": "Stav",
+      "statusAll": "Všechny",
+      "button": "Hledat",
+      "reset": "Zrušit",
+      "found": "Nalezeno: {count} z {total}",
+      "noResults": "Nic nenalezeno",
+      "noResultsHint": "Zkuste jiné slovo nebo hledání zrušte."
     }
   },
   "status": {

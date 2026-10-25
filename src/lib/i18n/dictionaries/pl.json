@@ -126,6 +126,17 @@
       "delete": "Usuń",
       "confirmDelete": "Usunąć ten wpis? Tej operacji nie można cofnąć.",
       "archivedHint": "Klient jest w archiwum, nie można dodawać nowych wpisów."
+    },
+    "search": {
+      "label": "Szukaj",
+      "placeholder": "Imię, firma, e-mail lub notatka",
+      "statusLabel": "Status",
+      "statusAll": "Wszystkie",
+      "button": "Szukaj",
+      "reset": "Wyczyść",
+      "found": "Znaleziono: {count} z {total}",
+      "noResults": "Nic nie znaleziono",
+      "noResultsHint": "Spróbuj innego słowa lub wyczyść wyszukiwanie."
     }
   },
   "status": {

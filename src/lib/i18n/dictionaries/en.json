@@ -126,6 +126,17 @@
       "delete": "Delete",
       "confirmDelete": "Delete this entry? This cannot be undone.",
       "archivedHint": "This client is archived, so new entries cannot be added."
+    },
+    "search": {
+      "label": "Search",
+      "placeholder": "Name, company, email or note",
+      "statusLabel": "Status",
+      "statusAll": "All",
+      "button": "Search",
+      "reset": "Reset",
+      "found": "Found: {count} of {total}",
+      "noResults": "Nothing found",
+      "noResultsHint": "Try another word or reset the search."
     }
   },
   "status": {
